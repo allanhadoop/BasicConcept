@@ -1,0 +1,25 @@
+package Poly_concept1;
+
+//polymorphism is nothing but use inheritance concept to treat class as a array element
+//once class is treated as array then all array type operations are possible on all
+//components of the class e.g. methods or variables
+//in this example son1 and son2 is extending super class so now we are going to define 
+// them as shown below
+public class poly_main {
+
+	public static void main(String args[]){
+		// since 2 classes (son1 and son2) are inheriting super, put 2 as argument as shown
+		// so now obj[] below is of type ploy_super on left side of it.
+		poly_super_class obj[] = new poly_super_class[2];
+		
+		obj[0] = new poly_son1_supp();
+		obj[1] = new poly_son2_supp();
+	
+		//now both classes can be treated as array to loop through their components
+		for(int i=0; i<2;i++){
+			obj[i].getname();
+		}
+		
+	}
+	
+}
