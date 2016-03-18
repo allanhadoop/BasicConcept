@@ -1,0 +1,18 @@
+package R4_Package_adapterclasses;
+
+import javax.swing.JFrame;
+
+//adapter classes gives flexbility to override only method that we wanted to use.
+
+
+public class Adapter_main {
+
+	public static void main(String args[]){
+		
+		adapter_supp ob = new adapter_supp();
+		ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ob.setVisible(true);
+		ob.setSize(200, 300);
+	}
+	
+}
