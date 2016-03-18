@@ -13,9 +13,9 @@ public class adapter_supp extends JFrame {
 	private JLabel statusbar;
 
 	public adapter_supp() {
-		super("title");
+		super("this is my frame");
 
-		statusbar = new JLabel("this is default");
+		statusbar = new JLabel("-----well this is just a progress status ------");
 		add(statusbar, BorderLayout.CENTER);
 		addMouseListener(new mouseclass());
 
