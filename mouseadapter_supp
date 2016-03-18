@@ -1,0 +1,42 @@
+package R4_Package_adapterclasses;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class adapter_supp extends JFrame {
+
+	private String details;
+	private JLabel statusbar;
+
+	public adapter_supp() {
+		super("title");
+
+		statusbar = new JLabel("this is default");
+		add(statusbar, BorderLayout.CENTER);
+		addMouseListener(new mouseclass());
+
+	}
+
+	private class mouseclass extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			int mode = e.getModifiers();
+			if ((mode & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK) {
+				details = String.format("left button pressed %d",
+						e.getClickCount());
+			} else if ((mode & InputEvent.BUTTON2_MASK) == InputEvent.BUTTON2_MASK) {
+				details = String.format("middle button pressed %d",
+						e.getClickCount());
+			} else if ((mode & InputEvent.BUTTON3_MASK) == InputEvent.BUTTON3_MASK) {
+				details = String.format("right button pressed %d",
+						e.getClickCount());
+			}
+			statusbar.setText(details);
+		}
+
+	}
+
+}
