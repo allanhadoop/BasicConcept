@@ -1,0 +1,49 @@
+Objective - Main objective of this code is to explain how to convert simple array into list; 
+enhanced list and then convert back to array using several approaches or interfaces as shown
+
+package Convert_list_to_array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+public class List_to_array_main {
+	public static String mynewarray[];
+	
+	public static void main(String[] args){
+		
+		//Approach 1 - convert array to list first
+		String[] myarray = {"why","bye","pye","iye"};
+		List<String> obj = new ArrayList<String>(Arrays.asList(myarray));
+		obj.add("newadd");
+		System.out.println(obj);
+		
+		//or Approach 2 we can use below LinkedList with some cool method
+		//as shown which are not available for List above.
+		String[] ourarray = {"pie","die","wie","sie"};
+		LinkedList<String> objlist = new LinkedList<String>(Arrays.asList(ourarray));
+		objlist.addFirst("firstnew");
+		objlist.addLast("lastnew");
+		System.out.println(objlist);
+		
+		System.out.println("----Approach 1 - convert list to an array and print below");
+		//Now convert list into an array as shown
+		//Approach 1 using List . Note , we need to define size of array
+		// so obj.size() defines that array size.Array always needs the size.
+		// after that we can use enhanced for loop to print each element
+		mynewarray = obj.toArray(new String[obj.size()]);
+		for(String x : mynewarray){
+		System.out.printf("print array elements %s \n", x);
+		}
+		
+		System.out.println("----Approach 2 - convert list to an array and print below");
+		//Approach 2 using LinkedList
+		ourarray = objlist.toArray(new String[objlist.size()]);
+		for(String y:ourarray){
+			System.out.printf("array printing each element %s \n", y);
+		}
+	}
+	
+}
+
