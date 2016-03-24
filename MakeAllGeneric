@@ -1,0 +1,43 @@
+	
+//main objective of the generic method is to pass any datatype as argument
+//and make it more generic so that it can work for any incoming datatype
+//else we will need to create separate methods for separate data types as shown below
+//as shown below print1 is called 'overloaded methods'.
+	
+package Generic_methods8;
+public class main_class {
+
+	public static void main(String[] args){
+		
+		Integer[] obj1 = {2,3,4,6};
+		Character[] obj2 = {'w','r','t','y'};
+		//so now we need two methods to pass two separate types of data argument
+		//one is integer and other is character. we could have handle that by usinf
+		//genericprint method as shown below
+		print1(obj1);
+		print1(obj2);
+	}
+
+	/*
+	public static void print1(Integer[] i){
+		for (Integer x : i){
+			System.out.println(x);
+		}
+	}
+	public static void print1(Character[] c){
+		for(Character y:c){
+			System.out.println(y);
+		}
+	}
+	*/
+	
+	//Generic method needs data type specified before void and G is common convention letter
+	public static <G> void print1(G[] y){
+		System.out.println("below output came from Generic data type method");
+		for(G x: y ){
+			System.out.printf("%s ", x);
+		}
+		
+		System.out.println();
+	}
+}
