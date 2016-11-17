@@ -1,0 +1,20 @@
+private subnet
+public subnet - IGW+Elastic ip
+
+ssh to public subnet instance and then ssh to instance in private subnet
+route table created due to vpc will let each subnet resource talk to each other
+create IGW and assign it to vpc . we will late assign it to public subnet
+so we need IGW and (either load balancer or elastic ip address) for resource to have access to
+internet that are launched in this public subnet.
+
+
+So we need route to road(IGW) and tie that route to subnet (public) so now, any resource we
+launch in this subnet can have either elastic load balancer or elastic ip and then it will communicate
+to internet
+
+launch ec2(need bigger size to choose dedicated vpc) in public subnet and then assign elastic ip to it.
+So now we have resource in public and private subnet. Issue is we need to first connect to public subnet resource
+and then ssh to resource of private subnet.make sure to copy keypair file to private resource
+
+scp -i developer.pem developer.pem ec2-user@XX.XX.XX.XXX:~/   This is to copy from local to public instance
+Now connect to private instance.
