@@ -1,0 +1,6 @@
+//ELB to public subnet -- to private instance . 
+http://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html
+
+/install apache on private instance 
+/enable keep-alive option to 60 seconds on instance 
+/
