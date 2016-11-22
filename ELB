@@ -1,6 +1,14 @@
 //ELB to public subnet -- to private instance . 
+https://convox.com/blog/alb/ 
+and 
 http://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html
+
+
 
 /install apache on private instance 
 /enable keep-alive option to 60 seconds on instance 
-/
+/set up AWS target group under EC2 tab. Use private instances here . 
+/create new ELB, attach public subnet and then SSL for domain(your domain) using AWS Certificate to make it secure listener.
+/Listern can be either http or https . 
+/ELB sends regular request to target to check the instance health. 
+/make sure instance is active status and not provisioning.
