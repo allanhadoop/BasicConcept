@@ -32,13 +32,13 @@ Parameters:
     Type: "AWS::EC2::AvailabilityZone::us-west-2b"  
   myVpc:
     Description: Dedicated VPC 
-    Type: "AWS::EC2::VPC:: vpc-de9792ba"
+    Type: "AWS::EC2::VPC:: vpc-xxxxxxxx"
 Ec2Instance:
   Type: AWS::EC2::Instance          //This is part of Resource section in YAML template 
   Properties:
     InstanceType:
       Ref: InstanceTypeParameter    //This is specified by separte block above 
-    ImageId: ami-5ec1673e
+    ImageId: ami-xxxxxxxx
 
 
 
