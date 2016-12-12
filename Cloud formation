@@ -25,8 +25,8 @@ Parameters:
       - m1.large
     Description: Enter t1.micro, m1.small, or m1.large. Default is t1.micro.    
 Ec2Instance:
-  Type: AWS::EC2::Instance
+  Type: AWS::EC2::Instance          //This is part of Resource section in YAML template 
   Properties:
     InstanceType:
-      Ref: InstanceTypeParameter
+      Ref: InstanceTypeParameter    //This is specified by separte block above 
     ImageId: ami-5ec1673e
