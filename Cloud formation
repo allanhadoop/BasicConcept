@@ -2,6 +2,9 @@ YAML and JSON possible.
 
 //below is YAML format 
 //https://aws.amazon.com/blogs/aws/aws-cloudformation-update-yaml-cross-stack-references-simplified-substitution/
+//So we have - Description, Metadata, Mappings, Outputs, Parameters, Conditions, and Resources. 
+
+//Sample
 Parameters:
   DBName:
     AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
