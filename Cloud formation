@@ -1,0 +1,13 @@
+YAML and JSON possible. 
+
+//below is YAML format 
+Parameters:
+  DBName:
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+    Default: wordpressdb
+    Description: The WordPress database name
+    MaxLength: '64'
+    MinLength: '1'
+    Type: String
