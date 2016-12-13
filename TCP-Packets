@@ -1,2 +1,13 @@
-//tcpdump - to capture whole network packets 
+//tcpdump - to capture whole network packets -- It’s a packet sniffer that able to capture traffic that passes through a machine. It operates on a packet level, 
+//meaning that it captures the actual packets that fly in and out of your computer. 
+
+sudo yum install tcpdump -y
+
+tcpdump -D   //available network interfaces that can be monitor 
+
+//View the incoming packets on port 80 in real-time for apache web server, then save it to port80-apache1.pcap.
+tcpdump -w port80-apache1.pcap -i eth0 tcp port 80   //-w for write to file , -i for interfaces eth0 , -c for number of packets (e.g.tcpdump -c 3 -i eth0)
+
+tcpdump tcp portrange 21-80 //This is for port range capture 
+
 //wireshark - To analyze packets 
