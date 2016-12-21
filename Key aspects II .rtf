@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red14\green14\blue14;\red38\green38\blue38;}
+\margl1440\margr1440\vieww12400\viewh8560\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97Systemd / systemctl / jourtnalctl \
+\pard\pardeftab720
+\cf0 \expnd0\expndtw0\kerning0
+In recent years, Linux distributions have increasingly transitioned from other init systems to 
+\f1 \cf2 \expnd0\expndtw0\kerning0
+systemd. The fundamental purpose of an init system is to initialize the components that must be started after the Linux kernel is booted (traditionally known as "userland" components).The basic object that systemd manages and acts upon is a "unit".Units can be of many types, but the most common type is a "service" (indicated by a unit file ending in .service
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+https://coreos.com/docs/launching-containers/launching/getting-started-with-systemd/\
+\
+\
+https://www.youtube.com/watch?v=AtEqbYTLHfs\
+\
+https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal\
+\
+Commands - \
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \expnd0\expndtw0\kerning0
+sudo systemctl start nginx.service\
+sudo systemctl stop nginx.service\
+sudo systemctl enable nginx.service\
+\pard\pardeftab720
+\cf3 \expnd0\expndtw0\kerning0
+sudo systemctl disable nginx.service\
+systemctl is-enabled application.service\
+systemctl list-unit-files\
+systemctl is-active application.service\
+systemctl list-units\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf3 systemctl list-dependencies --all nginx.service     \'97 
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 This will list all dependencies to start nginx service\
+\
+\
+If you need to make a modification to a unit file, systemd allows you to make changes from the systemctl command itself so that you don't have to go to the actual disk location and then restart daemon.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f1\fs28 \cf3 \expnd0\expndtw0\kerning0
+sudo systemctl edit --full nginx.service\
+\pard\pardeftab720
+\cf3 \expnd0\expndtw0\kerning0
+sudo systemctl daemon-reload\cf3 \expnd0\expndtw0\kerning0
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf3 \expnd0\expndtw0\kerning0
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 It is also possible to set different run level using systemd \
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \expnd0\expndtw0\kerning0
+sudo systemctl isolate multi-user.target
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+A systemd component called journald collects and manages journal entries from all parts of the system. This is basically log information from applications and the kernel.\
+\
+Commands - \
+
+\f1\fs28 \cf3 \expnd0\expndtw0\kerning0
+journalctl -b   \'97This will give log from current boot \
+journalctl -u nginx.service\
+journalctl --list-boots\
+journalctl --since "2015-01-10" --until "2015-01-11 03:00"\
+journalctl -u nginx.service --since today\
+timedatectl list-timezones\
+sudo timedatectl set-timezone zone\
+\
+\
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97}
