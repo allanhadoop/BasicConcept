@@ -1,3 +1,7 @@
+Python image processing using - numpy and scipy 
+
+
+
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
 list = [3, 45, 8]
