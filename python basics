@@ -1,7 +1,30 @@
+-----------------------
+from math import pi
+r = float(input("enter radius:"))
+area = (pi * ( r**2))
+print(area)
+------------------------
+from datetime import datetime
+print(datetime.now().strftime("%Y-%d-%m  %H:%M:%S"))
+------------------------
+numbers = input("enter some comma separated numbers :")
+list = numbers.split(",")
+tuple = tuple(list)
+print('list',list)
+print('Tuple', tuple)
+------------------------
+filename = input("enter file name :")
+f_extension = filename.split(".")
+print("your file extension is:" + (f_extension[-1])) 
+------------------------
+color_list = ["red","blue","black","grey"]
+print("print first and last color fron list -- %s %s" % (color_list[0],color_list[-1]))
+------------------------
+exam_start_date = (11,12,2016)
+print("Examination start date is : %i / %i / %i" %exam_start_date )
+------------------------
 Python image processing using - numpy and scipy 
-
-
-
+---------------------------------
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
 list = [3, 45, 8]
