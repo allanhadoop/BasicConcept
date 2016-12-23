@@ -1,3 +1,4 @@
+##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 -----------------------
 from math import pi
 r = float(input("enter radius:"))
@@ -23,10 +24,170 @@ print("print first and last color fron list -- %s %s" % (color_list[0],color_lis
 exam_start_date = (11,12,2016)
 print("Examination start date is : %i / %i / %i" %exam_start_date )
 ------------------------
-Python image processing using - numpy and scipy 
+#Write a Python program that accepts an integer (n) and computes the value of n+nn+nnn.
+
+#Sample value of n is 5
+#Expected Result : 615
+n = int(input("enter the integer number :"))
+n1 = int("%s" %n)
+print(n1)     //5
+n2 = int("%s%s" %(n,n))
+print(n2)      //55
+n3 = int("%i%i%i" %(n,n,n))
+print(n3)      ///555
+print(n1+n2+n3) //615
+------------------------
+print(round.__doc__)    //Print document of built-in function
+------------------------
+import calendar
+
+m = int(input("enter month :"))
+y = int(input("enter year :"))
+
+print(calendar.month(y,m))    //this will show real calendar .. :) 
+------------------------
+print("""this is called docstrng """)
+------------------------
+from datetime import date
+fdate = date(2016,12,1)
+tdate = date(2012,12,1)
+print((fdate-tdate).days) 
+------------------------
+#Python program to get the difference between a given number and 17, if the number is greater than 17 return double the absolute difference.
+number = int(input("Enter the number : "))
+def difference(number):
+    if number <=17 :
+        return 17 - number
+    else:
+        return (number - 17)* 2
+print(difference(number))
+---------------------------------
+#Python program to test whether a number is within 100 of 1000 or 2000.
+number = int(input("Enter the number : "))
+def logic(num):
+    return (abs(1000 - num) <= 100 ) or (abs(2000 - num) <= 100 )
+print(logic(number))
+---------------------------------
+#Python program to calculate the sum of three given numbers, if the values are equal then return thrice of their sum
+#below code will not work because number becomes tuple when we input data.. so we cann't use split function even if we make that number Str.
+# so now t1 will be '(10' etc... so we cannt do math on it. 
+
+number = str(input("Enter three numbers by comma separted : "))
+def logic(num):
+    t1 = (num.split(",")[0])      //'(10'
+    t2 = (num.split(",")[1])      //' 20'
+    t3 = (num.split(",")[2])      // ' 30)'
+    if (t1 == t2 == t3 ):
+        return (t1+t2+t3) * 3
+    else:
+        return t1
+print(logic(number))
+--therefore approach is as below ----------------------------------- 
+t1 = (input("Enter first number: "))
+t2 = (input("Enter second number: "))
+t3 = (input("Enter third number: "))
+def logic(t1,t2,t3):
+    if (t1 == t2 == t3 ):
+        return (t1+t2+t3) * 3
+    else:
+        return t1+t2+t3
+print(logic(t1,t2,t3))
+---------------------------------
+#Python program to get a new string from a given string where "Is" has been added to the front. 
+#If the given string already begins with "Is" then return the string unchanged
+inputstr = str(input("Enter the string: " ))
+def logic(instr):
+    if (instr[:2] == "IS"):
+        return instr
+    else:
+        return "IS"+instr
+print(logic(inputstr))
+---------------------------------
+#Python program to get a string which is n (non-negative integer) xeros copies of a given string.
+def makecopies(str, n):
+    result = ' '
+    for i in range(n):
+        result = result + str
+    return result
+print(makecopies('abc',5))
+---------------------------------
+#Python program to find whether a given number (accept from the user) is even or odd, print out an appropriate message to the user
+import math
+number = int(input("Enter either even or odd number : "))
+mod = number % 2
+def evenodd(yourinput):
+    if ( yourinput == 0):
+        return "You entered even number"
+    else:
+        return "You entered odd number "
+print(evenodd(mod))
+---------------------------------
+#Python program to count the number 4 in a given list.
+number = [4,5,22,4,56,7,8,4,4,4,4]
+def countfour(yourinput):
+    count = 0
+    for i in range(len(yourinput)):
+        if (yourinput[i] == 4):
+            count = count + 1
+    return count
+print(countfour(number))
+---------------------------------
+#Python program to get the n (non-negative integer) copies of the first 2 characters of a given string. 
+#Return the n copies of the whole string if the length is less than 2
+mystr = str(input("Enter the string :"))
+numberofcopies = int(input(("how many copies you want? :")))
+
+def copies(input,copies):
+    result = ' '
+    if ((len(input)) < 2):
+      for i in range(copies):
+          result = result + input
+      return result
+    else:
+      for i in range(copies):
+        result = result + input[:2]
+      return result
+print copies(mystr, numberofcopies
+---------------------------------
+# Python program to test whether a passed letter is a vowel or not.
+entered = input("Enter your character :")
+
+def checkvowel(word):
+    vowel = 'aeiou'
+    return word in vowel
+print(checkvowel(entered))
+---------------------------------
+# Python program to check whether a specified value is contained in a group of values
+number = int(input("Enter number :"))
+mylist = [1,3,6,3,5]
+def checkvowel(n):
+    return n in mylist
+print(checkvowel(number))
+---------------------------------
+# Python program to create a histogram from a given list of integers. 
+
+def histogram(getlist):
+    for i in range(len(getlist)):
+        result = ' '
+        times = getlist[i]
+        while times > 0:
+            result = result + '*'
+            times = times - 1
+        print(result)
+print(histogram([12,3,5,6,7]))
+
+Output -- 
+ **
+ ***
+ *****
+ ******
+ *******
+
 ---------------------------------
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
 list = [3, 45, 8]
 dict = {"name": "james", "age":43 }
 
+------------------------
+Python image processing using - numpy and scipy 
