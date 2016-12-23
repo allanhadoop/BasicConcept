@@ -182,12 +182,113 @@ Output --
  *****
  ******
  *******
-
 ---------------------------------
+# Python program to concatenate all elements in a list into a string and return it
+list = ['a','l','l','a','n']
+
+def concat(myword):
+    result =  ' '
+    for element in myword:
+        result += str(element)
+    return result
+print(concat(list))
+---------------------------------
+# Python program to print all even numbers from a given numbers list in 
+# the same order and stop the printing if any numbers that come after 237 in the sequence.
+numbers = [      
+    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345,   
+    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217,   
+    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717,   
+    958,743, 527  
+    ]
+
+def process(list):
+    for i in list:
+        n = i % 2
+        if ((n == 0 ) & (i <> 237)) :
+            print(i)
+        elif (i == 237):
+            break
+print(process(numbers))
+---------------------------------
+# Python program to print out a set containing all the colors from color_list_1 which are not present in color_list_2
+list1 = set(['blue','black','brown','red'])
+list2 = set(['black','red'])
+
+print(list1.difference(list2))
+----------------------------- 
+# Compute the greatest common divisor (GCD) of two positive integers
+def calculate(x,y):
+    outout = 0
+    if x % y == 0:
+        return y
+    else :
+        for k in range(int(y),0 , -1):
+            if x % k == 0 and y % k == 0:
+                outout = k
+                break
+        return outout
+print(calculate(10,25))   //answer 5 
+---------------------------------
+# Python program to get the least common multiple (LCM) of two positive integers.
+def lcm(x, y):
+   if x > y:
+       z = x
+   else:
+       z = y
+   while(True):
+       if((z % x == 0) and (z % y == 0)):
+           lcm = z
+           break
+       z += 1
+   return lcm
+print(lcm(4, 6))  //answer 12
+----------------------------- 
+# Python program to sum of two given integers. However, if the sum is between 15 to 20 it will return 20
+def sumdef(x,y):
+    sum = x + y
+    if sum in range(15,20):
+        return 20
+    else:
+        return sum
+print(sumdef(9,10))
+----------------------------- 
+# Python program that will return true if the two given integer values are equal or their sum or difference is 5.
+def sumdef(x,y):
+    if ((x == 5) | (y == 5) | (abs(x-y) == 5) | ((x+y) ==5)):
+        return True
+    else:
+        return False
+print(sumdef(15,10))
+-----------------------------
+## Python program to add two objects if both objects are an integer type. 
+n1 = input("Enter first integer :")
+n2 = input("Enter second integer :")
+
+def checkinstance(t1,t2):
+    if not isinstance(t1, int) and isinstance(t2,int):
+        raise TypeError("Input needs to be integer")
+    return t1+t2
+print(checkinstance(n1,n2))
+----------------------------- 
+# Python program to display your details like name, age, address in three different lines
+def personal_details():
+    name = "Simon"
+    age =  19
+    address = "Bangalore, Karnataka, India"
+    print("Name: {0}\nAge: {1}\nAddress: {2}".format(name, age, address))
+personal_details()
+----------------------------- 
+# Python program to solve (x + y) * (x + y)
+x, y = 4, 3
+result = x * x + 2 * x * y + y * y
+print("({0} + {1}) ^ 2) = {2}".format(x, y, result))
+
+----------------------------- 
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
 list = [3, 45, 8]
 dict = {"name": "james", "age":43 }
-
+set(['blue','black','brown','red'])
 ------------------------
 Python image processing using - numpy and scipy 
