@@ -1,5 +1,15 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 -----------------------
+#setup.py is a python file, which usually tells you that the module/package you are about to install have been 
+#packaged and distributed with Distutils, which is the standard for 
+#distributing Python Modules. setup.py is Python's answer to a multi-platform installer and make file
+# use *args when you're not sure how many arguments might be passed to your function
+# **kwargs allows you to handle named arguments that you have not defined in advance
+**: exponentiation
+^: exclusive-or (bitwise)
+%: modulus
+//: divide with integral result (discard remainder)
+-----------------------
 from math import pi
 r = float(input("enter radius:"))
 area = (pi * ( r**2))
@@ -283,6 +293,294 @@ personal_details()
 x, y = 4, 3
 result = x * x + 2 * x * y + y * y
 print("({0} + {1}) ^ 2) = {2}".format(x, y, result))
+----------------------------- 
+# To compute the distance between the points (x1, y1) and (x2, y2). 
+# http://www.purplemath.com/modules/distform.htm
+import  math
+
+point1 = [3, 1]
+point2 = [1, 5]
+def getdistance(t1, t2):
+    return math.sqrt((t1[0]- t2[0])**2 + (t1[1] - t2[1])**2)
+print(getdistance(point1,point2))
+----------------------------- 
+# To check whether a file exists. 
+import os.path
+open('abc.txt','r')
+print(os.path.isfile('abc.txt'))
+----------------------------- 
+# To determine if a Python shell is executing in 32bit or 64bit mode on OS
+import struct
+print(struct.calcsize("P")* 8)
+----------------------------- 
+# to get OS name, platform and release information.
+import os, platform
+print(os.name, platform.release(),platform.system())
+----------------------------- 
+# to locate Python site-packages
+import site
+print(site.getsitepackages())
+----------------------------- 
+# to call an external command in Python
+from subprocess import  call
+call("cd")
+----------------------------- 
+# To get the path and name of the file that is currently executing
+import os
+print("current file details", os.path.realpath(__file__))
+----------------------------- 
+# to find out the number of CPUs using
+import multiprocessing
+print(multiprocessing.cpu_count())
+----------------------------- 
+#To parse a string to Float or Integer. 
+s = "23.344"
+print(float(s))
+print(int(float(s)))
+----------------------------- 
+# To list all files in a directory in Python
+from os import listdir
+from os.path import isfile, join
+
+files_list = [f for f in listdir('/Users/allangonsalves/Desktop') if isfile(join('/Users/allangonsalves/Desktop',f))]
+print(files_list)
+----------------------------- 
+# to print without newline or space
+from __future__ import  print_function
+for i in range(0,20):
+    print("*", end=' ')
+output ---* * * * * * * * * * * * * * * * * * * * 
+----------------------------- 
+# to determine profiling of Python programs. A profile is a set of statistics that describes how often and for how long various 
+# parts of the program executed. These statistics can be formatted into reports via the pstats module
+import cProfile
+def sum():
+    print(1+2)
+cProfile.run('sum()')
+Output --
+ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 t1.py:3(sum)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+----------------------------- 
+## Difference between *args and **kwargs.. (args is used - when you're not sure how many arguments might be passed to your function)
+# **kwargs is used with name and value pair. 
+def print_everything(*args):
+    for count, thing in enumerate(args):
+        print '{0}. {1}'.format(count, thing)
+print_everything('apple', 'banana', 'cabbage')
+Output -- 
+0. apple
+1. banana
+2. cabbage
+------ 
+def table_things(**kwargs):
+    for name, value in kwargs.items():
+         print '{0} = {1}'.format(name, value)
+table_things(apple = 'fruit', cabbage = 'vegetable')
+Output -- 
+cabbage = vegetable
+apple = fruit
+----------------------------- 
+# to print to stderr.
+from __future__ import print_function
+import sys
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+eprint("abc", "efg", "xyz", sep="--")
+----------------------------- 
+# to access environment variables
+import os
+print(os.environ)
+print(os.environ['HOME'])
+print(os.environ['PATH'])
+----------------------------- 
+# to get the current username
+import getpass
+print(getpass.getuser())
+----------------------------- 
+#  to find local IP addresses using Python's stdlib
+import socket
+print([l for l in ([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] 
+if not ip.startswith("127.")][:1], [[(s.connect(('8.8.8.8', 53)), 
+s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, 
+socket.SOCK_DGRAM)]][0][1]]) if l][0][0])
+----------------------------- 
+# to sum of the first n positive integers. So formula is n * ( n+1) / 2 
+n = int(input("Input a number: "))
+sum_num = (n * (n + 1)) / 2
+print(sum_num)
+----------------------------- 
+# to convert height (in feet and inches) to centimeters. 
+h = input("enter height in ft : ")
+l = input("enter lentgh in inch :")
+
+inchl = ( h * 12 )
+cm = inchl * 2.54 + l
+
+print("Your height in one print format is {0} ".format(cm))
+print("Your height in second print format is %d cm" % cm)
+----------------------------- 
+# to convert the distance (in feet) to inches, yards, and miles
+d_ft = int(input("Input distance in feet: "))
+d_inches = d_ft * 12
+d_yards = d_ft / 3.0
+d_miles = d_ft / 5280.0
+
+print("The distance in inches is %i inches." % d_inches)
+print("The distance in yards is %.2f yards." % d_yards)
+print("The distance in miles is %.4f miles." % d_miles)
+-----------------------------
+# to get an absolute file path.
+import os
+file = str(input("enter file name :"))
+def path(filename):
+    return os.path.abspath(filename)
+print(path(file))
+----------------------------- 
+# to get file creation and modification date/times
+import os.path, time
+print(os.path.isfile("/Users/allangonsalves/Desktop/IMG_0865.JPG"))
+print("Last modified: %s" % time.ctime(os.path.getmtime('/Users/allangonsalves/Desktop/IMG_0865.JPG')))
+print("Created: %s" % time.ctime(os.path.getctime('/Users/allangonsalves/Desktop/IMG_0865.JPG')))
+----------------------------- 
+## to understand all symbols - 
+// - means floor division - eg. 2.4 // 2 = 1.0 ; meaning ignore remainder ) 
+a += b is same as a = a + b
+----
+x = [ 2, 3, 3]
+x += [3]
+print(x)    ## [ 2, 3, 3 ,3]
+----https://learnpythonthehardway.org/book/ex37.html
+----------------------------- 
+# to sort three integers without using conditional statements and loops. 
+n1 = 5
+n2 = 8
+n3 = 12
+x = min(n1, n2, n3)
+y = max(n1, n2, n3)
+z = (n1 + n2 + n3) - x - y
+print("Numbers in order %i %i %i" % (x ,y ,z))
+----------------------------- 
+# to sort files by date.
+# The "glob" module finds all the pathnames matching a specified pattern according to the rules used by the Unix shell,
+import glob
+import os
+
+files = glob.glob("/Users/allangonsalves/Desktop/*.*")
+files.sort(key=os.path.getctime)
+print("\n".join(files))
+-----------------------------
+# What is JOIN operation 
+S = '-'
+seq = ("a","b","c")
+print(S.join(seq))
+Output - a-b-c
+----------------------------- 
+# The method stat() performs a stat system call on the given path
+# https://www.tutorialspoint.com/python/os_stat.htm
+import os , stat
+info = os.stat('/Users/allangonsalves/Desktop/IMG_0855.JPG')
+print(info)
+----------------------------- 
+#  to get a directory listing, sorted by creation date
+from stat import S_ISREG, ST_CTIME, ST_MODE
+import os, sys, time
+
+#Relative or absolute path to the directory
+dir_path = sys.argv[1] if len(sys.argv) == 2 else r'.'
+print(dir_path)
+
+#all entries in the directory w/ stats
+data = (os.path.join(dir_path, fn)
+            for fn in os.listdir(dir_path))
+data = ((os.stat(path), path)
+            for path in data)
+# regular files, insert creation date
+data = ((stat[ST_CTIME], path)
+           for stat, path in data if S_ISREG(stat[ST_MODE]))
+
+for cdate, path in sorted(data):
+    print(time.ctime(cdate), os.path.basename(path))
+    
+----------------------------- 
+# to get the details of math module. 
+import math
+print(dir(math))
+Output -- 
+['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos',
+ 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign',
+ 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', '
+factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isfinit
+e', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2'
+, 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 
+'trunc']
+----------------------------
+# to calculate midpoints of a line
+x1 = float(input("Enter first endpoint :"))
+x2 = float(input("Enter last endpoint :"))
+print((x1+x2)/2)
+----------------------------
+# to hash a word
+soundex = [0, 1, 2, 3, 0, 1, 2, 0, 0, 2, 2, 4, 5, 5, 0, 1, 2, 6, 2, 3, 0, 1, 0, 2, 0, 2]
+
+word = input("Input the word be hashed: ")
+word = word.upper()
+
+coded = word[0]
+for a in word[1:len(word)]:
+    i = 65 - ord(a)
+    coded = coded + str(soundex[i])
+ 
+print("The coded word is: " + coded)
+----------------------------- 
+# to get the copyright information.
+import sys
+print(sys.copyright)
+----------------------------- 
+# to get the command-line arguments (name of the script, the number of arguments, arguments) passed to a script.
+import sys
+print("Get name of the script from command line:", sys.argv[0])
+print("get number of argument :", len(sys.argv))
+print("Argument list:",str(sys.argv))
+Output -----
+('Get name of the script from command line:', '/Users/allangonsalves/PycharmProjects/sample/t1.py')
+('get number of argument :', 1)
+('Argument list:', "['/Users/allangonsalves/PycharmProjects/sample/t1.py']")
+----------------------------- 
+# to test whether the system is a big-endian platform or little-endian platform.
+# Endianness refers to the sequential order used to numerically interpret a range of bytes in computer memory as a larger, 
+# composed word value. It also describes the order of byte transmission over a digital link. Words may be represented 
+# in big-endian or little-endian format.
+import sys
+print(sys.byteorder)
+Output - 
+Little 
+----------------------------- 
+# to find the available built-in modules.
+import sys
+import textwrap
+module_name = ','.join(sorted(sys.builtin_module_names))
+print(textwrap.fill(module_name, width=70))
+Output --- 
+__builtin__,__main__,_ast,_codecs,_sre,_symtable,_warnings,errno,excep
+tions,gc,imp,marshal,posix,pwd,signal,sys,thread,xxsubtype,zipimport
+----------------------------- 
+# to get the size of an object in bytes. 
+import sys
+object = "allan"
+print(sys.getsizeof(object))
+Output -- 
+45 
+----------------------------- 
+# to get the current value of the recursion limit
+import sys
+print(sys.getrecursionlimit())
+Output---
+1000
+----------------------------- 
+
+
 
 ----------------------------- 
 Python- tuples are immutable(cannot be change) whereas list can change. 
