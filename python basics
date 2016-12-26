@@ -10,6 +10,11 @@
 %: modulus
 //: divide with integral result (discard remainder)
 -----------------------
+# "functools" module is for higher-order functions: Example reduce can be used to sum up positive integers
+-----------------------
+# Python supports the creation of anonymous functions (i.e. functions 
+# that are not bound to a name) at runtime, using a construct called "lambda"
+-----------------------
 from math import pi
 r = float(input("enter radius:"))
 area = (pi * ( r**2))
@@ -704,13 +709,144 @@ import socket
 print(socket.gethostname())
 Output -- Macbook-Pro.local
 -----------------------------
-
-
-
-
-
-
-
+# to access and print a URL's content to the console
+from httplib import HTTPSConnection
+conn = HTTPSConnection("sellallmyideas.com")
+conn.request('GET',"/")
+result = conn.getresponse()
+print(result.read())
+-----------------------------
+# to get system command output. 
+import subprocess
+returned_text = subprocess.check_output("ls -l", shell=True, universal_newlines=True)
+print(returned_text)
+-----------------------------
+# to get the effective group id, effective user id, real group id, a list of supplemental group 
+# ids associated with the current process. 
+import os
+print(os.getegid(), os.geteuid(),os.getgroups())
+----------------------------
+#   to divide a path on the extension separator. 
+import os
+for names in [ 'test.txt', 'filename', '/user/system/test.txt', '/', '' ]:
+    print("%s :" % names, os.path.splitext(names) )
+Output -- 
+('test.txt :', ('test', '.txt'))
+('filename :', ('filename', ''))
+('/user/system/test.txt :', ('/user/system/test', '.txt'))
+('/ :', ('/', ''))
+(' :', ('', ''))
+----------------------------
+# to retrieve file properties
+import os
+import time
+file = '/Users/allangonsalves/Desktop/IMG_0855.JPG'
+print(time.ctime(os.path.getsize(file)), __file__)
+----------------------------
+# to find path refers to a file or directory when you encounter a path name.
+import os.path
+for file in [__file__, os.path.dirname(__file__), '/', './broken_link']:
+    print('File        :', file)
+    print('Absolute    :', os.path.isabs(file))
+    print('Is File?    :', os.path.isfile(file))
+    print('Is Dir?     :', os.path.isdir(file))
+    print('Is Link?    :', os.path.islink(file))
+    print('Exists?     :', os.path.exists(file))
+    print('Link Exists?:', os.path.lexists(file))
+----------------------------
+# to get numbers divisible by fifteen from a list using an anonymous function.
+# Python supports the creation of anonymous functions (i.e. functions that 
+# are not bound to a name) at runtime, using a construct called "lambda".
+l = [13,44,45,15,150,20]
+result = list(filter(lambda x : (x % 2 == 0), l))
+print(result)
+print("-----------")
+g = lambda x: x**2
+print(g(8))
+Output ---- 
+[44, 150, 20]
+-----------
+64
+----------------------------
+# to make file lists from current directory using a wildcard.
+import glob
+print(glob.glob('/Users/allangonsalves/Desktop/*.*'))
+----------------------------
+# to remove the first item from a specified list. 
+l = ['red','blue',45,23]
+print(l)
+del l[1]
+print(l)
+Output -- 
+['red', 'blue', 45, 23]
+['red', 45, 23]
+----------------------------
+# to input a number, if it is not a number generate an error message.
+# different types of exceptions - https://docs.python.org/2/library/exceptions.html
+while True:
+    try:
+        n = int(input("Enter number only:"))
+        break
+    except ValueError:
+        print("you didnt enter number")
+----------------------------
+# to filter the positive numbers from a list.
+l = [-234,5,-343,454,3,4,5,656,-6]
+result = list(filter(lambda y: y > 0 , l))
+print(result)
+print("--------")
+g = lambda x : x > 0
+for i in range(len(l)-1):
+    if (g(l[i]) == True):
+        print(l[i])
+Output -- 
+[5, 454, 3, 4, 5, 656]
+--------
+5
+454
+3
+4
+5
+656
+----------------------------
+# to compute the product of a list of integers (without using for loop
+import functools
+l = [3,2,5,4]
+g = reduce((lambda a , b : a + b) , l)
+print(g)
+Output --- 14
+----------------------------
+# to print Unicode characters.
+str = u'\u0050\u0079\u0074\u0068\u006f\u006e \u0045\u0078\u0065\u0072\u0063\u0069\u0073\u0065\u0073 \u002d \u0077\u0033\u0072\u0065\u0073\u006f\u0075\u0072\u0063\u0065' 
+print(str)
+Output -- Python Exercises - w3resource 
+----------------------------
+# to prove that two string variables of same value point same memory location
+s1 = "Reader"
+s2 = "Reader"
+print(hex(id(s1)))
+print(hex(id(s2)))
+Output -- 
+0x10085b300
+0x10085b300
+----------------------------
+# to create a bytearray from a list. 
+l = [ 12,32,"a",33,43, 90]
+result = bytearray(l)
+for i in result:
+    print(i)
+Output -- 
+12
+32
+97
+33
+43
+90
+----------------------------
+# to format a specified string to limit the number of characters to 8
+var = "Allan Gonsalves"
+print("%.8s" %var)
+Output -- Allan Go
 ----------------------------
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
