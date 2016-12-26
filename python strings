@@ -1,1 +1,53 @@
+# Source - http://www.w3resource.com/python-exercises/string/
+# to count the number of characters (character frequency) in a string for google.com
+# Expected Result : {'o': 3, 'g': 2, '.': 1, 'e': 1, 'l': 1, 'm': 1, 'c': 1}
+def char_frequency(str1):
+    dict = {}
+    for n in str1:
+        keys = dict.keys()
+        if n in keys:
+            dict[n] += 1
+        else:
+            dict[n] = 1
+    return dict
+print(char_frequency('google.com'))
+-----------------------------------------
+# to get a string made of the first 2 and the last 2 chars from a given a string. If the string length 
+# is less than 2, return instead of the empty string.
+s = "W3resource"
+def mystr(stg):
+    if len(stg) < 2:
+        return ' '
+    return stg[0:2]+stg[-2:]
+print(mystr(s))
+Output --W3ce
+-----------------------------------------
+#  to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself
+Sample String : 'restart'
+Expected Result : 'resta$t'
+SString = 'restart'
+def logic(s):
+    f = s[0]
+    s = s.replace(f, '$')
+    result = f + s[1:]
+    return result
+print(logic(SString))
+Output -- resta$t
+-----------------------------------------
+# to get a single string from two given strings, separated by a space and swap the first two characters of each string
+Sample String : 'abc', 'xyz' 
+Expected Result : 'xyc abz'
+s1 = 'abc'
+s2 = 'xyz'
+def swap(t1,t2):
+    r1 = t2[0:2]+t1[2:]
+    r2 = t1[0:2]+t2[2:]
+    return r1, r2
+print(swap(s1,s2))
+Output -- ('xyc', 'abz')
+-----------------------------------------
 
+
+
+
+-----------------------------------------
