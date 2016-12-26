@@ -579,10 +579,139 @@ print(sys.getrecursionlimit())
 Output---
 1000
 ----------------------------- 
-
-
-
+# to concatenate N strings
+list  = ["first","second","third"]
+print('-'.join(list))
+Output -- 
+first-second-third
 ----------------------------- 
+# to calculate the sum over a container.
+print(sum([10,20,20]))
+Output -- 50
+----------------------------- 
+# to test if a certain number is greater than all numbers of a list.
+list = [4,6,8,9,12]
+print(all(x>1 for x in list))
+print(all(x>12 for x in list))
+Output -- 
+True
+False 
+----------------------------- 
+# to count the number occurrence of a specific character in a string.
+s = "This is allan gonsalves"
+print(s.count('a'))
+# SO count is a funtion on string to count letters 
+----------------------------- 
+# to check if a file path is a file or a directory.
+import os
+myfile = "/Users/allangonsalves/Desktop/AMEX Folder"
+if os.path.isfile(myfile):
+    print("This is file")
+elif os.path.isdir(myfile):
+    print("This is directory")
+else:
+    print("none of above")
+Output -- This is directory
+----------------------------- 
+# to get the ASCII value of a character.
+print(ord("a"))
+print(ord("@"))
+Output -- 
+97
+64
+----------------------------- 
+#  to get the size of a file
+import os
+file_size = os.path.getsize("abc.txt")
+----------------------------- 
+# Given variables x=30 and y=20, write a Python program to print t "30+20=50"
+x = 20
+y = 30
+print("%i + %i = %i" % (x, y, (x+y)))
+----------------------------
+# to create a copy of its own source code. 
+print((lambda str='print(lambda str=%r: (str %% str))()': (str % str))())
+Output -- print(lambda str='print(lambda str=%r: (str %% str))()': (str % str))()
+----------------------------
+# to swap two variables
+a = 10
+b = 20
+print("before swap:a = %d , b= %d" %( a,b))
+a , b = b , a
+print("after swap:a = %d , b= %d" %( a,b))
+-----------------------------
+# to define a string containing special characters in various forms
+print("\#{'}${\"}@/")
+print("\#{'}${"'"'"}@/")
+print(r"""\#{'}${"}@/""")
+print('\#{\'}${"}@/')
+print('\#{'"'"'}${"}@/')
+print(r'''\#{'}${"}@/''')  
+Output of all of the above lines is same as below 
+\#{'}${"}@/
+-----------------------------
+# to get the identity of an object
+o = object()
+print(id(o))
+Output -- 4373446816 
+-----------------------------
+# to convert a byte string to a list of integers.
+x = b'allan'
+print(list(x))
+Output -- ['a', 'l', 'l', 'a', 'n']
+-----------------------------
+# to check if a string is numeric. In this code below, check if we can transform s into float, due to character, it will end up in either
+# Value or Type error 
+s = 'a2434'
+try:
+    i = float(s)
+except (ValueError, TypeError):
+    print("Not numeric")
+-----------------------------
+# to print the current call stack
+import traceback
+def f1():
+    return abc()
+def abc():
+    traceback.print_stack()
+f1()
+Output -- 
+  File "/Users/allangonsalves/PycharmProjects/sample/t1.py", line 9, in <module>
+    f1()
+  File "/Users/allangonsalves/PycharmProjects/sample/t1.py", line 4, in f1
+    return abc()
+  File "/Users/allangonsalves/PycharmProjects/sample/t1.py", line 7, in abc
+    traceback.print_stack()
+-----------------------------
+# to list the special variables used within the language
+s_var_names = sorted((set(globals().keys()) | set(__builtins__.__dict__.keys())) - set('_ names i'.split())) 
+print( '\n'.join(' '.join(s_var_names[i:i+8]) for i in range(0, len(s_var_names), 8)) )
+-----------------------------
+# to get the system time. 
+import time
+print(time.ctime())
+Output - Sun Dec 25 16:06:51 2016
+-----------------------------
+#  to clear the screen or terminal.
+import os
+import time
+print(os.system('ls'))
+time.sleep(2)
+print(os.system('clear'))
+-----------------------------
+# to get the name of the host on which the routine is r
+import socket
+print(socket.gethostname())
+Output -- Macbook-Pro.local
+-----------------------------
+
+
+
+
+
+
+
+----------------------------
 Python- tuples are immutable(cannot be change) whereas list can change. 
 tup = ( 1,4,5,6)
 list = [3, 45, 8]
