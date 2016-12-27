@@ -131,11 +131,113 @@ print(countwords(mysentence))
 Output --- {'what': 1, 'to': 1, 'This': 1, 'is': 2, 'i': 1, 'say': 1, 'wanted': 1, 'that..': 1}
 -----------------------------------------
 # script that takes input from the user and displays that input back in upper and lower cases.
-
-
-
-
-
+while True:
+    try:
+        myword = str(input("Enter the word : "))
+        break
+    except ValueError:
+        print("you didnt enter string")
+def upperlower(w):
+    return w.upper(), w.lower()
+print(upperlower(myword))
+-----------------------------------------
+# To accepts a comma separated sequence of words as input and prints the unique words in sorted form (alphanumerically).
+Sample Words : "red, white, black, red, green, black"
+Expected Result : black, green, red, white,red
+items = input("Input comma separated sequence of words: ")
+words = [word for word in items.split(",")]     #here, we are accepting string as input then making it list by syntax [WORD for ...]
+print(",".join(sorted(list(set(words)))))
+-----------------------------------------
+# to get a string made of 4 copies of the last two characters of a specified string (length must be at least 2).
+def insert_end(str):
+	sub_str = str[-2:]
+	return sub_str * 4
+print(insert_end('Python'))
+print(insert_end('Exercises'))
+Output --- 
+onononon
+eseseses
+-----------------------------------------
+# to get the first half of a specified string of even length.
+def string_first_half(str):
+	return str[: len(str) / 2]
+print(string_first_half('Python'))
+-----------------------------------------
+# to reverses a string if it's length is a multiple of 4. 
+s = "zallangonsal"
+if (len(s) % 4 == 0):
+    print(''.join(reversed(s)))
+-----------------------------------------
+# to convert a given string to all uppercase if it contains at least 2 uppercase characters in the first 4 characters.
+word = "alANgonsalveSMan"
+def upp(s):
+    count = 0
+    for letter in s[:4]:
+        if letter.upper() == letter:
+            count += 1
+    if count >= 2:
+        return s.upper()
+    return s
+print(upp(word))
+-----------------------------------------
+# to sort a string lexicographically
+def sortlexi(strg):
+    return (','.join(sorted(sorted(strg))))
+print(sortlexi("w3resource"))
+Output -- 3,c,e,e,o,r,r,s,u,w    # JOIN makes a string
+---ANOTHER Approach -- Form a LIST if you dont use JOIN 
+def lexicographi_sort(s):
+    return (sorted(sorted(s),key=str.upper))
+print(lexicographi_sort('w3resource'))
+Output -- ['3', 'c', 'e', 'e', 'o', 'r', 'r', 's', 'u', 'w']
+-----------------------------------------
+# to remove a newline in Python
+str1='Python Exercises\n'
+print(str1)
+print(str1.strip())
+-----------------------------------------
+# to check whether a string starts with specified characters. 
+str1='Python Exercises\n'
+print(str1.startswith("Py"))
+Output -- True 
+-----------------------------------------
+# to display formatted text (width=50) as output.
+import textwrap
+sample_text = '''
+  Python is a widely used high-level, general-purpose, interpreted, 
+  dynamic programming language. Its design philosophy emphasizes 
+  code readability, and its syntax allows programmers to express 
+  concepts in fewer lines of code than possible in languages such 
+  as C++ or Java. 
+  '''
+print(textwrap.fill(sample_text,width=50))
+-----------------------------------------
+# to remove existing indentation from all of the lines in a given text.
+import textwrap
+sample_text = '''
+  Python is a widely used high-level, general-purpose, interpreted, 
+  dynamic programming language. Its design philosophy emphasizes 
+  code readability, and its syntax allows programmers to express 
+  concepts in fewer lines of code than possible in languages such 
+  as C++ or Java. 
+  '''
+print(textwrap.dedent(sample_text))
+-----------------------------------------
+# to add a prefix text to all of the lines in a string. 
+import textwrap  
+sample_text =''' 
+    Python is a widely used high-level, general-purpose, interpreted, 
+    dynamic programming language. Its design philosophy emphasizes 
+    code readability, and its syntax allows programmers to express 
+    concepts in fewer lines of code than possible in languages such 
+    as C++ or Java. 
+    '''  
+text_without_Indentation = textwrap.dedent(sample_text)  
+wrapped = textwrap.fill(text_without_Indentation, width=50)  
+#wrapped += '\n\nSecond paragraph after a blank line.'  
+final_result = textwrap.indent(wrapped, '> ')   
+print(final_result)  
+-----------------------------------------
 
 
 
