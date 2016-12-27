@@ -1,4 +1,7 @@
 # Source - http://www.w3resource.com/python-exercises/string/
+-----------------------------------------
+# delete "del" operation is not allowed on string so first transfer string to list then delete . e.g L = list(s) ; del(s[index]) 
+-----------------------------------------
 # to count the number of characters (character frequency) in a string for google.com
 # Expected Result : {'o': 3, 'g': 2, '.': 1, 'e': 1, 'l': 1, 'm': 1, 'c': 1}
 def char_frequency(str1):
@@ -46,8 +49,98 @@ def swap(t1,t2):
 print(swap(s1,s2))
 Output -- ('xyc', 'abz')
 -----------------------------------------
-
-
-
-
+# to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing' then add 'ly' 
+# instead. If the string length of the given string is less than 3, leave it unchanged.
+s1 = 'abc'
+s2 = 'string'
+def logic(t1):
+    if len(t1) < 3:
+        return t1
+    if t1[-3:] == 'ing':
+        return t1+'ly'
+    else:
+        return t1+'ing'
+print(logic(s1))
+print(logic(s2))
+Output --- 
+abcing
+stringly
 -----------------------------------------
+# Python function that takes a list of words and returns the length of the longest one.
+l = ["allan", "ambergonsalbes", "orion", "fabinasas", "Gonsalves"]
+def longest(feed):
+    base = feed[0]
+    for i in range(len(feed)):
+        if len(feed[i]) > len(base):
+            base = feed[i]
+    return base
+print(longest(l))
+---second apparoach --This is building two dimensional list (with length and then word ) 
+def getlongest(s):
+    getlength = []
+    for n in s:
+        getlength.append((len(n),n))
+    getlength.sort()
+    return getlength[-1][1]
+print(getlongest(["allangonsalves","amber","oriongonsalves","rickgonssdsdalves","fabinagonsalves"]))
+Output -- rickgonssdsdalves
+-----------------------------------------
+# to remove the nth index character from a nonempty string. 
+p = "allangonsalves"
+l = list(p)
+def delchar(s,t):
+    del(s[t])
+    return s
+print(delchar(l,3))
+---Second approach is --- 
+p = "allangonsalves"
+def delchar(s,index):
+    f = s[:index]
+    l = s[index+1:]
+    return f+l
+print(delchar(p,4))
+-----------------------------------------
+# to change a given string to a new string where the first and last chars have been exchanged
+p = "allangonsalves"
+def exchange(s): 
+    return (s[-1:]+s[1:-1]+s[0])
+print(exchange(p))
+-----------------------------------------
+# to remove the characters which have odd index values of a given string
+p = "allangonsalves"
+def oddremove(s):
+    result = ' '
+    for i in range(len(s)):
+        if (i % 2 == 0):
+           result += s[i]
+    return result
+print(oddremove(p))
+-----------------------------------------
+# to count the occurrences of each word in a given sentence.
+mysentence = "This is what i wanted to say is that.."
+def countwords(sent):
+    mydict = dict()     # we will fill this dictionary object with keys and values
+    words = sent.split() # {'This', 'is', 'what', 'i', 'wanted','to','say','is','that..'}
+    for word in words:
+        if word in mydict:
+            mydict[word] += 1
+        else:
+            mydict[word] = 1
+    return mydict
+print(countwords(mysentence))
+Output --- {'what': 1, 'to': 1, 'This': 1, 'is': 2, 'i': 1, 'say': 1, 'wanted': 1, 'that..': 1}
+-----------------------------------------
+# script that takes input from the user and displays that input back in upper and lower cases.
+
+
+
+
+
+
+
+
+
+
+
+
+
