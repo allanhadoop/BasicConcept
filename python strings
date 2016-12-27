@@ -238,11 +238,77 @@ wrapped = textwrap.fill(text_without_Indentation, width=50)
 final_result = textwrap.indent(wrapped, '> ')   
 print(final_result)  
 -----------------------------------------
+# to print the following floating numbers upto 2 decimal places
+n1 = 23.4343434
+print("print this number {0}".format(n1))
+print("--------")
+print("print decimals %.2f" % n1)
+Output -- 
+print this number 23.4343434
+--------
+print decimals 23.43
+-----------------------------------------
+# to print the following floating numbers upto 2 decimal places with a sign. 
+n1 = -23.4343434
+print("print this number {0}".format(n1))
+print("--------")
+print("print decimals %+.2f" % n1)
+Output - 
+print this number -23.4343434
+--------
+print decimals -23.43
+-----------------------------------------
+# to print the following integers with zeros on the left of specified width
+# to print the following integers with '*' on the right of specified width
+i = 123
+print '{0:0>6d}'.format(i)
+print('{0:*<6d}'.format(i))
+000123
+123***
+-----------------------------------------
+# to display a number with a comma separator
+y = 30000000
+print("comma separator: {:,}".format(y));
+Output -- 30,000,000
+-----------------------------------------
+# to format a number with a percentage
+n = 5
+print("left alignment {0: <10d}".format(n))
+print("center alignment {0:^10d}".format(n))
+print("right alignment {0: >10d}".format(n))
+Output -- 
+left alignment 5         
+center alignment     5     
+right alignment          5
+-----------------------------------------
+#  to count occurrences of a substring in a string. 
+s = "allangonsalves facebook twitter facebook"
+p = "facebook"
+result = s.count(p)
+print(result)
+-----------------------------------------
+# to display a number in left, right and center aligned of width 10.
 
-
-
-
-
-
-
-
+-----------------------------------------
+# program to reverse a string.
+def reverse_string(str1):
+    return ''.join(reversed(str1))
+print()
+print(reverse_string("abcdef"))
+-----------------------------------------
+#  to reverse words in a string
+s = "allangonsalves facebook twitter"
+l = list(s.split())
+print(' '.join(reversed(l)))
+--second approach --
+def reverse_string_words(text):
+    for line in text.split('\n'):
+        return(' '.join(line.split()[::-1]))
+print()
+print(reverse_string_words("The quick brown fox jumps over the lazy dog."))
+-----------------------------------------
+# to strip a set of characters from a string
+s = "allangonsalves facebook twitter"
+p = "aon"
+result = ''.join(l for l in s if l not in p)
+print(result)
