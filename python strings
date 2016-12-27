@@ -288,7 +288,8 @@ result = s.count(p)
 print(result)
 -----------------------------------------
 # to display a number in left, right and center aligned of width 10.
-
+x = 0.25  
+print("Formatted Number with percentage: "+"{:.2%}".format(x));
 -----------------------------------------
 # program to reverse a string.
 def reverse_string(str1):
