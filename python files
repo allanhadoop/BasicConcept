@@ -45,11 +45,6 @@ def writethenread(fname):
     return file.read() 
 print(writethenread('/Users/allangonsalves/Desktop/sample.rtf'))
 ----------------------------------
-# to read last n lines of a file. 
-
-
-
-----------------------------------
 # to find the longest words.
 def longestword(fname):
     with open(fname,"r") as f:
@@ -59,6 +54,65 @@ def longestword(fname):
 
 print(longestword('/Users/allangonsalves/Desktop/sample.rtf'))
 ----------------------------------
+# to count the number of lines in a text file.
+def numoflines(fname):
+    with open(fname,"r") as f:
+        for i, l in enumerate(f):    # here i is index of lines...
+            pass
+    return i + 1
+print(numoflines('/Users/allangonsalves/Desktop/sample.html'))
+----------------------------------
+#  to count the frequency of words in a file.
+from collections import Counter   #This module does the count 
+def numofwords(fname):
+    with open(fname,"r") as f:
+        return Counter(f.read().split()) 
+print(numofwords('/Users/allangonsalves/Desktop/sample.html'))
+----------------------------------
+# to get the file size of a plain file
+import os
+def filesize(fname):
+    return os.stat(fname).st_size
+print(filesize('/Users/allangonsalves/Desktop/sample.html'))
+----------------------------------
+# to write a list to a file.
+mylist = ['red','purple','white','blue']
+def writelisttofile(fname):
+    with open(fname,"w") as f:
+        for c in mylist:
+            f.write("%s\n" % c)
+
+    newcontent = open(fname)
+    return newcontent.read()
+print(writelisttofile('/Users/allangonsalves/Desktop/sample.html'))
+----------------------------------
+# to read last n lines of a file. 
+def file_read_from_tail(fname,lines):
+       data = []
+       with open(fname,"r") as f:
+           data.extend(f.readlines())
+           if len(data) >= lines:
+            return ''.join(data[-lines:])
+print(file_read_from_tail('/Users/allangonsalves/Desktop/sample.html',2))
+---second better approach is below---
+import sys
+import os
+def file_read_from_tail(fname,lines):
+        bufsize = 8192
+        fsize = os.stat(fname).st_size
+        iter = 0
+        with open(fname) as f:
+                if bufsize > fsize:
+                        bufsize = fsize-1
+                        data = []
+                        while True:
+                                iter +=1
+                                f.seek(fsize-bufsize*iter)
+                                data.extend(f.readlines())
+                                if len(data) >= lines or f.tell() == 0:
+                                        print(''.join(data[-lines:]))
+                                        break
+file_read_from_tail('test.txt',2)
 
 
 
