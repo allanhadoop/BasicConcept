@@ -1,11 +1,11 @@
 # source http://www.w3resource.com/python-exercises/date-time-exercise/index.php
 
 # Python time times %b, %B , %y etc at - https://docs.python.org/2/library/datetime.html
-# datetime.strftime(format)
+# datetime.strftime(format) - create formatted string for given time/date/datetime object according to specified format.
 # Return a string representing the date and time, controlled by an explicit format string.
 
 #  datetime.strptime(date_string, format)
-# Return a datetime corresponding to date_string, parsed according to format. 
+# it convert string to datetime object."
 # This is equivalent to datetime(*(time.strptime(date_string, format)[0:6])).
 ----------------------------------------------
 # To display  a) Current date and time b) Current year c) Month of year 
@@ -53,12 +53,79 @@ Sample Unix timestamp string : 1284105682
 Expected Output : 2010-09-10 13:31:22
 print(datetime.datetime.fromtimestamp(int("1284105682")).strftime("%Y-%m-%d %H:%M:%S"))
 ----------------------------------------------
-
-
-
-
-
-
+# to print yesterday, today, tomorrow
+from datetime import date, timedelta
+import datetime
+print(date.today())
+print(date.today()- timedelta(days=1))
+print(date.today() + timedelta(days=1))
+----------------------------------------------
+# to convert the date to datetime (midnight of the date) 
+from datetime import date, timedelta
+import datetime
+print(date.today())
+print(datetime.datetime.combine(date.today(),datetime.datetime.min.time()))
+Output -- 
+2016-12-28
+2016-12-28 00:00:00
+----------------------------------------------
+# to print next 5 days starting from today.
+from datetime import date, timedelta
+import datetime
+print(date.today())
+newdate = date.today()
+c = 0
+while c < 5:
+    newdate += timedelta(days=1)
+    print(newdate)
+    c += 1
+----second approach --
+import datetime
+base = datetime.datetime.today()
+for x in range(0, 5):
+      print(base + datetime.timedelta(days=x))
+----------------------------------------------
+# to add 5 seconds with the current time.
+Sample input - 13:28:32.953088 
+expected output - 13:28:37.953088
+from datetime import date, timedelta
+import datetime
+print(datetime.datetime.now())
+print(datetime.datetime.now() + timedelta(seconds=5,milliseconds=0,microseconds=0))
+----------------------------------------------
+# to convert Year/Month/Day to Day of Year
+import datetime
+today = datetime.datetime.now()
+print(datetime.datetime(today.year,1,1))
+day_of_year = (today - datetime.datetime(today.year, 1, 1)).days + 1
+print(day_of_year)
+Output -- 
+2016-01-01 00:00:00
+363
+----------------------------------------------
+# to get current time in milliseconds
+import datetime, time
+print(int(round(time.time() * 1000)))
+----------------------------------------------
+# to get week number.
+Sample Date : 2015, 6, 16
+print("week number ", datetime.datetime.today().strftime("%W"))
+print("---second apprach---")
+print("week number" , datetime.date(2016,12,28).isocalendar()[1])
+#isocalendar()[0] is year , [1] is week and [2] is day
+('week number ', '52')
+---second apprach---
+('week number', 52)
+----------------------------------------------
+# to find the date of the first Monday of a given week  
+Sample Year and week : 2015, 50
+Expected Output : Mon Dec 14 00:00:00 2015
+print(time.asctime(time.strptime('2015 50 1', '%Y %W %w')))
+print(time.asctime(time.strptime('2015 50 2', '%Y %W %w')))
+Output -- 
+Mon Dec 14 00:00:00 2015
+Tue Dec 15 00:00:00 2015
+----------------------------------------------
 
 
 
