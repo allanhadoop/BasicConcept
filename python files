@@ -1,0 +1,65 @@
+# http://www.w3resource.com/python-exercises/file/index.php
+# All about files -- SO basically we open , read files into either variable or list or array and then apply functions on that... 
+----------------------------------
+# to read an entire text file.
+r = open('/Users/allangonsalves/Desktop/sample.rtf',mode='r')
+print(r.read())
+----------------------------------
+# to read first n lines of a file
+from itertools import islice
+def readlines(fname, nlines):
+    with open(fname) as f:
+        for line in islice(f,nlines):
+            print(line)
+print(readlines('/Users/allangonsalves/Desktop/sample.rtf',12))
+----------------------------------
+# to read a file line by line store it into an array. 
+def readfiles(fname):
+    myarray = []
+    with open(fname, 'rb') as f:
+        for line in f:
+            myarray.append(line)
+        return myarray
+
+print(readfiles('/Users/allangonsalves/Desktop/sample.rtf'))
+----------------------------------
+# to read a file line by line store it into a variable
+def readfiles(fname):
+    with open(fname, 'r') as f:
+        data = f.readlines()
+        print(data)
+readfiles('/Users/allangonsalves/Desktop/sample.rtf')
+----------------------------------
+# to read a file line by line and store it into a list.
+def readfiles(fname):
+    with open(fname) as f:
+        mylist = f.readlines()
+    return mylist
+print(readfiles('/Users/allangonsalves/Desktop/sample.rtf'))
+# to append text to a file and display the text.
+from itertools import islice
+def writethenread(fname):
+    with open(fname,"w") as f:
+        f.write("this is new line added")
+    file = open(fname)
+    return file.read() 
+print(writethenread('/Users/allangonsalves/Desktop/sample.rtf'))
+----------------------------------
+# to read last n lines of a file. 
+
+
+
+----------------------------------
+# to find the longest words.
+def longestword(fname):
+    with open(fname,"r") as f:
+        words = f.read().split()    ## here we are reading files into a variable
+    maxlen = len(max(words, key=len))  #these are now variable functions
+    return [ word for word in words if len(word) == maxlen]
+
+print(longestword('/Users/allangonsalves/Desktop/sample.rtf'))
+----------------------------------
+
+
+
+
