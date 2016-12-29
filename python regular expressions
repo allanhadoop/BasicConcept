@@ -1,0 +1,167 @@
+# Source - http://www.w3resource.com/python-exercises/re/index.php
+# Regular expressions use the backslash character ('\') to indicate special 
+# forms or to allow special characters to be used without invoking their special meaning.
+# More details  - https://docs.python.org/2/library/re.html
+---------------------------------------------------------- 
+'*'
+Causes the resulting RE to match 0 or more repetitions of the preceding RE, 
+as many repetitions as are possible. ab* will match ‘a’, ‘ab’, or ‘a’ followed by any number of ‘b’s.
+'+'
+Causes the resulting RE to match 1 or more repetitions of the preceding RE. 
+ab+ will match ‘a’ followed by any non-zero number of ‘b’s; it will not match just ‘a’.
+'?'
+Causes the resulting RE to match 0 or 1 repetitions of the preceding RE. ab? will match either ‘a’ or ‘ab’.
+'.'
+(Dot.) In the default mode, this matches any character except a newline. 
+'^'
+(Caret.) Matches the start of the string,
+'$'
+Matches the end of the string or just before the newline at the end of the string
+---------------------------------------------------------- 
+# to check that a string contains only a certain set of characters (in this case a-z, A-Z and 0-9)  
+import re
+def is_allowed_specific_char(string):
+    charRe = re.compile(r'[^a-zA-Z0-9.]')
+    string = charRe.search(string)
+    return not bool(string)                  #This 'not' means not True or not False
+print(is_allowed_specific_char("ABCDEFabcdef123450")) 
+print(is_allowed_specific_char("*&%@#!}{"))
+Output -- 
+True
+False
+---------------------------------------------------------- 
+# program that matches a string that has an a followed by either no b's or more b's.  
+import re
+def textmatch(text):
+    pattern = 'ab*?'
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+print(textmatch("a"))
+print(textmatch("abc"))
+print(textmatch("sd"))
+Output -- 
+Found a match
+Found a match
+No match found
+---------------------------------------------------------- 
+# program that matches a string that has an a followed by one or more b's. 
+def textmatch(text):
+    pattern = 'ab+?'
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+
+print(textmatch("a"))
+print(textmatch("abc"))
+print(textmatch("adb"))
+Output -- 
+No match found
+Found a match
+No match found
+---------------------------------------------------------- 
+# program that matches a string that has an a followed by zero or one 'b'  
+
+def textmatch(text):
+    pattern = 'ab??'
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+print(textmatch("a"))
+print(textmatch("abc"))
+print(textmatch("adb"))
+Output -- 
+Found a match
+Found a match
+Found a match
+---------------------------------------------------------- 
+# program that matches a string that has an a followed by three 'b'  
+# {m}
+Specifies that exactly m copies of the previous RE should be matched; fewer matches cause the entire RE not 
+to match. For example, a{6} will match exactly six 'a' characters, but not five.
+def textmatch(text):
+    pattern = 'ab{3}?'
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+
+print(textmatch("a"))
+print(textmatch("abbbc"))
+print(textmatch("adbbb"))
+Output -- 
+No match found
+Found a match
+No match found
+---------------------------------------------------------- 
+# program that matches a string that has an a followed by two to three 'b'.  
+def textmatch(text):
+    pattern = 'ab{2,3}?'
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+print(textmatch("ab"))
+print(textmatch("abbc"))
+print(textmatch("abbbcc"))
+Output -- 
+No match found
+Found a match
+Found a match
+---------------------------------------------------------- 
+# to find sequences of lowercase letters joined with a underscore.  
+import re
+def textmatch(text):
+    pattern = '^[a-z]+_[a-z]+$'             # ^ for match at beginning of the string and $ for end of the string
+    if re.search(pattern,text):
+        return 'Found a match'
+    else:
+        return 'No match found'
+print(textmatch("aab_cbbbc"))
+print(textmatch("aab_Abbbc"))
+print(textmatch("aabbb_ccdee"))
+Output -- 
+Found a match
+No match found
+Found a match
+---------------------------------------------------------- 
+# that matches a string that has an 'a' followed by anything, ending in 'b'. 
+def text_match(text):
+    patterns = '^a.*?b$'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return ('Not matched!')
+print(text_match("asdfs"))
+print(text_match("a#$%$#%$#%b"))
+print(text_match("aabbbbc"))
+print(text_match("aabAbbbc"))
+print(text_match("ABCDEF"))
+Output---
+Not matched!
+Found a match!
+Not matched!
+Not matched!
+Not matched!
+---------------------------------------------------------- 
+# that matches a word at the beginning of a string
+def text_match(text):
+    patterns = '^\w+'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return ('Not matched!')
+print(text_match("The quick brown fox jumps over the lazy dog."))
+print(text_match(" The quick brown fox jumps over the lazy dog."))
+Output -- 
+Found a match!
+Not matched!
+---------------------------------------------------------- 
+
+
+
+
+
