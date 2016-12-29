@@ -7,6 +7,13 @@
 #  datetime.strptime(date_string, format)
 # it convert string to datetime object."
 # This is equivalent to datetime(*(time.strptime(date_string, format)[0:6])).
+---------------------------------------------
+# date.weekday()
+Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
+# date.isoweekday()
+Return the day of the week as an integer, where Monday is 1 and Sunday is 7.
+
+# Yield is a keyword that is used like return, except the function will return a generator.
 ----------------------------------------------
 # To display  a) Current date and time b) Current year c) Month of year 
 # d) Week number of the year e) Weekday of the week f) Day of year g) Day of the month h) Day of week 
@@ -126,7 +133,75 @@ Output --
 Mon Dec 14 00:00:00 2015
 Tue Dec 15 00:00:00 2015
 ----------------------------------------------
+# Yield is a keyword that is used like return, except the function will return a generator.
+# to select all the Sundays of a specified year.
+from datetime import date, timedelta
+def getsunday(year):
+    dt = date(year, 1, 1)
+    dt += timedelta(days=7 - dt.isoweekday())
+    while year == dt.year:
+        yield dt                   # this will send return value to for loop and then come back to this place
+        dt += timedelta(days=7)
+
+for s in getsunday(2018):
+    print s
+----------------------------------------------
+# to add year(s) with a given date and display the new date.  
+print(addYears(datetime.date(2015,1,1), -1))
+sample output - 2014.1.1
+print(addYears(datetime.date(2000,2,29),1)) 
+2001-03-01
+
+import datetime
+from datetime import date
+def addYears(d, years):
+    try:
+#Return same day of the current year        
+        return d.replace(year = d.year + years)
+    except ValueError:
+#If not same day, it will return other, i.e.  February 29 to March 1 etc.
+        print(date(d.year + years, 1, 1))                         #2001.1.1              
+        print(date(d.year, 1, 1))                                 #2000.1.1
+        print((date(d.year + years, 1, 1) - date(d.year, 1, 1)))  #this is leap year situation so will get number of days 366 days
+        return d + (date(d.year + years, 1, 1) - date(d.year, 1, 1))   #here we are adding days to orginal date
+print(addYears(datetime.date(2000,2,29),1))
+----------------------------------------------
+# to drop microseconds from datetime.
+print(datetime.datetime.now().replace(microsecond=False))
+----------------------------------------------
+# to get days between two dates
+from datetime import date
+date1 = date(2000,2,28)  #Since this yyyy,m,d is already a date format , simple substraction will work 
+date2 = date(2001,2,28)
+def daysbetweendates(d1,d2):
+    print(d1-d2)
+print(daysbetweendates(date1, date2))
+----------------------------------------------
+# to get the date of the last Tuesday
+from datetime import date  
+from datetime import timedelta
+
+today = date.today()  
+print(today.isoweekday())
+offset = (today.isoweekday() - 2) % 7               #so each day is slice of 7 meaning mod of 7 and Tuesday is at 2.
+print(offset)                                       #this will get us current day - 2 as offset and then take mod of that 
+last_tuesday = today - timedelta(days=offset)       #to get last Tuesday , now deduct that mod from current date
+print(last_tuesday) 
+
+----------------------------------------------
+# to get next Tuesday from today.. 
+today = date.today()  
+print(today.isoweekday())
+offset = (today.isoweekday() - 1) % 7   #so each day is slice of 7 meaning mod of 7 and if mod valus is 3 then today is 
+                                        #thursday and 3 days left to complete week till Sunday.
+offset += 2                             #here we are adding 3 and 2 (to get to second day which is Tuesday)
+next_tuesday = today + timedelta(days=offset)   #to get next Tuesday , now add that mod from current date
+print(next_tuesday) 
+----------------------------------------------
+# to test the third Tuesday of a month
 
 
 
 
+
+----------------------------------------------
