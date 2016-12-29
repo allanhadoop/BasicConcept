@@ -1,0 +1,61 @@
+# Source - http://www.w3resource.com/python-exercises/data-structures-and-algorithms/index.php
+------------------------------------------------
+# Binary search -: In computer science, a binary search or half-interval search algorithm finds the position of a 
+# target value within a sorted array. The binary search algorithm can be classified as a dichotomies divide-and-conquer 
+# search algorithm and executes in logarithmic time.
+binary_search([1,2,3,5,8], 6) -> False
+binary_search([1,2,3,5,8], 5) -> True
+
+def findnumber(items, item):
+    first = 0
+    last = len(items) - 1
+    found = False
+    while (first < last and not found):
+        mid = (first + last )// 2
+        if item == items[mid] :
+            found = True
+        else:
+            if item < items[mid]:
+                last = last - 1      #this becomes sequential since we r again coming from last 
+                last = mid - 1       #this is binary of half piece so this is good
+            else:
+                first += 1           #this becomes sequential since we r again coming from first 
+                first = mid + 1       #this is binary of half piece so this is good
+    return found
+
+print(findnumber([1,3,5,7,9,12],6))
+print(findnumber([1,3,5,7,9,12],9))
+Output -- 
+False 
+True 
+------------------------------------------------
+# Sequential Search : In computer science, linear search or sequential search is a method for finding a particular value in a 
+# list that checks each element in sequence until the desired element is found or the list is exhausted. 
+# The list need not be ordered.
+def linearsearch(items, item):
+    pos = 0
+    found = False
+    while pos < len(items) and not found:
+        if items[pos] == item:
+            found = True
+        pos += 1
+    return found
+print(linearsearch([1,3,5,7,15,9,12],9))
+------------------------------------------------
+#  binary search for an ordered list. 
+Ordered_binary_Search([0, 1, 3, 8, 14, 18, 19, 34, 52], 3) -> True
+Ordered_binary_Search([0, 1, 3, 8, 14, 18, 19, 34, 52], 17) -> False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
