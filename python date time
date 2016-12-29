@@ -4,7 +4,7 @@
 # datetime.strftime(format) - create formatted string for given time/date/datetime object according to specified format.
 # Return a string representing the date and time, controlled by an explicit format string.
 
-#  datetime.strptime(date_string, format)
+# datetime.strptime(date_string, format)
 # it convert string to datetime object."
 # This is equivalent to datetime(*(time.strptime(date_string, format)[0:6])).
 ---------------------------------------------
@@ -199,9 +199,41 @@ next_tuesday = today + timedelta(days=offset)   #to get next Tuesday , now add t
 print(next_tuesday) 
 ----------------------------------------------
 # to test the third Tuesday of a month
+Input  print(checkthursday('Jun 23, 2015'))
+Expected output - False or True
 
-
-
-
-
+from datetime import date  
+from datetime import timedelta
+import datetime
+def checkthursday(s):
+    d = datetime.datetime.strptime(s, '%b %d, %Y')
+    if (d.isoweekday() == 2) and (14 < d.day <= 30 ) :
+        return True
+    else:
+        return False
+print(checkthursday('Jun 23, 2015'))
+print(checkthursday('Jun 15, 2015'))
 ----------------------------------------------
+# to get the last day of a specified year and month
+import calendar
+month = 3
+year = 2016
+print(calendar.monthrange(year,month)[-1])
+----------------------------------------------
+# to get the number of days of a given month an
+print(calendar.monthrange(year,month))
+----------------------------------------------
+# to add a month with a specified date.
+d = date(2014, 12, 25)
+dys = calendar.monthrange(d.year, d.month)[1]
+print(d + timedelta(days=dys))
+Output-- 2015-01-25
+----------------------------------------------
+# to count the number of Monday of the 1st day of the month from 2015 to 2016  
+
+
+
+
+
+
+
