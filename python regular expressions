@@ -3,15 +3,39 @@
 # Regular expressions use the backslash character ('\') to indicate special 
 # forms or to allow special characters to be used without invoking their special meaning.
 # More details  - https://docs.python.org/2/library/re.html
-
 ----------------------------------------------------------
+So basically , any long string can be broken into two pieces using any of the following special sequnce letters. 
+e.g. entire string consists of (<string1>89<string2)) then it is possible to split this into 2 pieces using \d sequence.
+similarly, if <string1>a<string2> This can also be broken using \w sequence . 
+similarly , if <string1> <string2> This can be also broken using \s sequence.
+
 \s Match a whitespace character: [ \t\r\n\f]
 \S Match nonwhitespace: [^ \t\r\n\f]
+. Match any character except newline
 \d Match a digit: [0-9]
 \D Match a nondigit: [^0-9]
 \w Match a single word character: [A-Za-z0-9_]
 \W Match a nonword character: [^A-Za-z0-9_]
 $ Matches the end of the string or just before the newline at the end of the string
+\$ matches the character '$'.
+\b represents the backspace character but only at the beginning or end of a word
+r'\bfoo\b' matches 'foo', 'foo.', '(foo)', 'bar foo baz' but not 'foobar' or 'foo3'.
+\B matches the empty string, but only when it is not at the beginning or end of a word
+r'py\B' matches 'python', 'py3', 'py2', but not 'py', 'py.', or 'py!'
+----------------------------------------------------------
+import re
+text = 'The quick brown3 fox jumps over the lazy dog.'
+print(re.findall(r"\b\w{5}\B", text))     #Output ['brown']   here \B means alphanumeric 3 at the end of brown is accepted
+text = 'The quick brown fox jumps over the lazy dog.'
+print(re.findall(r"\b\w{5}\b", text))     #Output ['quick', 'brown', 'jumps']. Here \b is backspace
+----------------------------------------------------------
+----- * matches zero or more, + matches one or more.
+import re
+print(re.findall(r'a\s*b', 'ab'))    #here \s is space . Ouput - [ab]
+print(re.findall(r'a\s+b', 'ab'))    #there is no space, Output  - []
+print(re.findall(r'a\s+b', 'a b'))   #there is space after a so now output is ['a b']
+print(re.findall(r'\s+a\s*b', 'a b'))  #here no space before a so no atleast 1 hit so not print even if there is space before b . Output []
+print(re.findall(r'\s*b', ' b'))     #there is space before b so found hit Output [' b']
 ---------------------------------------------------------- 
 '*'
 Causes the resulting RE to match 0 or more repetitions of the preceding RE, 
@@ -241,14 +265,6 @@ re.findall(r"\w+ly", text)           #here r is raw string notation
 print(re.match(r"\\", r"\\"))      #Match
 print(re.match("\\\\","\\"))       #Match
 ----------------------------------------------------------
-\$ matches the character '$'.
-\b represents the backspace character but only at the beginning or end of a word
-r'\bfoo\b' matches 'foo', 'foo.', '(foo)', 'bar foo baz' but not 'foobar' or 'foo3'.
-----------------------------------------------------------
-\B matches the empty string, but only when it is not at the beginning or end of a word
-r'py\B' matches 'python', 'py3', 'py2', but not 'py', 'py.', or 'py!'
-
-----------------------------------------------------------
 # that matches a word at end of string, with optional punctuation  
 def text_match(text):
     patterns = '\w+\S*$'
@@ -309,11 +325,167 @@ for pattern in patterns:
 ----------------------------------------------------------
 # to search a literals string in a string and also find the location within the original string where the pattern occurs. 
 Sample text : 'The quick brown fox jumps over the lazy dog.'  
-Searched words : 'fox'
-
-
-
-
-
-
+Searched words : [ 'fox', 'dog', 'horse' ]
+import re
+patterns = [ 'fox', 'dog', 'horse' ]
+text = 'The quick brown fox jumps over the lazy dog.'
+for pattern in patterns:
+    found = re.search(pattern,  text)
+    print(found.start(), pattern)
+    print(found.end(),pattern)
+----------------------------------------------------------
+# to find the substrings within a string
+Input - 'Python exercises, PHP exercises, C# exercises'
+Expected to find - 'exercises'
+import re
+s = 'Python exercises, PHP exercises, C# exercises'
+ss = 'exercises'
+for getstr in re.findall(ss,s):
+    print('found %s' % getstr)
+----------------------------------------------------------
+# to find the occurrence and position of the substrings within a string.  
+import re
+text = 'Python exercises, PHP exercises, C# exercises'
+pattern = 'exercises'
+for match in re.finditer(pattern, text):
+    s = match.start()
+    e = match.end()
+    print('Found "%s" at %d:%d' % (text[s:e], s, e))
+Output --
+Found "exercises" at 7:16
+Found "exercises" at 22:31
+Found "exercises" at 36:45
+----------------------------------------------------------
+# to replace whitespaces with an underscore and vice versa.
+import re
+text = 'Python Exercises'
+text =text.replace (" ", "_")
+print(text)
+text =text.replace ("_", " ")
+print(text)
+Output --
+Python_Exercises
+Python Exercises
+----------------------------------------------------------
+# to extract year, month and date from a an url.
+url1= "https://www.washingtonpost.com/news/football-insider/wp/2016/09/02/odell-beckhams-fame-rests-on-one-stupid-little-ball-josh-norman-tells-author/"  
+import re
+url = "https://www.washingtonpost.com/news/football-insider/wp/2016/09/02/odell-beckhams-fame-rests-on-one-stupid-little-ball-josh-norman-tells-author/"
+print(re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', url) )
+Output - [('2016', '09', '02')]
+----------------------------------------------------------
+# to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.  
+# \number -- Matches the contents of the group of the same number
+od = "2026-01-02"
+print(re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})','\\3-\\2-\\1',od))    #bracket before \d are required. e .g. (\d{4}) 
+Output = 02-01-2026
+----------------------------------------------------------
+# to match if two words from a list of words starting with letter 'P'.  
+# if you wish to search specific word from long string or sentence then use finditer function , 
+# if you need to find some word from list that starts with any letter then use Match function
+import re
+l = ["Python PHP", "Java JavaScript","c c++"]
+for w in l:
+    m = re.match(r"(P.*)",w)
+    c = re.match("(P\w+)\W(P\w+)",w)    #here \W is for white pace between Python and PHP
+    if m:
+        print(m.groups(0))
+    if c:
+        print(c.groups(0))
+Output -- 
+('Python PHP',)
+('Python', 'PHP')
+----------------------------------------------------------
+# to separate and print the numbers of a given string  
+* matches zero or more, + matches one or more.
+import re
+text = "Ten 10, Twenty 20, Thirty 30"
+result = re.split("\D+", text)
+for element in result:
+    print(element)
+Output- 
+10
+20
+30
+-----whereas if we do below then \d will match a digits to split the string..
+import re
+text = "crystal 10, amber 20, allan 30"
+result = re.split("\d+", text)
+for element in result:
+    print(element)
+Output -- 
+crystal 
+, amber 
+, allan 
+----------------------------------------------------------
+# to find all words starting with 'a' or 'e' in a given string.  
+import re
+sen = "This is my aellan enormous world edge and all"
+print(re.findall('[ae]\w+',sen))
+Output - ['aellan', 'enormous', 'edge', 'and', 'all']
+----------------------------------------------------------
+# to separate and print the numbers and their position of a given string.  
+import re
+text = "The following example creates an 20 ArrayList with a capacity of 50 elements"
+for num in re.finditer('\d+',text):
+    print(num.group(),num.start())
+Output --
+('20', 33)
+('50', 65)
+----------------------------------------------------------
+# to abbreviate 'Road' as 'Rd.' in a given string
+import re
+text = "21 Ramkrishna Road"
+print(re.sub('Road$','Rd',text))
+Output -- 21 Ramkrishna Rd
+----------------------------------------------------------
+# to replace all occurrences of space, comma, or dot with a colon  
+import re
+text = 'Python Exercises, PHP exercises.'
+print(re.sub("[ ,.]", ":", text, 2))
+Output -- Python:Exercises: PHP exercises.
+----------------------------------------------------------
+# to find all words which are at least 4 characters long in a string  
+import re  
+text = 'The quick brown fox jumps over the lazy dog.'  
+print(re.findall(r"\b\w{4,}\b", text)) 
+----------------------------------------------------------
+# to convert camel case string to snake case string
+def camel_to_snake(text):  
+        import re  
+        str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', text)  
+        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()  
+print(camel_to_snake('PythonExercises'))  
+Output -- python_exercises
+----------------------------------------------------------
+# to convert snake case string to camel case string
+def snake_to_camel(word):
+    import re
+    return ''.join(x.capitalize() or '_' for x in word.split('_'))
+print(snake_to_camel('python_exercises')) 
+Output -- PythonExercises
+----------------------------------------------------------
+# to extract values between quotation marks of a string  
+import re  
+text1 = '"Python", "PHP", "Java"'  
+print(re.findall(r'"(.*?)"', text1))
+Output -- ['Python', 'PHP', 'Java']
+----------------------------------------------------------
+# to remove multiple spaces in a string.
+text = 'Python      Exercises' 
+print(re.sub(r' +',' ',text))       
+Output -- Python Exercises
+----------------------------------------------------------
+# to remove all whitespaces from a string
+text = 'Py th on      Ex erc ises'
+print(re.sub(r'\s+',' ',text))      # so here \s is for whitespaces
+Output -- Python Exercises
+----------------------------------------------------------
+# to remove everything except alphanumeric characters from a string  
+import re  
+text = '**//_Python Exercises// - 12.$$#5^^^ '
+print(re.sub(r'[\W_]+',' ',text))     #Here [ ] means include operation \W_ for alphanumeric characters (a-z 0-9) is called  alphanumeric
+Output --
+ Python Exercises 12 5 
+----------------------------------------------------------
 
