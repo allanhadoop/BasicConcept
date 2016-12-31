@@ -1,0 +1,262 @@
+# Source http://www.w3resource.com/python-exercises/python-conditional-statements-and-loop-exercises.php
+------------------------------------------------
+int(string, base) accepts an arbitrary base.
+
+binary represents a number in base 2 (0 and 1)
+octal represents a number in base 8 (0, 1, 2, 3, 4, 5, 6 and 7)
+decimal is what is used in daily (western) life to talk about integers, which is base 10 (0 through to 9).
+hexadecimal is base 16 (0 through to 9, then A, B, C, D, E, F).
+e.g. - 
+int('13', 5)  # one time 5, 3 times 1  == 8
+int('123', 5)  # one time 5**2 (25), 2 times 5, 3 times 1  == 38
+------------------------------------------------
+
+#  find those numbers which are divisible by 7 and multiple of 5, between 1500 and 2700 (both included)
+output = []
+for n in range(1500, 2000):
+    if (n % 7 ==0 ) and ( n %5 ==0 ):
+        output.append(str(n))
+ 
+print(','.join(output))
+Output -- 1505,1540,1575,1610,1645,1680,1715,1750,1785,1820,1855,1890,1925,1960,1995
+------------------------------------------------
+# to convert temperatures to and from celsius, fahrenheit.
+[ Formula : c/5 = f-32/9 [ where c = temperature in celsius and f = temperature in fahrenheit ]
+Expected Output : 
+60°C is 140 in Fahrenheit
+45°F is 7 in Celsius
+
+temp = input("Input the  temperature you like to convert? (e.g., 45F, 102C etc.) : ")
+degree = int(temp[:-1])
+i_convention = temp[-1]
+
+if i_convention.upper() == "C":
+    result = int(round((9 * degree) / 5 + 32))
+    o_convention = "Fahrenheit"
+elif i_convention.upper() == "F":
+    result = int(round((degree - 32) * 5 / 9))
+    o_convention = "Celsius"
+else:
+    print("Input proper convention.")
+    quit()
+print("The temperature in", o_convention, "is", result, "degrees.")
+------------------------------------------------
+# to guess a number between 1 to 9. User is prompted to enter a guess. If the user guesses wrong then the prompt appears 
+again until the guess is correct, on successful guess, user will get a "Well guessed!" message, and the program will exit.
+while True:
+    i = int(input("Guess number between 0 - 9 :"))
+    if 0 < i < 9:
+      print("well")
+      break
+---alternative using random module 
+import random  
+target_num, guess_num = random.randint(1, 10), 0  
+while target_num != guess_num:  
+    guess_num = int(input('Guess a number between 1 and 10 until you get it right : '))  
+print('Well guessed!')
+------------------------------------------------
+# to construct the following pattern, using a nested for loop.
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+* * * * 
+* * * 
+* * 
+*
+from __future__ import print_function
+n = 5;
+for n in range(0,n,1):   #range(start, stop, step) 
+    for i in range(n):
+        print ('* ',end=" ")
+    print(' ')
+for i in range(n,0,-1):
+    for j in range(i):
+        print('* ', end=" ")
+    print('')
+------------------------------------------------
+# that accepts a word from the user and reverse it.
+i = str(input("enter the word : "))
+print(''.join(reversed(i)))
+---second approach --
+from __future__ import print_function
+word = input("Input a word to reverse: ")
+for char in range(len(word) - 1, -1, -1):
+    print(word[char], end="")
+------------------------------------------------
+# to count the number of even and odd numbers from a series of numbers
+Sample numbers : numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9) 
+Expected Output : 
+Number of even numbers : 5
+Number of odd numbers : 4
+num =  (1, 2, 3, 4, 5, 6, 7, 8, 9) # Declaring the tuple 
+c = 0
+d =0
+for i in num:
+    if (i% 2 == 0 ):
+        c += 1
+    else:
+        d += 1
+print("even ", c)
+print("odd ", d)
+------------------------------------------------
+# prints each item and its corresponding type from the following list.
+Sample List : datalist = [1452, 11.23, 1+2j, True, 'w3resource', (0, -1), [5, 12], {"class":'V', "section":'A'}]
+datalist = [1452, 11.23, 1+2j, True, 'w3resource', (0, -1), [5, 12], {"class":'V', "section":'A'}]
+for dt in datalist:
+    print(type(dt))
+Output -- 
+<type 'int'>
+<type 'float'>
+<type 'complex'>
+<type 'bool'>
+<type 'str'>
+<type 'tuple'>
+<type 'list'>
+<type 'dict'>
+------------------------------------------------
+# to get the Fibonacci series between 0 to 50
+The Fibonacci Sequence is the series of numbers :
+0, 1, 1, 2, 3, 5, 8, 13, 21, .... 
+Every next number is found by adding up the two numbers before it.
+Expected Output : 1 1 2 3 5 8 13 21 34
+x,y = 0, 1
+while y < 50:
+    print(y)
+    x, y = y, x+y
+------------------------------------------------
+# program which takes two digits m (row) and n (column) as input and generates a two-dimensional array. 
+The element value in the i-th row and j-th column of the array should be i*j
+Note :
+i = 0,1.., m-1 
+j = 0,1, n-1.
+Test Data : Rows = 3, Columns = 4 
+Expected Result : [[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 4, 6]]
+row = int(input("Enter number of rows : "))
+col = int(input("Enter number of cols : "))
+
+multi_list = [[0 for i in range(col)] for j in range(row) ]  #see syntax here.. rows goes across and columns with given row
+print(multi_list)
+print("--------")
+for row in range(row):
+    for col in range(col):
+        multi_list[row][col] = row * col
+print(multi_list)
+Output --
+Enter number of rows : 3
+Enter number of cols : 5
+[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+--------
+[[0, 0, 0, 0, 0], [0, 1, 2, 3, 0], [0, 2, 4, 0, 0]]
+------------------------------------------------
+# program that accepts a sequence of lines (blank line to terminate) as input and 
+prints the lines as output (all characters in lower case).
+lines = []
+while True:
+    try:
+        l = input()
+        if l:
+            lines.append(l.upper())       #lines needs to be list, cannt be tuple . we can append only to list
+    except StandardError:
+        print("no data found")
+        break
+        
+for i in lines:
+    print(i)
+------------------------------------------------
+# program which accepts a sequence of comma separated 4 digit binary numbers 
+as its input and print the numbers that are divisible by 5 in a comma separated sequence
+Sample Data : 0100,0011,1010,1001,1100,1001
+Expected Output : 1010
+items = []
+num = [x for x in raw_input().split(',')]    #This syntax is to form list from user input
+for p in num:
+    x = int(p, 2)
+    if x % 5:
+        items.append(p)      
+print(','.join(items))
+Output -- 
+User entered - 1100,1010,0011,0001,1111
+Output -- 1100,0011,0001
+------------------------------------------------
+# program that accepts a string and calculate the number of digits and letters
+Sample Data : Python 3.2
+Expected Output :
+Letters 6 
+Digits 2
+t = 'Python 2.7 '
+d=c=0
+for i in range(len(t)):
+    if t[i].isdigit():
+        d += 1
+    elif t[i].isalpha():
+        c += 1
+    else:
+        pass
+print(d,c)
+Output - (2,6)
+------------------------------------------------
+# to check the validity of password input by users.
+Validation :
+At least 1 letter between [a-z] and 1 letter between [A-Z].
+At least 1 number between [0-9].
+At least 1 character from [$#@].
+Minimum length 6 characters.
+Maximum length 16 characters.
+import re  
+p= input("Input your password")  
+x = True  
+while x:    
+    if (len(p)<6 or len(p)>12):  
+        break  
+    elif not re.search("[a-z]",p):  
+        break  
+    elif not re.search("[0-9]",p):  
+        break  
+    elif not re.search("[A-Z]",p):  
+        break  
+    elif not re.search("[$#@]",p):  
+        break  
+    elif re.search("\s",p):  
+        break  
+    else:  
+        print("Valid Password")  
+        x=False  
+        break  
+if x:  
+    print("Not a Valid Password")
+------------------------------------------------
+# to find numbers between 100 and 400 (both included) 
+where each digit of a number is an even number. The numbers obtained should be printed in a comma-separated sequence.
+items = []
+for i in range(100,401):
+    s = str(i)
+    print(s[0],s[1],s[2])         #This is ok since we can now take [0], [1], [2] position which is not possible with i only because it is int
+    # if (int(i[0]) % 2 == 0) and (int(i[1]) % 2 == 0) and (int(i[2]) % 2 ==0 ):  #this will not work since i is int
+    if (int(s[0]) % 2 == 0) and (int(s[1]) % 2 == 0) and (int(s[2]) % 2 == 0):    #this is fine since we can take [0] [1][2] postions of string
+        items.append(s)
+print(','.join(items))
+Output -
+('1', '0', '0')
+('1', '0', '1')
+('1', '0', '2')
+------------------------------------------------
+# to print alphabet pattern 'A'.
+Expected Output:
+ ***                                                                   
+ *   *                                                                  
+ *   *                                                                  
+ *****                                                                  
+ *   *                                                                  
+ *   *                                                                  
+ *   *
+
+
+
+
+
+
+
+
+
