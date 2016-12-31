@@ -37,17 +37,17 @@ print(re.findall(r'a\s+b', 'a b'))   #there is space after a so now output is ['
 print(re.findall(r'\s+a\s*b', 'a b'))  #here no space before a so no atleast 1 hit so not print even if there is space before b . Output []
 print(re.findall(r'\s*b', ' b'))     #there is space before b so found hit Output [' b']
 ---------------------------------------------------------- 
-'*'
+'*' (either-or-all)
 Causes the resulting RE to match 0 or more repetitions of the preceding RE, 
 as many repetitions as are possible. ab* will match ‘a’, ‘ab’, or ‘a’ followed by any number of ‘b’s.
-'+'
+'+' (and-all)
 Causes the resulting RE to match 1 or more repetitions of the preceding RE. 
 ab+ will match ‘a’ followed by any non-zero number of ‘b’s; it will not match just ‘a’.
-'?'
+'?' (either-or-specific)
 Causes the resulting RE to match 0 or 1 repetitions of the preceding RE. ab? will match either ‘a’ or ‘ab’.
-'.'
+'.' (any character except new line)
 (Dot.) In the default mode, this matches any character except a newline. 
-'^'
+'^' 
 (Caret.) Matches the start of the string,
 '$'
 Matches the end of the string or just before the newline at the end of the string
@@ -488,4 +488,68 @@ print(re.sub(r'[\W_]+',' ',text))     #Here [ ] means include operation \W_ for 
 Output --
  Python Exercises 12 5 
 ----------------------------------------------------------
+# to find urls in a string
+import re  
+text = '<p>Contents :</p><a href="http://w3resource.com">Python Examples</a><a href="http://github.com">Even More Examples</a>'
+print(re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),])+',text))
+Output -- ['http://w3resource.com', 'http://github.com']
+----------------------------------------------------------
+# to split a string at uppercase letters
+import re  
+text = "PythonTutorialandExercises"
+print(re.findall('[A-Z][^A-Z]*', text))     #['Python', 'Tutorialand', 'Exercises']
+print(re.split('[A-Z]*',text))              #['', 'ython', 'utorialand', 'xercises']
+----------------------------------------------------------
+# to do a case-insensitive string replacement.
+import re
+text = "Java Excercise"
+o = re.compile(re.escape("JavA") , re.IGNORECASE)  #here we dont know case of Java word so split at case-insensitive word
+#complie creates re object . 
+print(o.sub('newJava',text))  #now o is re. object so use sub function on o , not re.sub . Output newJava Excercise
+----------------------------------------------------------
+# to remove the ANSI escape sequences from a string.
+import re
+text = "\t\u001b[0;35mgoogle.com\u001b[0m \u001b[0;36m216.58.218.206\u001b[0m"
+print("Original Text: ",text)
+reaesc = re.compile(r'\x1b[^m]*m')
+new_text = reaesc.sub('', text)
+print("New Text:      ",new_text)
+Output -- 
+('Original Text: ', '\t\\u001b[0;35mgoogle.com\\u001b[0m \\u001b[0;36m216.58.218.206\\u001b[0m')
+('New Text:      ', '\t\\u001b[0;35mgoogle.com\\u001b[0m \\u001b[0;36m216.58.218.206\\u001b[0m')
+----------------------------------------------------------
+# to find all adverbs and their positions in a given sentence  
+Sample text : "Clearly, he has no excuse for such behavior."  
+import re
+text = "Clearly, he has no excuse for such behavior."
+word = re.search(r'\w+ly',text)
+print(word.group(0),word.start())
+---second apparoach - 
+for m in re.finditer(r"\w+ly", text):
+    print('%d-%d: %s' % (m.start(), m.end(), m.group(0)))
+Output -- 0-7: Clearly
+----------------------------------------------------------
+# to split a string with multiple delimiters
+text = 'The quick brown\nfox jumps*over the lazy dog.'
+print(re.split('; |, |\*|\n',text))
+Output -- ['The quick brown', 'fox jumps', 'over the lazy dog.']
+----------------------------------------------------------
+# to check a decimal with a precision of 2.
+def is_decimal(num):
+    import re
+    dnumre = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
+    result = dnumre.search(num)
+    return bool(result)
+print(is_decimal('123.11'))     # True
+print(is_decimal('123.1'))      # True
+print(is_decimal('123'))        # True
+print(is_decimal('0.21'))       # True
+
+print(is_decimal('123.1214'))   #False
+print(is_decimal('3.124587'))   #False
+print(is_decimal('e666.86'))    #False
+
+
+
+
 
