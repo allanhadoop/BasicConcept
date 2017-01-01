@@ -194,13 +194,104 @@ print(random.choice(color))
 Output --white , sometimes, red..etc its all random pick
 --------------------------------------------------------
 # to check whether two lists are circularly identical
-
-
-
-
-
-
-
-
-
-
+list1 = [10, 10, 0, 0, 10]
+list2 = [10, 10, 10, 0, 0]
+l3 = [10, 10, 10, 10, 0]
+print(' '.join(map(str, list2)) in ' '.join(map(str, list1 * 2)))
+print(' '.join(map(str, list2)) in ' '.join(map(str, l3 * 2)))    #compare with l3
+Output -- 
+True
+False
+--------------------------------------------------------
+# to find the second smallest number in a list.
+def second_smallest(numbers):  
+    a1, a2 = float('inf'), float('inf')    ##here inf means infinity
+    for x in numbers:  
+        if x <= a1:  
+            a1, a2 = x, a1  
+        elif x < a2:  
+            a2 = x  
+    return a2  
+print(second_smallest([1, 2, -8, -2, 0]))
+Output = -2
+--------------------------------------------------------
+#  to find the second largest number in a list. 
+def second_largest(numbers):
+    count = 0
+    n1 = n2 = float('-inf')
+    for x in numbers:
+        count += 1
+        if x > n2:
+            if x >= n1:
+                n1, n2 = x, n1
+            else:
+                n2 = x
+    return n2 if count >= 2 else None
+print(second_largest([1, 2, -8, -2, 0]))
+Output = 1
+--------------------------------------------------------
+#  to get unique values from a list
+my_list = [10, 20, 30, 40, 20, 50, 60, 40]
+my_set = set(my_list)          ##set will remove duplicates
+convertsettolist = list(my_set)
+print("List of unique numbers : ",convertsettolist)
+Output -- ('List of unique numbers : ', [40, 10, 50, 20, 60, 30])
+--------------------------------------------------------
+# to get the frequency of the elements in a list. 
+import collections  
+my_list = [10,10,10,10,20,20,20,20,40,40,50,50,30]
+print(collections.Counter(my_list))
+Output -- Counter({10: 4, 20: 4, 40: 2, 50: 2, 30: 1})
+--------------------------------------------------------
+# to count the number of elements in a list within a specified range. 
+def count_range_in_list(li, min, max):
+    ctr = 0
+    for x in li:
+        if min <= x <= max:
+            ctr += 1
+    return ctr
+list1 = [10, 20, 30, 40, 40, 40, 70, 80, 99]
+print(count_range_in_list(list1, 40, 100))     
+Output -- 6 
+--------------------------------------------------------
+# to check whether a list contains a sublist
+def is_Sublist(l, s):  
+    sub_set = False  
+    if s == []:  
+        sub_set = True  
+    elif s == l:  
+        sub_set = True  
+    elif len(s) > len(l):  
+        sub_set = False  
+    else:  
+        for i in range(len(l)):  
+            if l[i] == s[0]:  
+                n = 1  
+                while (n < len(s)) and (l[i+n] == s[n]):  
+                    n += 1 
+                if n == len(s):  
+                    sub_set = True  
+    return sub_set 
+a = [2,4,3,5,7]  
+b = [4,3]  
+c = [3,7]  
+print(is_Sublist(a, b))  
+print(is_Sublist(a, c))
+Output -- 
+True
+False
+--------------------------------------------------------
+# to generate all sublists of a list
+def sub_lists(my_list):
+    subs = [[]]            ##check this double brackets for sublist 
+    for i in range(len(my_list)):
+        n = i + 1
+        while n <= len(my_list):
+            sub = my_list[i:n]
+            subs.append(sub)
+            n += 1
+    return subs
+l2 = ['X', 'Y', 'Z'] 
+print(sub_lists(l2))
+Output -- in output  [] first one is default value set in second line..
+[[], ['X'], ['X', 'Y'], ['X', 'Y', 'Z'], ['Y'], ['Y', 'Z'], ['Z']]
