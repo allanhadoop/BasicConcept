@@ -1,5 +1,13 @@
 # Source - http://www.w3resource.com/python-exercises/list/
-
+--------------------------------------------------------
+List can contain duplicates whereas Sets can't contain duplicates
+Sets are unordered
+In order to find an element in a set, a hash lookup is used (which is why sets are unordered). This makes __contains__ (in operator) 
+a lot more efficient for sets than lists.
+Sets can only contain hashable items (see #3). If you try: set(([1],[2])) you'll get a TypeError.
+# sets — Unordered collections of unique elements. sets allows you to do operations such as intersection, union, 
+difference, and symmetric difference, i.e operations of math's set theory. Sets doesn't allow indexing and are implemented on hash tables.
+# lists - ordered collections of elements. List can be 2-D whereas a set can't.
 --------------------------------------------------------
 # to sum all the items in a list.
 l = [12,3,4,6]
@@ -16,6 +24,179 @@ for i in l:
 print(sum) 
 -------------------------------------------------------- 
 # to get the largest number from a list
+def max_num_in_list( list ):  
+    max = list[0]        ###here value of max is 1
+    for a in list:  
+        if a > max:  
+            max = a  
+    return max  
+print(max_num_in_list([1, 2, -8, 0]))  
+Output -- 2
+-------------------------------------------------------- 
+# to get the smallest number from a list.
+def min_num_in_list( list ):  
+    min = list[0]        #here value of min is 1
+    for a in list:
+        if a < min:
+            min = a
+    return min
+print(min_num_in_list([1, 2, -8, 0]))
+-------------------------------------------------------- 
+# to count the number of strings where the string length is 2 or more and 
+the first and last character are same from a given list of strings
+Sample List : ['abc', 'xyz', 'aba', '1221']
+Expected Result : 2
+def strcalc(s):
+    count = 0
+    for word in s:
+        if (word[0] == word[-1]) and len(word) > 2:
+            count += 1
+    return count
+print(strcalc(['abc', 'xyz', 'aba', '1221']))
+-------------------------------------------------------- 
+# to get a list, sorted in increasing order by the last element in each tuple from a given list of non-empty tuples
+Sample List : [(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]
+Expected Result : [(2, 1), (1, 2), (2, 3), (4, 4), (2, 5)]
+def last(eachtuple):
+    return eachtuple[-1]
+def sortlist(l):
+    return sorted(l,key=last)
+print(sortlist([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]))
+-------------------------------------------------------- 
+#  to remove duplicates from a list.
+u_items = []
+d_items = set()
+def remvdup(l):
+    for item in l:
+        if item not in d_items:
+            u_items.append(item)
+            d_items.add(item)
+    return u_items
+print(remvdup([2,3,2,4,2,6,7,6,2,5]))
+Output - [2, 3, 4, 6, 7, 5]
+-------------------------------------------------------- 
+# to check a list is empty or not.
+l = []  
+if not l:  
+  print("List is empty")  
+-------------------------------------------------------- 
+# to clone or copy a list
+t1 = [2,3,2,4,2,6,7,6,2,5]
+new = list(t1)
+print(new)
+-------------------------------------------------------- 
+# to find the list of words that are longer than n from a given list of words
+def long_words(n,s):
+    longerwords = []
+    for x in s.split(" "):
+        if len(x) == n:
+            longerwords.append(x)
+    return longerwords
+print(long_words(3, "The quick brown fox jumps over the lazy dog"))
+Output -- ['The', 'fox', 'the', 'dog']
+-------------------------------------------------------- 
+# function that takes two lists and returns True if they have at least one common member
+def common_data(list1, list2):
+    result = False
+    for x in list1:
+        for y in list2:
+            if x == y:
+                result = True
+                return result
+print(common_data([1, 2, 3, 4, 5], [5, 6, 7, 8, 9]))
+Output -- 
+True
+--------------------------------------------------------
+# to print a specified list after removing the 0th, 2nd, 4th and 5th elements
+def rev_data(list1):
+    return [x for (i,x) in enumerate(list1) if i not in (0,4,5)]  ####check [ syntax..this type of for loop is only for list [ ]
+print(rev_data( ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']))
+Output -- ['Green', 'White', 'Black']
+--------------------------------------------------------
+# program to generate a 1*3*4 3D array whose each element is *
+array = [[ ['*' for col in range(4)] for col in range(3)] for row in range(1)]   ###syntax is special for array
+print(array) 
+Output -- [[['*', '*', '*', '*'], ['*', '*', '*', '*'], ['*', '*', '*', '*']]]
+--------------------------------------------------------
+# to print the numbers of a specified list after removing even numbers from it
+num = [7,8, 120, 25, 44, 20, 27]
+print([x for x in num if x % 2 == 0 ])
+Output -- [8, 120, 44, 20]
+--------------------------------------------------------
+# to shuffle and print a specified list
+from random import shuffle
+num = ['test',7,8, 120, 25, 44, 20, 27]
+shuffle(num)   # note.. here result = shuffle(num) will not work... 
+print(num) 
+Output -- ['test', 25, 7, 27, 120, 20, 44, 8]
+--------------------------------------------------------
+# to generate and print a list of first and last 5 elements where the values are square of numbers between 1 and 30 (both included). 
+def printValues():
+    l = list()              #another way to define list is l = []
+    for i in range(1, 21):
+        l.append(i ** 2)
+    print(l)
+    print(l[:5])            #This is possible just like string operations
+    print(l[-5:])
+printValues()
+Output -- 
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400]
+[1, 4, 9, 16, 25]
+[256, 289, 324, 361, 400]
+--------------------------------------------------------
+# to generate all permutations of a list in Python.
+import itertools  
+print(list(itertools.permutations([1,2,3]))) 
+Output -- [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+--------------------------------------------------------
+# to get the difference between the two lists.
+l1 = [2,3,42,3,4,5]
+l2 = [2,3,42,3,4]
+print(list(set(l1)-set(l2)))
+Output -- [5]
+--------------------------------------------------------
+# access the index of a list. 
+l1 = [2,3,42,3,4,5]
+print(l1.index(42))
+--another approach --
+l1 = [2,3,42,3,4,5]
+for num_index, num_val in enumerate(l1):
+    print(num_index, num_val)
+Output -
+(0, 2)
+(1, 3)
+(2, 42)
+(3, 3)
+(4, 4)
+(5, 5)
+--------------------------------------------------------
+# to convert a list of characters into a string.
+s = ['a', 'b', 'c', 'd']  
+str1 = ''.join(s)  
+print(str1)
+--------------------------------------------------------
+# program to flatten a shallow list
+import itertools  
+l1 = [[2,4,3],[1,5,6], [9], [7,9,0]]
+print(list(itertools.chain(*l1)))
+Output -- [2, 4, 3, 1, 5, 6, 9, 7, 9, 0]
+--------------------------------------------------------
+# to append a list to the second list.
+l1 = ['my', 'name','is']
+l2 = ['allan','gonsalves']
+print(list(l1 + l2))
+Output -- ['my', 'name', 'is', 'allan', 'gonsalves']
+--------------------------------------------------------
+# to select an item randomly from a list.
+import random
+color = ['red','blue','green','white']
+print(random.choice(color)) 
+Output --white , sometimes, red..etc its all random pick
+--------------------------------------------------------
+# to check whether two lists are circularly identical
+
+
+
 
 
 
