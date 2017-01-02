@@ -1,0 +1,141 @@
+## source http://www.w3resource.com/python-exercises/sets/
+## Frozensets can be created using the function frozenset(). This datatype supports methods like copy(), difference(), intersection(), 
+isdisjoint(), issubset(), issuperset(), symmetric_difference() and union(). Being immutable it does not have method that add or remove elements.
+------------------------------------------------------
+# to create a set
+s1 = set()              #new empty set
+s2 = set([0,3,2,4])     #non empty set
+print(s1)
+print(s2)
+Output --
+set([])
+set([0, 2, 3, 4])
+------------------------------------------------------
+# to iteration over sets
+s2 = set([0,3,2,4])     #non empty set
+for n in s2:
+    print(n)
+Output --
+0
+2
+3
+4
+------------------------------------------------------
+# to add member(s) in a set
+s1 = set() 
+s1.add(5)          #to add one element use no brackets
+s1.update([3,5,6]) #to add multiple elements use brackets
+for m in s1:
+    print(m)   #5 will be printed once since set doesnot take duplicates
+Output --
+3
+5
+6
+------------------------------------------------------
+# to remove item(s) from set
+num_set = set([0, 1, 3, 4, 5])
+num_set.pop()                    #pop will remove first items at index 0
+print(num_set)
+num_set.pop()
+print(num_set)
+Output--
+set([1, 3, 4, 5])
+set([3, 4, 5])
+------------------------------------------------------
+# to remove an item from a set if it is present in the set
+num_set = set([0, 1, 3, 4, 5])
+num_set.discard(4)
+print(num_set)       #This is the only method words , eg. result = num_Set.discard(4) will not work, even if we define result = set()
+Output --set([0, 1, 3, 5])
+------------------------------------------------------
+#  to create an intersection of sets
+n1 = set([0, 1, 2,3, 4, 5])
+n2 = set([100,2,300])
+print(n1 & n2) 
+Output --set([2])
+------------------------------------------------------
+#  to create a union of sets
+setx = set(["green", "blue"])
+sety = set(["blue", "yellow"])
+seta = setx | sety
+print(seta)
+Output -- set(['blue', 'green', 'yellow'])
+------------------------------------------------------
+#  to create set difference.
+setx = set(["apple", "mango"])
+sety = set(["banana", "orange"])
+print(setx - sety)
+Output -- set(['mango', 'apple'])
+------------------------------------------------------
+# to create a symmetric difference
+setx = set(["apple", "mango"])
+sety = set(["mango", "orange"])
+print(setx ^ sety)
+Output -- set(['orange', 'apple'])
+------------------------------------------------------
+# program to issubset and issuperset
+setx = set(["apple", "mango"])
+sety = set(["mango", "orange"])
+setz = set(["mango"])
+issubset = setx <= sety      # is x subset of y ? , see symbol <
+print(issubset)       
+issuperset = setx >= sety    # is x superset of y ?
+print(issuperset)
+issubset = setz <= sety      #is z subset of y ?
+print(issubset)
+issuperset = sety >= setz    #is y superset of z ?
+print(issuperset)
+Output --
+False
+False
+True
+True
+------------------------------------------------------
+# to create a shallow copy of sets
+Shallow copy is a bit-wise copy of an object. A new object is created that has an exact copy of the values in the original object.
+setp = set(["Red", "Green"])
+setq = set(["Green", "Red"])
+setr = setp.copy()
+print(setr)
+Output -- set(['Green', 'Red'])
+------------------------------------------------------
+# to clear a set
+setq = set(["Green", "Red"])
+print(setq)
+setq.clear()
+print(setq)
+Output -- 
+set(['Green', 'Red'])
+set([])
+------------------------------------------------------
+# program to use of frozensets
+x = frozenset([1, 2, 3, 4, 5])
+y = frozenset([3, 4, 5, 6, 7])
+#use isdisjoint()
+print(x.isdisjoint(y))
+#use difference()
+print(x.difference(y))
+#new set with elements from both x and y
+print(x | y)
+Output -- 
+False
+frozenset([1, 2])
+frozenset([1, 2, 3, 4, 5, 6, 7])
+------------------------------------------------------
+# to find maximum and the minimum value in a set
+seta = set([5, 10, 3, 15, 2, 20])
+print(max(seta))
+print(min(seta))
+Output --
+20
+2
+------------------------------------------------------
+# to find the length of a set
+seta = set([5, 10, 3, 15, 2, 20])
+print(len(seta))
+Output -- 6
+
+
+
+
+
