@@ -1,0 +1,40 @@
+## Source http://www.w3resource.com/python-exercises/python-functions-exercises.php
+
+
+-------------------------------------------------------
+# function to find the Max of three numbers
+def maxof2(x,y):
+    if x > y:
+        return x
+    return y
+def maxof3(a,b,c):
+    return maxof2(a , maxof2(b,c))
+print(maxof3(10,20,30))
+Output -- 30 
+-------------------------------------------------------
+#  function to reverse a string
+Sample String : "1234abcd"
+Expected Output : "dcba4321"
+def rev(s):
+    word = ' '
+    index = len(s)
+    while index >= 0:
+        word += s[index -1]
+        index -= 1
+    return word
+print(rev("sdlladd"))
+-------------------------------------------------------
+#  to calculate the factorial of a number (a non-negative integer). The function accepts the number as an argument.
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+n=int(input("Input a number to compute the factiorial : "))
+print(factorial(n))
+Output -- User input 5 , output 125
+-------------------------------------------------------
+#  to check whether a number is in a given range
+
+
+
