@@ -137,7 +137,7 @@ print(dict((x,y) for x,y in t))    #This will not work since we have several val
 #output of above will be   {'y': 2, 'x': 3, 'z': 1} which is not right .. use below approach
 d = {}
 for a, b in t:
-	d.setdefault(a,[]).append(b)   # {'y': [1, 2], 'x': [1, 2, 3], 'z': [1]}
+	d.setdefault(a,[]).append(b)   # {'y': [1, 2], 'x': [1, 2, 3], 'z': [1]} . Here value is mini list in itself...
 print (d)
 
 
