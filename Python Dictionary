@@ -1,0 +1,181 @@
+# Source -- http://www.w3resource.com/python-exercises/dictionary/
+--------------------------------------------------
+# to sort (ascending and descending) a dictionary by value
+import operator
+d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+print(sorted(d.items(),key=operator.itemgetter(0)))
+print(sorted(d.items(),key=operator.itemgetter(0),reverse=True))
+Output --
+[(0, 0), (1, 2), (2, 1), (3, 4), (4, 3)]
+[(4, 3), (3, 4), (2, 1), (1, 2), (0, 0)]
+--------------------------------------------------
+# script to add a key to a dictionary.
+Sample Dictionary : {0: 10, 1: 20}
+Expected Result : {0: 10, 1: 20, 2: 30}
+d = {1:10, 2:20}
+d.update({3:30})
+print(d)
+--------------------------------------------------
+# to concatenate following dictionaries to create a new one
+Sample Dictionary : 
+dic1={1:10, 2:20} 
+dic2={3:30, 4:40} 
+dic3={5:50,6:60}
+Expected Result : {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+
+dic1={1:10, 2:20}
+dic2={3:30, 4:40}
+dic3={5:50,6:60}
+finaldict = {}
+for d in ( dic1 , dic2, dic3):
+    finaldict.update(d)
+print(finaldict)
+--------------------------------------------------
+# to check if a given key already exists in a dictionary.
+dic1={1:10, 2:20}
+print(dic1.has_key(2))
+--another approach -- 
+d = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+if 3 in d:
+    print("found")
+else:
+    print("not found")
+--------------------------------------------------
+# to iterate over dictionaries using for loops. 
+d = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+for k,v in d.items():
+    print("Key",k ,"Value", v)
+Output --
+('Key', 1, 'Value', 10)
+('Key', 2, 'Value', 20)
+('Key', 3, 'Value', 30)
+('Key', 4, 'Value', 40)
+('Key', 5, 'Value', 50)
+('Key', 6, 'Value', 60)
+--------------------------------------------------
+# to generate and print a dictionary that contains a number (between 1 and n) in the form (x, x*x)
+Sample Dictionary ( n = 5) : 
+Expected Output : {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+d = {}
+def dictlogic(n):
+    for i in range(1,n+1):
+        if __name__ == '__main__':
+            d[i] = i*i   #while updatng just put value to dictinoary , it takes key automatically.Key needed only to read from dict.
+    return d
+print(dictlogic(5))
+--------------------------------------------------
+# script to merge two Python dictionaries.
+d1 = {'a': 100, 'b': 200}
+d2 = {'x': 300, 'y': 200}
+d = {}
+d = d1.copy()
+d.update(d2)
+print(d)
+Output -- {'a': 100, 'y': 200, 'b': 200, 'x': 300}
+--------------------------------------------------
+# to sum all the items in a dictionary.
+d1 = {'a': 100, 'y': 200, 'b': 200, 'x': 300}
+print(sum(d1.values()))
+Output -- 800
+--------------------------------------------------
+# to multiply all the items in a dictionary.
+my_dict = {'data1': 100, 'data2': -54, 'data3': 247}
+result1 = 1
+for k,v in my_dict.items():
+    result1 = result1 * v
+print(result1)
+---second approach use keys 
+my_dict = {'data1': 100, 'data2': -54, 'data3': 247}
+result = 1
+for key in my_dict:
+    result = result * my_dict[key]
+print(result)
+Output -- -1333800
+--------------------------------------------------
+# to remove a key from a dictionary.
+my_dict = {'data1': 100, 'data2': -54, 'data3': 247}
+del my_dict['data2']
+print(my_dict)
+Output -- {'data1': 100, 'data3': 247}
+--------------------------------------------------
+# program to map two lists into a dictionary.
+keys = [1,3,2]
+value = [3,5,6]
+print(dict(zip(keys,value)))
+Output -- {1: 3, 2: 6, 3: 5}
+--------------------------------------------------
+# to sort a dictionary by key
+color_dict = {'red':'#FF0000','green':'#008000','black':'#000000','white':'#FFFFFF'}
+for key in sorted(color_dict):
+    print("%s: %s" % (key, color_dict[key]))
+Output--
+black: #000000
+green: #008000
+red: #FF0000
+white: #FFFFFF
+--------------------------------------------------
+# to get the maximum and minimum value in a dictionary
+d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+print(min(d.items()))
+print(max(d.items()))
+Output --
+(0, 0)
+(4, 3)
+---second approach ---
+d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+print(min(d.keys(), key=(lambda k : d[k])))
+print(max(d.keys(), key=(lambda k : d[k])))
+Outut -- 
+0
+3
+--------------------------------------------------
+# to get a dictionary from an object's fields. 
+class dictObj(object):  
+     def __init__(self):  
+         self.x = 'red'  
+         self.y = 'Yellow'  
+         self.z = 'Green'  
+     def do_nothing(self):  
+         pass  
+test = dictObj()  
+print(test.__dict__)
+Output -- {'y': 'Yellow', 'x': 'red', 'z': 'Green'}
+--------------------------------------------------
+# to remove duplicates from Dictionary.
+student_data = {'id1':   
+   {'name': ['Sara'],   
+    'class': ['V'],   
+    'subject_integration': ['english, math, science']  
+   },  
+ 'id2':   
+  {'name': ['David'],   
+    'class': ['V'],   
+    'subject_integration': ['english, math, science']  
+   },  
+ 'id3':   
+    {'name': ['Sara'],   
+    'class': ['V'],   
+    'subject_integration': ['english, math, science']  
+   },  
+ 'id4':   
+   {'name': ['Surya'],   
+    'class': ['V'],   
+    'subject_integration': ['english, math, science']  
+   },  
+}  
+result = {}  
+for key,value in student_data.items():  
+    if value not in result.values():  
+        result[key] = value  
+print(result)  
+--------------------------------------------------
+# to check a dictionary is empty or not
+d  = {1:23,2:30}
+if not bool(d):
+    print("empty")
+else:
+    print("filled up")
+Output -- 
+filled up 
+
+
