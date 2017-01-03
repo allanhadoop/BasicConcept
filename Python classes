@@ -1,0 +1,76 @@
+# Source - http://www.w3resource.com/python-exercises/class-exercises/index.php
+
+In Python - 
+_ (a single underscore): stores previous output, like Python’s default interpreter.
+__ (two underscores): next previous.
+___ (three underscores): next-next previous.
+----------------------------------------------------------
+Simple syntax 
+class myname:
+    def printname(self,n):
+        return (n + " gonsalves")
+print(myname().printname("allan"))
+Output -- allan gonsalves 
+---------------------------------------------------------
+# class to convert an integer to a roman numeral. 
+class py_solution:
+    def int_to_Roman(self, num):
+        val = [
+            1000, 900, 500, 400,
+            100, 90, 50, 40,
+            10, 9, 5, 4,
+            1 ]
+        syb = [
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV",
+            "I" ]
+        roman_num = ''
+        i = 0
+        while num > 0:
+            for _ in range(num // val[i]):
+                roman_num += syb[i]
+                num -= val[i]
+            i += 1
+        return roman_num
+
+print(py_solution().int_to_Roman(1))
+print(py_solution().int_to_Roman(11))
+Output -- 
+I
+XI
+---------------------------------------------------------
+# to convert a roman numeral to an integer.
+class py_solution:  
+    def roman_to_int(self, s):  
+        rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}  
+        int_val = 0  
+        for i in range(len(s)):  
+            if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:  
+                int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]  
+            else:  
+                int_val += rom_val[s[i]]  
+        return int_val  
+print(py_solution().roman_to_int('MMMCMLXXXVI'))  
+print(py_solution().roman_to_int('MMMM'))  
+print(py_solution().roman_to_int('C'
+Output -- 
+3986
+4000
+100
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
