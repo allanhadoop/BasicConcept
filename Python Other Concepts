@@ -1,0 +1,88 @@
+# Source - https://wiki.python.org/moin/UsingAssertionsEffectively
+List of all exceptions - https://www.tutorialspoint.com/python/python_exceptions.htm
+-------------------------------------------------------------
+# Assertions are a systematic way to check that the internal state of a program is as the programmer 
+# expected, with the goal of catching bugs
+def KelvinToFahrenheit(Temperature):
+   assert (Temperature >= 0),"Colder than absolute zero!"
+   return ((Temperature*100))
+
+print KelvinToFahrenheit(273)
+print int(KelvinToFahrenheit(505.78))
+print KelvinToFahrenheit(-5)
+Output --- Here is a function that converts a temperature from degrees Kelvin to degrees Fahrenheit. Since zero degrees
+#Kelvin is as cold as it gets, the function bails out if it sees a negative temperature
+27300
+50578
+AssertionError: Colder than absolute zero!
+-------------------------------------------------------------
+def calc(num):
+    assert num >0, "enter number bigger than zero only"
+    return num * 2
+
+print(calc(5))
+print(calc(-3))
+Output ---
+10
+AssertionError: enter number bigger than zero only
+-------------------------------------------------------------
+try:
+   You do your operations here;
+   ......................
+except ExceptionI:
+   If there is ExceptionI, then execute this block.
+except ExceptionII:
+   If there is ExceptionII, then execute this block.
+   ......................
+else:
+   If there is no exception then execute this block. 
+
+-------------------------------------------------------------
+try:
+    file = open('test.txt',"w")
+    file.write("data entered by user")
+except IOError:
+    print("file coulnt be opened")
+else:
+    print(file.read())
+    file.close()
+-------------------------------------------------------------
+# The finally block is a place to put any code that must execute, whether the try-block raised an exception or not. 
+try:
+   You do your operations here;
+   ......................
+   Due to any exception, this may be skipped.
+finally:
+   This would always be executed.
+   ......................
+-------------------------------------------------------------
+try:
+    file = open('test.txt',"w")
+    file.write("data entered by user")
+except IOError:
+    print("file coulnt be opened")
+finally:
+    print("we tried working on file but it failed")
+Output -- 
+we tried working on file but it failed
+-------------------------------------------------------------
+# User defined exceptions -- 
+Here is an example related to RuntimeError. Here, a class is created that is subclassed from RuntimeError.
+In the try block, the user-defined exception is raised and caught in the except block. The variable e is used to create an instance of 
+the class Networkerror.
+
+class Networkerror(RuntimeError):
+   def __init__(self, arg):
+      self.args = arg
+       
+try:
+   raise Networkerror("Bad hostname")
+except Networkerror,e:
+   print e.args
+Output--
+('B', 'a', 'd', ' ', 'h', 'o', 's', 't', 'n', 'a', 'm', 'e')
+-------------------------------------------------------------
+
+
+
+
