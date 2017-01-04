@@ -34,7 +34,170 @@ n=int(input("Input a number to compute the factiorial : "))
 print(factorial(n))
 Output -- User input 5 , output 125
 -------------------------------------------------------
-#  to check whether a number is in a given range
+#  function that accepts a string and calculate the number of upper case letters and lower case letters
+Sample String : 'The quick Brow Fox'
+Expected Output : 
+No. of Upper case characters : 3
+No. of Lower case Characters : 12
+def string_test(s):  
+    d={"UPPER_CASE":0, "LOWER_CASE":0}  
+    for c in s:  
+        if c.isupper():  
+           d["UPPER_CASE"]+=1  
+        elif c.islower():  
+           d["LOWER_CASE"]+=1  
+        else:  
+           pass  
+    print ("Original String : ", s)  
+    print ("No. of Upper case characters : ", d["UPPER_CASE"])  
+    print ("No. of Lower case Characters : ", d["LOWER_CASE"])  
+string_test('The quick Brow Fox')
+Output --
+('Original String : ', 'The quick Brow Fox')
+('No. of Upper case characters : ', 3)
+('No. of Lower case Characters : ', 12)
+-------------------------------------------------------
+# function that takes a list and returns a new list with unique elements of the first list.
+Sample List : [1,2,3,3,3,3,4,5]
+Unique List : [1, 2, 3, 4, 5]
+
+l = [1,2,3,3,3,3,4,5]
+s = set(l)                  #set will remove duplicates automatically
+print(s)
+Output - [1, 2, 3, 4, 5]
+-------------------------------------------------------
+# function that takes a number as a parameter and check the number is prime or not.
+A prime number (or a prime) is a natural number greater than 1 and that has no positive divisors other than 1 and itself.
+# e.g. 5 is prime number, whereas 6 or 9 or 4 is not .. 
+def test_prime(n):
+    if (n==1):
+        return False
+    elif (n==2):
+        return True;
+    else:
+        for x in range(2,n):
+            if(n % x==0):
+                return False
+        return True
+print(test_prime(5))
+Output -- True 
+-------------------------------------------------------
+# to print the even numbers from a given list.
+Sample List : [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+Expected Result : [2, 4, 6, 8]
+def is_even_num(l):  
+    enum = []  
+    for n in l:  
+        if n % 2 == 0:  
+            enum.append(n)  
+    return enum  
+print(is_even_num([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+-------------------------------------------------------
+#  function to check whether a number is perfect or not.
+According to Wikipedia : In number theory, a perfect number is a positive integer that is equal to the sum of its proper 
+positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). 
+Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself).
+# Example : The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently, 
+the number 6 is equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number 
+is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128. 
+def perfect_number(n):  
+    sum = 0  
+    for x in range(1, n):  
+        if n % x == 0:  
+            sum += x  
+    return sum == n  
+print(perfect_number(6)) 
+Output -- True
+-------------------------------------------------------
+# function that checks whether a passed string is palindrome or not
+A palindrome is a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run
+def palindrome(w):
+    left_pos = 0
+    right_pos = len(w) - 1
+    #madam
+    while right_pos >= left_pos:
+        if not w[left_pos] == w[right_pos]:
+            return False
+        left_pos += 1
+        right_pos -= 1
+    return True
+print(palindrome("madam"))
+Output -- True 
+-------------------------------------------------------
+#  function to check whether a string is a pangram or not
+Pangrams are words or sentences containing every letter of the alphabet at least once
+For example : "The quick brown fox jumps over the lazy dog" 
+import string, sys
+def pangram(str1, alphabet=string.ascii_lowercase):        #alphabet to capture a-z letters   
+    alphaset = set(alphabet)                            #set will remove all duplicates
+    return alphaset <= set(str1.lower())                #set will remove all duplicates 
+print (pangram('The quick brown fox jumps over the lazy dog'))
+Output -- True 
+-------------------------------------------------------
+#program that accepts a hyphen-separated sequence of words as input and prints the words in a 
+hyphen-separated sequence after sorting them alphabetically.
+Sample Items : green-red-yellow-black-white
+Expected Result : black-green-red-white-yellow
+l = [n for n in input().split('-')]          #this will ask for user input and then split it
+l.sort()
+print('-'.join(l))
+-------------------------------------------------------
+# function to create and print a list where the values are square of numbers between 1 and 30 (both included).
+l = []
+for n in range(1,31):
+    l.append(n**2)
+print(l)
+Output -- 
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900]
+-------------------------------------------------------
+# program to make a chain of function decorators (bold, italic, underline etc.) in Python
+def make_bold(fn):  
+    def wrapped():  
+        return "<b>" + fn() + "</b>"  
+    return wrapped  
+  
+def make_italic(fn):  
+    def wrapped():  
+        return "<i>" + fn() + "</i>"  
+    return wrapped  
+  
+def make_underline(fn):  
+    def wrapped():  
+        return "<u>" + fn() + "</u>"  
+    return wrapped  
+@make_bold  
+@make_italic  
+@make_underline  
+def hello():  
+    return "hello world"  
+print(hello()) ## returns "<b><i><u>hello world</u></i></b>"  
+Output-- <b><i><u>hello world</u></i></b>
+-------------------------------------------------------
+# program to execute a string containing Python code. 
+mycode = 'print("hello world")'
+l = 'print([3,4,5])'
+code = """
+def mutiply(x,y): 
+    return x*y 
+
+print('Multiply of 2 and 3 is: ',mutiply(2,3)) 
+"""
+exec (mycode)
+exec (code)
+exec (l)
+Output ---
+hello world
+('Multiply of 2 and 3 is: ', 6)
+[3, 4, 5]
+
+
+
+
+
+
+
+
+
 
 
 
