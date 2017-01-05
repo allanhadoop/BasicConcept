@@ -82,6 +82,68 @@ except Networkerror,e:
 Output--
 ('B', 'a', 'd', ' ', 'h', 'o', 's', 't', 'n', 'a', 'm', 'e')
 -------------------------------------------------------------
+Ramdon module -- Source - http://www.pythonforbeginners.com/random/how-to-use-the-random-module-in-python
+import random
+print(random.randint(0,10))
+Output- 3 (program will generate any random init number
+For larger number - use 
+import random
+print(random.random() * 100)
+-------------------------------------------------------------
+# to choose random element from list 
+print(random.choice(['red','greeen','yellow']))
+-------------------------------------------------------------
+# The shuffle function, shuffles the elements in list in place, so they are in a random order.
+from random import shuffle
+x = [[i] for i in range(10)]        # see syntax of i and respective output
+y = [j for j in range(10)]          # see syntax of j and respective output 
+shuffle(x)
+print(x)
+shuffle(y)
+print(y)
+Output -- 
+[[3], [1], [2], [8], [0], [4], [5], [7], [9], [6]]
+[1, 8, 0, 7, 3, 9, 5, 6, 2, 4]
+------------------------------------------------------------
+# Generate a randomly selected element from range(start, stop, step)
+for i in range(3):
+    print(random.randrange(4,101,5))
+Output -- 
+49
+9
+14
+------------------------------------------------------------
+# Flip a coin -- 
+import random
+import itertools
+
+my_dict = { 'heads':0, 'tails':0, 'neutral':0}
+coinface = my_dict.keys()
+for i in range(20):
+    my_dict[ random.choice(coinface) ] += 1
+print("heads",my_dict['heads'], "tails" , my_dict['tails'], "coin standup ", my_dict['neutral'])
+Output -- 
+('heads', 7, 'tails', 8, 'coin standup ', 5)
+------------------------------------------------------------
+# What is seed() ? 
+# Random number generation isn't truly "random". It is deterministic, and the sequence it generates is dictated by the seed 
+value you pass into random.seed. Typically you just invoke random.seed(), and it uses the current time as the seed value, which 
+means whenever you run the script you will get a different sequence of values.
+import random
+random.seed()   #here program will take current time as seed value so new random sequence will be generated below
+print(random.raninit(1,10) 
+Output -- 3, 4 , 7, etc for each execution 
+However if we put seed value then random number is same for the given seed 
+random.seed(100) 
+print(random.randinit(1.10))
+Output -- 
+2 ...so this will remain same for all execution unless we change seed to let's say seed(103) then it may be 4 
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
