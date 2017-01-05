@@ -9,12 +9,53 @@
 << Binary Left Shift -- The left operands value is moved left by the number of bits specified by the right operand. --- a << = 240 (means 1111 0000)
 >> Binary Right Shift -- The left operands value is moved right by the number of bits specified by the right operand. -- a >> = 15 (means 0000 1111)
 ---------------------------------------------------------------------------
+Bitwise operations in programming languages play a fundamental role when dealing with a lot of applications. 
+Almost all low-level computing must be done using this kind of operations.
+In all applications that need to send data between two nodes, such as:
+computer networks;
+telecommunication applications (cellular phones, satellite communications, etc).
 
+AND is 1 only if both of its inputs are 1, otherwise it's 0.
+OR is 1 if one or both of its inputs are 1, otherwise it's 0.
+XOR is 1 only if exactly one of its inputs are 1, otherwise it's 0.
+NOT is 1 only if its input is 0, otherwise it's 0.
+Truth table for bitwise operation. These can often be best shown as truth tables. Input possibilities are on the top and left, 
+the resultant bit is one of the four (two in the case of NOT since it only has one input) values shown at the intersection of the inputs  
 
-
-
-
+AND | 0 1     OR | 0 1     XOR | 0 1    NOT | 0 1
+----+-----    ---+----     ----+----    ----+----
+ 0  | 0 0      0 | 0 1       0 | 0 1        | 1 0
+ 1  | 0 1      1 | 1 1       1 | 1 0
 ---------------------------------------------------------------------------
+# Examples - 
+a = 60            # 60 = 0011 1100 
+b = 13            # 13 = 0000 1101 
+# c = a & b            = 0000 1100  which is 12 so c = 12
+---------------------------------------------------------------------------
+a = 60
+b = 13
+print(a & b )
+print(a | b )
+print(a << 2)
+print(a >> 2)
+Output -- 
+12
+61
+240
+15
+#more examples - https://www.tutorialspoint.com/python/bitwise_operators_example.htm
+--------------------------------------------------------------------------- 
 # to check if a given positive integer is a power of two
+def is_Power_of_two(n):  
+        return n > 0 and (n & (n - 1)) == 0  
+print(is_Power_of_two(4))  
+print(is_Power_of_two(36))  
+print(is_Power_of_two(16))  
+Output -- 
+True
+False
+True
+--------------------------------------------------------------------------- 
+
 
 
