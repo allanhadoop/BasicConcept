@@ -1,5 +1,118 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
------------------------
+# source -http://cs231n.github.io/python-numpy-tutorial/
+--------------------------------------------------------------------------------------------
+s = "hello"
+print s.capitalize()  # Capitalize a string; prints "Hello"
+print s.upper()       # Convert a string to uppercase; prints "HELLO"
+print s.rjust(7)      # Right-justify a string, padding with spaces; prints "  hello"
+print s.center(7)     # Center a string, padding with spaces; prints " hello "
+print s.replace('l', '(ell)')  # Replace all instances of one substring with another;
+                               # prints "he(ell)(ell)o"
+print '  world '.strip()  # Strip leading and trailing whitespace; prints "world"
+Output -- 
+Hello
+HELLO
+  hello
+ hello 
+he(ell)(ell)o
+world
+--------------------------------------------------------------------------------------------
+If you want access to the index of each element within the body of a loop, use the built-in enumerate function:
+animals = ['cat', 'dog', 'monkey']
+for idx, animal in enumerate(animals):
+    print '#%d: %s' % (idx + 1, animal)
+# Prints "#1: cat", "#2: dog", "#3: monkey", each on its own line
+-------------------------------------------------------------------------------------------
+# List comprehensions: When programming, frequently we want to transform one type of data into another.
+nums = [0, 1, 2, 3, 4]
+squares = []
+for x in nums:
+    squares.append(x ** 2)
+print squares   # Prints [0, 1, 4, 9, 16]
+---OR SIMPLE Code below
+nums = [0, 1, 2, 3, 4]
+squares = [x ** 2 for x in nums]
+print squares   # Prints [0, 1, 4, 9, 16]
+-----with some conditions
+nums = [0, 1, 2, 3, 4]
+even_squares = [x ** 2 for x in nums if x % 2 == 0]
+print even_squares  # Prints "[0, 4, 16]"
+------------------------------------------------------------------------------------------
+# Loops 
+d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal in d:
+    legs = d[animal]
+    print 'A %s has %d legs' % (animal, legs)
+# Prints "A person has 2 legs", "A spider has 8 legs", "A cat has 4 legs"
+----If you want access to keys and their corresponding values, use the iteritems method:
+d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal, legs in d.iteritems():
+    print 'A %s has %d legs' % (animal, legs)
+# Prints "A person has 2 legs", "A spider has 8 legs", "A cat has 4 legs"
+-------------------------------------------------------------------------------------------
+# Dictionary comprehensions
+nums = [0, 1, 2, 3, 4]
+even_num_to_square = {x: x ** 2 for x in nums if x % 2 == 0}
+print even_num_to_square  # Prints "{0: 0, 2: 4, 4: 16}"
+
+# Set comprehensions
+from math import sqrt
+nums = {int(sqrt(x)) for x in range(30)}
+print nums  # Prints "set([0, 1, 2, 3, 4, 5])"
+-------------------------------------------------------------------------------------------
+# Tuple 
+d = {(x, x + 1): x for x in range(10)}  # Create a dictionary with tuple keys
+t = (5, 6)       # Create a tuple
+print type(t)    # Prints "<type 'tuple'>"
+print(d)
+print d[t]       # Prints "5"
+print d[(1, 2)]  # Prints "1"
+Output -- 
+<type 'tuple'>
+{(0, 1): 0, (1, 2): 1, (6, 7): 6, (5, 6): 5, (7, 8): 7, (8, 9): 8, (4, 5): 4, (2, 3): 2, (9, 10): 9, (3, 4): 3}
+5
+1
+-------------------------------------------------------------------------------------------
+Functions -- 
+def sign(x):
+    if x > 0:
+        return 'positive'
+    elif x < 0:
+        return 'negative'
+    else:
+        return 'zero'
+
+for x in [-1, 0, 1]:
+    print sign(x)
+# Prints "negative", "zero", "positive"
+------ We will often define functions to take optional keyword arguments, like this:
+def hello(name, loud=False):
+    if loud:
+        print 'HELLO, %s!' % name.upper()
+    else:
+        print 'Hello, %s' % name
+
+hello('Bob') # Prints "Hello, Bob"
+hello('Fred', loud=True)  # Prints "HELLO, FRED!"
+-------------------------------------------------------------------------------------------
+## Classes 
+class Greeter(object):
+    
+    # Constructor
+    def __init__(self, name):
+        self.name = name  # Create an instance variable
+        
+    # Instance method
+    def greet(self, loud=False):
+        if loud:
+            print 'HELLO, %s!' % self.name.upper()
+        else:
+            print 'Hello, %s' % self.name
+        
+g = Greeter('Fred')  # Construct an instance of the Greeter class
+g.greet()            # Call an instance method; prints "Hello, Fred"
+g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
+-------------------------------------------------------------------------------------------
 #setup.py is a python file, which usually tells you that the module/package you are about to install have been 
 #packaged and distributed with Distutils, which is the standard for 
 #distributing Python Modules. setup.py is Python's answer to a multi-platform installer and make file
