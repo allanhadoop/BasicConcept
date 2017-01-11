@@ -1,5 +1,9 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 # source -http://cs231n.github.io/python-numpy-tutorial/
+
+IPython is an enhanced interactive Python shell that has lots of interesting features including named inputs and outputs, 
+access to shell commands, improved debugging and many more. When we start it with the command line argument -pylab 
+(--pylab since IPython version 0.12), it allows interactive matplotlib sessions that have Matlab/Mathematica-like functionality.
 --------------------------------------------------------------------------------------------
 s = "hello"
 print s.capitalize()  # Capitalize a string; prints "Hello"
