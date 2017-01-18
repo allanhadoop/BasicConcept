@@ -1,6 +1,10 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 # source -http://cs231n.github.io/python-numpy-tutorial/
-
+----
+setup.py is a python file, which usually tells you that the module/package you are about to install have been packaged and 
+distributed with Distutils, which is the standard for distributing Python Modules. This allows you to easily install Python 
+packages, often it's enough to write: python setup
+--------
 IPython is an enhanced interactive Python shell that has lots of interesting features including named inputs and outputs, 
 access to shell commands, improved debugging and many more. When we start it with the command line argument -pylab 
 (--pylab since IPython version 0.12), it allows interactive matplotlib sessions that have Matlab/Mathematica-like functionality.
