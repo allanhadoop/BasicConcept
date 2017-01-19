@@ -1,0 +1,19 @@
+# Source - https://cdn.turbonomic.com/wp-content/uploads/Turbonomic_Public-Cloud-Guide.pdf
+
+# Performance, cost and agility important 
+# Well-architected AWS suggest to do following 
+Amazon CloudWatch monitoring: Use CloudWatch to monitor instances.
+- Third-party monitoring: Use third-party tools to monitor systems.
+- Periodic review: Periodically review your monitoring dashboards.
+- Alarm-based notifications: Receive an automatic alert from your monitoring systems if metrics are out of safe bounds.
+- Trigger-based actions: Alarms cause automated actions to remediate or escalate issues.
+- SIzing of the instance is more important, it should not be under or over provisioned .. 
+
+Elastic Beanstalk (EBS), for example, is the platform as a service (PaaS) offering from AWS. The promise to developers is that they 
+can focus on application code, while Elastic Beanstalk handles every stage of deployment: from capacity provisioning, load balancing, 
+auto-scaling to monitoring the health of the application
+
+# Developers must decide which metric is most important to them. How do they make this decision? No application requires just CPU or 
+just Memory or just Storage or just Network and so on—contention in any of those resources will cause performance degradation
+
+
