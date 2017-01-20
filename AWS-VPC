@@ -1,3 +1,16 @@
+Difference between SSH and SSL - SSL and SSH both provide the cryptographic elements to build a tunnel for confidential data transport with checked integrity.
+
+      SSL              SSH
++-------------+ +-----------------+
+| Nothing     | | RFC4254         | Connection multiplexing
++-------------+ +-----------------+
+| Nothing     | | RFC4252         | User authentication
++-------------+ +-----------------+
+| RFC5246     | | RFC4253         | Encrypted data transport
++-------------+ +-----------------+
+
+
+
 private subnet
 public subnet - IGW+Elastic ip
 
