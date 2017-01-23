@@ -1,0 +1,40 @@
+Source - http://cloudstrategies.biz/requirements-for-building-enterprise-saas-applications/
+
+# components of SaaS standards for operational requirements - 
+1 . system availability
+2. audit standards such as SSAE 16 (successor to SaaS 70)
+3. Governmental compliance requirements - HIPPA or FINRA, or privacy addressed in the EU Data Protection Directive constitute
+
+Barrier to Enterprise cloud adoption - 
+1. Fear of security breaches
+2. Issue with data soverienty
+3. Lack of integration between application 
+
+# When SaaS offerings were brought into the Enterprise without consideration of corporate governance and interoperability issues, 
+# it was difficult to make everything “play together”.The developing standard requirements vary by industry and application – financial 
+# and medical applications will typically have more rigorous standards than productivity applications.
+
+Specific standard requirements includes - 
+1) criticality of the application, 
+2) the security, privacy and compliance requirements, 
+3) the countries where the SaaS product be used, and 
+4) the unique requirements of the specific Enterprise.
+
+- Security
+           User authentication and access control
+           Protection against unauthorized access
+           Code hardening and auditing
+           Malware detection and remediation
+           External threat such as Distributed Denial of Service (DDoS) defense and Remediation
+           Rights to audit the SaaS vendor’s operations and access log information
+           Physical and personal security
+           Protection of access by other tenants collocated in the same system
+- Privacy
+           ensure that the Enterprise’s customer privacy is protected in accordance with company policy and government regulations.
+           Additionally, it is important for SaaS companies to take full advantage of EU Safe Harbor provisions to minimize the company’s 
+           liability related to EU Privacy laws.
+- Data Governance
+- Availability
+- Performance
+- Interoperability
+- Complianc
