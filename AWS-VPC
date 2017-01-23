@@ -31,3 +31,8 @@ and then ssh to resource of private subnet.make sure to copy keypair file to pri
 
 scp -i developer.pem developer.pem ec2-user@XX.XX.XX.XXX:~/   This is to copy from local to public instance
 Now connect to private instance.
+
+
+ITSEC - Information Technology Security Evaluation Criteria (ITSEC)  - is a structured set of criteria for evaluating computer security within products and systems
+# https://en.wikipedia.org/wiki/Information_security_management_system#/media/File:Isms_framework.jpg
+
