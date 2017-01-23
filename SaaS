@@ -34,7 +34,24 @@ Specific standard requirements includes -
            Additionally, it is important for SaaS companies to take full advantage of EU Safe Harbor provisions to minimize the company’s 
            liability related to EU Privacy laws.
 - Data Governance
-- Availability
+           On-premise vendors needed to be sure that they had appropriate access control mechanisms to allow the customer to control 
+           access to their data, ensure their APIs had appropriate controls, and encrypted data where necessary, but the management of 
+           the data was the responsibility of the customer or their IT organization.
+           Under the Cloud models, the SaaS vendor, often in partnership with their IaaS or PaaS suppliers have total responsibility for 
+           safeguarding the data andd quality of the data.
+- Availability (99.9999%) 
+           Enterprise SaaS customers with critical requirements for availability will ensure they have access to their data in the 
+           event of a failure of the SaaS vendor. In particular, they will want to have the ability for the SaaS vendor or an independent 
+           third party such as Iron Mountain to have a disaster recovery (DR) plan in place to have access to their SaaS systems in the 
+           event of a catastrophic failure including the bankruptcy of the company.
 - Performance
 - Interoperability
-- Complianc
+- Compliance 
+           1) Industry specific compliance requirements such as HIPPA, FINRA, SOX, and various DoD requirements (U.S.) – these industry 
+           standards are unique to each geopolitical area.
+           2) Geopolitical compliance requirements such as the EU Data Protection Directive (Directive 95/46/EC), Korea/Taiwan Personal 
+           Information Protection Act (PIPA), and India Information Technology Act (ITA) to name just a few.
+           3) Enterprise specific requirements to meet the corporation’s internal IT standards such as Single Sign-On (SSO) and Authentication 
+           standards.
+           4) Compliance issues are related to Security and Privacy requirements, but have very specific governmental requirements, a broader 
+           scope, and potentially higher damages.
