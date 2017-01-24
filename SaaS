@@ -45,7 +45,19 @@ Specific standard requirements includes -
            third party such as Iron Mountain to have a disaster recovery (DR) plan in place to have access to their SaaS systems in the 
            event of a catastrophic failure including the bankruptcy of the company.
 - Performance
+           The application themselves must be written to take advantage of HTML5 techniques such as data prefetch and other 
+           performance optimizations.
+           Content Delivery Networks (CDNs) can be used to cache content physically closer to the end user to speed up load times. 
+           Various network optimization techniques can be used to stream data much more efficiently which is particularly important 
+           for applications that stream large data sources such as medical imaging applications.
 - Interoperability
+           On-premise applications have, in some cases, embraced Service Oriented Architectures (SOA) to provide well defined 
+           programmatic interfaces to the objects within legacy systems.
+           With SaaS, there is no ability to access the data directly – all access is controlled by the SaaS application. Access to 
+           the data may be provided through SOA, or a lighter weight and increasingly more common RESTful API. Still, even with 
+           published APIs, there is a great deal of complexity in integrating multiple SaaS and legacy on-premise systems.
+           A number of vendors such as Boomi and MuleSoft provide an Enterprise Service Bus (ESB) to facilitate the transform and 
+           transport the data between disparate systems.
 - Compliance 
            1) Industry specific compliance requirements such as HIPPA, FINRA, SOX, and various DoD requirements (U.S.) – these industry 
            standards are unique to each geopolitical area.
