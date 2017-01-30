@@ -1,4 +1,4 @@
-Source - http://cloudstrategies.biz/requirements-for-building-enterprise-saas-applications/
+# Source - http://cloudstrategies.biz/requirements-for-building-enterprise-saas-applications/
 
 # components of SaaS standards for operational requirements - 
 1 . system availability
@@ -67,3 +67,22 @@ Specific standard requirements includes -
            standards.
            4) Compliance issues are related to Security and Privacy requirements, but have very specific governmental requirements, a broader 
            scope, and potentially higher damages.
+
+• Project Management & Tracking  - JIRA, Rally
+• Code Management System -  SVN, GitHub, Bitbucket , Stash,TFS, Clearcase
+• Cloud resource management - Terraform, Cloudformation templates 
+• Environment , package management - Anaconda & virtual environment for Python
+• Application deployment - Docker , Kuberneties 
+• Blue-green deployment - AWS ECS with docker.
+• Continuous Integration & Build -  Team City, Bamboo, Jenkins, RunDeck TFS, Gradle,Cruise Control, Ant, Maven, SBT, Anthill pro, Crucible
+• Continuous Deployment -  Chef, Puppet, uDeploy, Liquibase, CA Release Automation, Automic ARA, Ansible, XL-Release, Docker
+• Team Collaboration -  Confluence
+• Cloud Computing & Deployment – AWS, OneOps, Azure
+• Scripting - Shell scripting, Power Shell, Perl, PHP, Ruby, Python, BASH
+• Operating System  - EC2, Linux, Unix, Windows
+• Repository -  Nexus,Pro, Artifactory, Archiva
+• Code Quality & Productivity -  Sonar, Semmle, Blue Optima, Crucible, PMD, Checkstyle, JUnit, Jacoco, Clover, Coverity
+• Content Management -  SharePoint, Documentum, Docweb
+• Test Management  – HP ALM, HP QC
+• Test Automation – HP QTP, Selenium, JMeter, SOAPUI
+
