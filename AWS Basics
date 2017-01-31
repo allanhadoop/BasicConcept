@@ -14,3 +14,65 @@ can provide a capacity reservation
         exchange results in the creation of Reserved Instances of equal or greater value. Like Standard Reserved Instances, Convertible 
         Reserved Instances are best suited for steady-state usage.
       - Scheduled Reserved Instances:These are available to launch within the time windows you reserve
+
+Expensive -- On-demand then reserved then spot instances.
+
+---- Q - 
+You have a video trans-coding application. The videos are processed according to a queue. If the processing of a video is interrupted in 
+one instance, it is resumed in another instance. Currently there is a huge back-log of videos which needs to be processed, for this you 
+need to add more instances, but you need these instances only until your backlog is reduced. Which of these would be an efficient way to 
+do it?  - Use on-demand instance 
+
+----Q - 
+You have a distributed application that periodically processes large volumes of data across multiple Amazon EC2 Instances. The application
+is designed to recover gracefully from Amazon EC2 instance failures. You are required to accomplish this task in the most cost effective 
+way. ---Since the work we are addressing here is not continuous, a reserved instance shall be idle at times, same goes with On Demand 
+instances. Also it does not make sense to launch an On Demand instance whenever work comes up, since it is expensive. Hence Spot Instances 
+will be the right fit because of their low rates and no long term commitments.
+
+----Q - Difference between Stopping and Terminating Instance means- 
+Stopping and Starting an instance: When an instance is stopped, the instance performs a normal shutdown and then transitions to a stopped 
+state. All of its Amazon EBS volumes remain attached, and you can start the instance again at a later time. You are not charged for 
+additional instance hours while the instance is in a stopped state.
+
+Terminating an instance: When an instance is terminated, the instance performs a normal shutdown, then the attached Amazon EBS volumes 
+are deleted unless the volume’s deleteOnTermination attribute is set to false. The instance itself is also deleted, and you can’t 
+start the instance again at a later time.
+
+---- Q - 
+If I want my instance to run on a single-tenant hardware, which value do I have to set the instance’s tenancy attribute to? - dedicated 
+
+---- Q - 
+When will you incur costs with an Elastic IP address (EIP)? --
+            When you use more than one Elastic IPs with your instance.
+            When your Elastic IP is attached to a stopped instance.
+            When your Elastic IP is not attached to any instance.
+
+---- Q - 
+How is a Spot instance different from an On-Demand instance or Reserved Instance?
+Spot Instance, On-Demand instance and Reserved Instances are all models for pricing. Moving along, spot instances provide the ability 
+for customers to purchase compute capacity with no upfront commitment, at hourly rates usually lower than the On-Demand rate in each 
+region. Spot instances are just like bidding, the bidding price is called Spot Price. The Spot Price fluctuates based on supply and 
+demand for instances, but customers will never pay more than the maximum price they have specified. If the Spot Price moves higher 
+than a customer’s maximum price, the customer’s EC2 instance will be shut down automatically. But the reverse is not true, if the Spot 
+prices come down again, your EC2 instance will not be launched automatically, one has to do that manually.  In Spot and On demand 
+instance, there is no commitment for the duration from the user side, however in reserved instances one has to stick to the time 
+period that he has chosen.
+
+---- Q - 
+Are the Reserved Instances available for Multi-AZ Deployments? --Multi-AZ Available for all instance types
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
