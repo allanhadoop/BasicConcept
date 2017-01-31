@@ -101,6 +101,71 @@ AWS limit
 - 8 for Small instances  
 - 240 for Extra Large instances
 
+---- Q - 
+Is one Elastic IP address enough for every instance that I have running?
+Every instance comes with its own private and public address. The private address is associated exclusively with the instance and 
+is returned  to Amazon EC2 only when it is stopped or terminated. Similarly, the public address is associated exclusively with the 
+instance until it is stopped or terminated. However, this can be replaced by the Elastic IP address, which stays with the instance as 
+long as the user doesn’t manually detach it. But what if you are hosting multiple websites on your EC2 server, in that case you may 
+require more than one Elastic IP address.
+
+---- Q - 
+Security in Amazon EC2
+- Use AWS Identity and Access Management (IAM) to control access to your AWS resources.
+- Restrict access by only allowing trusted hosts or networks to access ports on your instance.
+- Review the rules in your security groups regularly, and ensure that you apply the principle of least
+- Privilege – only open up permissions that you require.
+- Disable password-based logins for instances launched from your AMI. Passwords can be found or cracked, and are a security risk.
+
+---- Q - 
+You need to configure an Amazon S3 bucket to serve static assets for your public-facing web application. Which method will ensure that 
+all objects uploaded to the bucket are set to public read?
+- Configure the bucket policy to set all objects to public read.Rather than making changes to every object, its better to set the policy for the whole bucket.
+
+---- Q - 
+A customer wants to leverage Amazon Simple Storage Service (S3) and Amazon Glacier as part of their backup and archive infrastructure. 
+The customer plans to use third-party software to support this integration. Which approach will limit the access of the third party 
+software to only the Amazon S3 bucket named “company-backup”?
+- A custom IAM user policy limited to the Amazon S3 API in “company-backup”.this use case involves more granular permissions, hence 
+IAM would be used here.
+
+---- Q - 
+What are use cases of using S3 with EC2 ?
+- it can be used for instances with root devices backed by local instance storage.
+- use the tools provided to load their Amazon Machine Images (AMIs) into Amazon S3 and to move them between Amazon S3 and Amazon EC2.
+- for websites hosted on EC2 to load their static content from S3.
+
+---- Q - 
+A customer implemented AWS Storage Gateway with a gateway-cached volume at their main office. An event takes the link between the 
+main and branch office offline. Which methods will enable the branch office to access their data?
+- Launch a new AWS Storage Gateway instance AMI in Amazon EC2, and restore from a gateway snapshot.
+
+---- Q - 
+When you need to move data over long distances using the internet, for instance across countries or continents to your Amazon S3 bucket, 
+which method or service will you use?
+- Amazon Transfer Acceleration . We cannot use snowball , snowball service does not support cross region data transfer
+
+---- Info - 
+The best way of connecting to your cloud resources (for ex- ec2 instances) from your own data center (for eg- private cloud) is a VPC. 
+Once you connect your datacenter to the VPC in which your instances are present, each instance is assigned a private IP address which 
+can be accessed from your datacenter. Hence, you can access your public cloud resources, as if they were on your own network.
+
+---- Q - 
+Can I connect my corporate datacenter to the Amazon Cloud?
+- Yes, you can do this by establishing a VPN(Virtual Private Network) connection between your company’s network and your VPC 
+(Virtual Private Cloud
+
+---- Info - 
+Primary private IP address is attached with the instance throughout its lifetime and cannot be changed, however secondary private 
+addresses can be unassigned, assigned or moved between interfaces or instances at any point.
+
+---- Info - 
+Subnets - To efficiently utilize networks that have a large no. of hosts. We can attach multiple subnets to a route table
+Route Tables are used to route network packets, therefore in a subnet having multiple route tables will lead to confusion as to 
+where the packet has to go. Therefore, there is only one route table in a subnet, and since a route table can have any no. of records 
+or information, hence attaching multiple subnets to a route table is possible.
+
+
 
 
 
