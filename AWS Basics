@@ -17,13 +17,13 @@ can provide a capacity reservation
 
 Expensive -- On-demand then reserved then spot instances.
 
----- Q - 
+---- Scenario - 
 You have a video trans-coding application. The videos are processed according to a queue. If the processing of a video is interrupted in 
 one instance, it is resumed in another instance. Currently there is a huge back-log of videos which needs to be processed, for this you 
 need to add more instances, but you need these instances only until your backlog is reduced. Which of these would be an efficient way to 
 do it?  - Use on-demand instance 
 
-----Q - 
+----Scenario - 
 You have a distributed application that periodically processes large volumes of data across multiple Amazon EC2 Instances. The application
 is designed to recover gracefully from Amazon EC2 instance failures. You are required to accomplish this task in the most cost effective 
 way. ---Since the work we are addressing here is not continuous, a reserved instance shall be idle at times, same goes with On Demand 
@@ -117,12 +117,12 @@ Security in Amazon EC2
 - Privilege – only open up permissions that you require.
 - Disable password-based logins for instances launched from your AMI. Passwords can be found or cracked, and are a security risk.
 
----- Q - 
+---- Scenario - 
 You need to configure an Amazon S3 bucket to serve static assets for your public-facing web application. Which method will ensure that 
 all objects uploaded to the bucket are set to public read?
 - Configure the bucket policy to set all objects to public read.Rather than making changes to every object, its better to set the policy for the whole bucket.
 
----- Q - 
+---- Scenario - 
 A customer wants to leverage Amazon Simple Storage Service (S3) and Amazon Glacier as part of their backup and archive infrastructure. 
 The customer plans to use third-party software to support this integration. Which approach will limit the access of the third party 
 software to only the Amazon S3 bucket named “company-backup”?
@@ -193,11 +193,57 @@ When would I prefer Provisioned IOPS over Standard RDS storage?
 If you have batch-oriented workloads. Batch processing workloads do not require manual intervention they enable full utilization of 
 systems, therefore a provisioned IOPS will be preferred for batch oriented workload.
 
----- Q - 
+---- Scenario - 
 If I am running my DB Instance as a Multi-AZ deployment, can I use the standby DB Instance for read or write operations along with 
 primary DB instance?
 -No, Standby DB instance cannot be used with primary DB instance in parallel, as the former is solely used for standby purposes, it 
 cannot be used unless the primary instance goes down.
+
+----Info - 
+Working with PostgreSQL, MySQL, and MariaDB Read Replicas. Amazon RDS uses the MySQL, MariaDB, and PostgreSQL (version 9.3.5 and later) 
+DB engines' built-in replication functionality to create a special type of DB instance called a Read Replica from a source DB instance.
+
+--- Scenario - 
+Your company’s branch offices are all over the world, they use a software with a multi-regional deployment on AWS, they use MySQL 5.6 for 
+data persistence.The task is to run an hourly batch process and read data from every region to compute cross-regional reports which 
+will be distributed to all the branches. This should be done in the shortest time possible. How will you build the DB architecture 
+in order to meet the requirements?
+- For each regional deployment, use RDS MySQL with a master in the region and a read replica in the HQ region
+For this we will take an RDS instance as a master, because it will manage our database for us and since we have to read from every region, 
+we’ll put a read replica of this instance in every region where the data has to be read from. It is not correct since putting a 
+read replica would be more efficient than putting a snapshot, a read replica can be promoted if needed  to an independent DB instance, 
+but with a Db snapshot it becomes mandatory to launch a separate DB Instance
+
+--- Scenario -
+Which AWS services will you use to collect and process e-commerce data for near real-time analysis?
+- DynamoDB is a fully managed NoSQL database service. DynamoDB, therefore can be fed any type of unstructured data, which can be data from 
+e-commerce websites as well, and later, an analysis can be done on them using Amazon Redshift. We are not using Elastic MapReduce, since a 
+near real time analyses is needed
+
+---Q -
+Can I retrieve only a specific element of the data, if I have a nested JSON data in DynamoDB?
+- Yes. When using the GetItem, BatchGetItem, Query or Scan APIs, you can define a Projection Expression to determine which attributes 
+should be retrieved from the table. Those attributes can include scalars, sets, or elements of a JSON document.
+
+----Scenario - 
+A company is deploying a new two-tier web application in AWS. The company has limited staff and requires high availability, and the 
+application requires complex queries and table joins. Which configuration provides the solution for the company’s requirements?
+- DynamoDB has the ability to scale more than RDS or any other relational database service
+
+----Q - 
+What happens to my backups and DB Snapshots if I delete my DB Instance?
+When you delete a DB instance, you have an option of creating a final DB snapshot, if you do that you can restore your database from 
+that snapshot. RDS retains this user-created DB snapshot along with all other manually created DB snapshots after the instance is deleted, 
+also automated backups are deleted and only manually created DB Snapshots are retained.
+
+----Q - 
+Which of the following use cases are suitable for Amazon DynamoDB? 
+- Storing metadata for Amazon S3 objects.
+- Running relational joins and complex updates.
+If all your JSON data have the same fields eg [id,name,age] then it would be better to store it in a relational database, the metadata 
+on the other hand is unstructured, also running relational joins or complex updates would work on DynamoDB as well.
+
+
 
 
 
