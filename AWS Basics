@@ -1,0 +1,16 @@
+# Source https://www.edureka.co/blog/interview-questions/top-aws-architect-interview-questions-2016/
+
+ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
+1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
+available at a discount compared to On-Demand pricing, you can significantly reduce the cost of running your applications
+
+2. Dedicated Instances are Amazon EC2 instances that run in a VPC on hardware that's dedicated to a single customer. Your Dedicated 
+instances are physically isolated at the host hardware level from instances that belong to other AWS accounts
+
+3. Reserved Instances provide you with a significant discount (up to 75%) compared to On-Demand instance.Reserved Instances 
+can provide a capacity reservation
+      - Standard Reserved Instances: are best suited for steady-state usage
+      - Convertible Reserved Instances: It provides the capability to change the attributes of the Reserved Instance as long as the 
+        exchange results in the creation of Reserved Instances of equal or greater value. Like Standard Reserved Instances, Convertible 
+        Reserved Instances are best suited for steady-state usage.
+      - Scheduled Reserved Instances:These are available to launch within the time windows you reserve
