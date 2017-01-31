@@ -339,6 +339,117 @@ What will happen to Auto Scaling in this condition?
 processes in your Auto Scaling group. This can be very useful when you want to investigate a configuration problem or other issue with 
 your web application, and then make changes to your application, without triggering the Auto Scaling process.
 
+----Scenario -
+You have an EC2 Security Group with several running EC2 instances. You changed the Security Group rules to allow inbound traffic on a 
+new port and protocol, and then launched several new instances in the same Security Group. The new rules apply:
+-Immediately to all instances in the security group.
+
+----Scenario - 
+To create a mirror image of your environment in another region for disaster recovery, which of the following AWS resources do not 
+need to be recreated in the second region? 
+-Elastic IPs and Route 53 record sets are common assets therefore there is no need to replicate them, since Elastic IPs and 
+Route 53 are valid across regions
+
+----Scenario - 
+A customer wants to capture all client connection information from his load balancer at an interval of 5 minutes, which of the 
+following options should he choose for his application?
+-Enable AWS CloudTrail for the loadbalancer.AWS CloudTrail provides inexpensive logging information for load balancer and other 
+AWS resources This logging information can be used for analyses and other administrative work
+
+----Scenario - 
+A customer wants to track access to their Amazon Simple Storage Service (S3) buckets and also use this information for their internal 
+security and access audits. Which of the following will meet the Customer requirement?
+-AWS CloudTrail has been designed for logging and tracking API calls. Also this service is available for storage
+
+----Q -
+Which of the following are true regarding AWS CloudTrail?
+-CloudTrail is enabled on a per-region and service basis
+-Logs can be delivered to a single Amazon S3 bucket for aggregation.CloudTrail files are delivered according to S3 bucket policies. 
+If the bucket is not configured or is misconfigured, CloudTrail might not be able to deliver the log files
+
+----Scenario - 
+How do I transfer my existing domain name registration to Amazon Route 53 without disrupting my existing web traffic?
+-You will need to get a list of the DNS record data for your domain name first, it is generally available in the form of a “zone file” 
+that you can get from your existing DNS provider. Once you receive the DNS record data, you can use Route 53’s Management Console or 
+simple web-services interface to create a hosted zone that will store your DNS records for your domain name and follow its transfer 
+process. It also includes steps such as updating the nameservers for your domain name to the ones associated with your hosted zone. 
+For completing the process you have to contact the registrar with whom you registered your domain name and follow the transfer process. 
+As soon as your registrar propagates the new name server delegations, your DNS queries will start to get answered.
+
+----Info 
+Lambda is used for running server-less applications. It can be used to deploy functions triggered by events.
+Elastic Beanstalk prepares a duplicate copy of the instance, before updating the original instance, and routes your traffic to the 
+duplicate instance, so that, incase your updated application fails, it will switch back to the original instance, and there will be 
+no downtime experienced by the users who are using your application.
+
+----info 
+AWS Elastic Beanstalk is an application management platform while OpsWorks is a configuration management platform. BeanStalk is an easy
+to use service which is used for deploying and scaling web applications developed with Java, .Net, PHP, Node.js, Python, Ruby, Go and 
+Docker. Customers upload their code and Elastic Beanstalk automatically handles the deployment. The application will be ready to use 
+without any infrastructure or resource configuration.AWS Beanstalk applications have a system in place for avoiding failures in the 
+underlying infrastructure. If an Amazon EC2 instance fails for any reason, Beanstalk will use Auto Scaling to automatically launch a 
+new instance. Beanstalk can also detect if your application is not responding on the custom link, even though the infrastructure 
+appears healthy, it will be logged as an environmental event( e.g a bad version was deployed) so you can take an appropriate action
+
+In contrast, AWS Opsworks is an integrated configuration management platform for IT administrators or DevOps engineers who want a high 
+degree of customization and control over operations.
+
+AWS OpsWorks is a higher level service that focuses on providing highly productive and reliable DevOps experiences for IT 
+administrators and ops-minded developers. To do this, AWS OpsWorks employs a configuration management model based on concepts such 
+as stacks and layers, and provides integrated experiences for key activities like deployment, monitoring, auto-scaling, and automation.
+
+----Scenario - 
+I created a key in Oregon region to encrypt my data in North Virginia region for security purposes. I added two users to the key and 
+an external AWS account. I wanted to encrypt an object in S3, so when I tried, the key that I just created was not listed.  What could
+be the reason?
+-The Key should be in the same region.
+
+----Scenario - 
+A company needs to monitor the read and write IOPS for their AWS MySQL RDS instance and send real-time alerts to their operations team. 
+Which AWS services can accomplish this?
+-Amazon CloudWatch
+
+----Scenario-
+What happens when one of the resources in a stack cannot be created successfully in AWS OpsWorks?
+-When an event like this occurs, the “automatic rollback on error” feature is enabled, which causes all the AWS resources which were 
+created successfully till the point where the error occurred to be deleted. This is helpful since it does not leave behind any erroneous 
+data, it ensures the fact that stacks are either created fully or not created at all. It is useful in events where you may accidentally 
+exceed your limit of the no. of Elastic IP addresses or maybe you may not have access to an EC2 AMI that you are trying to run etc.
+
+
+----Scenario - 
+What automation tools can you use to spinup servers?
+Any of the following tools can be used:
+ - Roll-your-own scripts, and use the AWS API tools.  Such scripts could be written in bash, perl or other language of your choice.
+ - Use a configuration management and provisioning tool like puppet or its successor Opscode Chef.  You can also use a tool like Scalr.
+ - Use a managed solution such as Rightscale.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
