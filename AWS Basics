@@ -279,14 +279,65 @@ prefer?
 perfect for a bigger workload like our use case. Since each month 4 GB of data is generated, therefore in 2 year, it should be around 
 96 GB. And since the servers will be increased to 100K in number, 96 GB will approximately become 96TB
 
+----Scenario - 
+Suppose you have an application where you have to render images and also do some general computing. From the following  services which 
+service will best fit your need?
+- You will choose an application load balancer, since it supports path based routing, which means it can take decisions based on the URL, 
+therefore if your task needs image rendering it will route it to a different instance, and for general computing it will route it to a 
+different instance.
 
+----Info  - 
+Scalability is the ability of a system to increase its hardware resources to handle the increase in demand. It can be done by increasing 
+the hardware specifications or increasing the processing nodes.
 
+Elasticity is the ability of a system to handle increase in the workload by adding additional hardware resources when the demand 
+increases(same as scaling) but also rolling back the scaled resources, when the resources are no longer needed. This is particularly 
+helpful in Cloud environments, where a pay per use model is followed.
 
+----Q - 
+How will you change the instance type for instances which are running in your application tier and are using Auto Scaling. 
+Where will you change it from the following areas?
+- Auto scaling tags configuration, is used to attach metadata to your instances, to change the instance type you have to use auto 
+scaling launch configuration.
 
+----Scenario - 
+You have a content management system running on an Amazon EC2 instance that is approaching 100% CPU utilization. Which option will 
+reduce load on the Amazon EC2 instance?
+- Creating alone an autoscaling group will not solve the issue, until you attach a load balancer to it. Once you attach a load balancer 
+to an autoscaling group, it will efficiently distribute the load among all the instances. Option B – CloudFront is a CDN, it is a data 
+transfer tool therefore will not help reduce load on the EC2 instance. Similarly the other option – Launch configuration is a template 
+for configuration which has no connection with reducing loads.
 
+----Scenario - 
+When should I use a Classic Load Balancer and when should I use an Application load balancer?
+-A Classic Load Balancer is ideal for simple load balancing of traffic across multiple EC2 instances, while an Application Load Balancer 
+is ideal for microservices or container-based architectures where there is a need to route traffic to multiple services or load balance 
+across multiple ports on the same EC2 instance.
 
+----Q - 
+What does Connection draining do?
+Re-routes traffic from instances which are to be updated or failed a health check.Connection draining is a service under ELB which 
+constantly monitors the health of the instances. If any instance fails a health check or if any instance has to be patched with a 
+software update, it  pulls all the traffic from that instance and re routes them to other instances.
 
+----Q - 
+When an instance is unhealthy, it is terminated and replaced with a new one, which of the following services does that?
+When ELB detects that an instance is unhealthy, it starts routing incoming traffic to other healthy instances in the region. If all the 
+instances in a region becomes unhealthy, and if you have instances in some other availability zone/region, your traffic is directed to 
+them. Once your instances become healthy again, they are re routed back to the original instances.
 
+----Q -
+What are lifecycle hooks used for in AutoScaling?
+They are used to put an additional wait time to a scale in or scale out event.Lifecycle hooks are used for putting wait time before any 
+lifecycle action i.e launching or terminating an instance happens. The purpose of this wait time, can be anything from extracting log 
+files before terminating an instance or installing the necessary softwares in an instance before launching it.
+
+----Scenario - 
+A user has setup an Auto Scaling group. Due to some issue the group has failed to launch a single instance for more than 24 hours. 
+What will happen to Auto Scaling in this condition?
+-Auto Scaling will suspend the scaling process. Auto Scaling allows you to suspend and then resume one or more of the Auto Scaling 
+processes in your Auto Scaling group. This can be very useful when you want to investigate a configuration problem or other issue with 
+your web application, and then make changes to your application, without triggering the Auto Scaling process.
 
 
 
