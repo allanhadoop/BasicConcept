@@ -243,10 +243,21 @@ Which of the following use cases are suitable for Amazon DynamoDB?
 If all your JSON data have the same fields eg [id,name,age] then it would be better to store it in a relational database, the metadata 
 on the other hand is unstructured, also running relational joins or complex updates would work on DynamoDB as well.
 
+----Scenario - 
+How can I load my data to Amazon Redshift from different data sources like Amazon RDS, Amazon DynamoDB and Amazon EC2?
+- You can use the COPY command to load data in parallel directly to Amazon Redshift from Amazon EMR, Amazon DynamoDB, or any SSH-enabled 
+host.
+- AWS Data Pipeline provides a high performance, reliable, fault tolerant solution to load data from a variety of AWS data sources. You 
+can use AWS Data Pipeline to specify the data source, desired data transformations, and then execute a pre-written import script to load 
+your data into Amazon Redshift.
 
-
-
-
+----Scenario - 
+Your application has to retrieve data from your user’s mobile every 5 minutes and the data is stored in DynamoDB, later every day at a 
+particular time the data is extracted into S3 on a per user basis and then your application is later used to visualize the data to the 
+user. You are asked to optimize the architecture of the backend system to lower cost, what would you recommend?
+-Since our work requires the data to be extracted and analyzed, to optimize this process a person would use provisioned IO, but since it 
+is expensive, using a ElastiCache memoryinsread to cache the results (from DynamoDB) in the memory can reduce the provisioned read 
+throughput and hence reduce cost without affecting the performance.
 
 
 
