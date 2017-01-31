@@ -62,11 +62,20 @@ period that he has chosen.
 ---- Q - 
 Are the Reserved Instances available for Multi-AZ Deployments? --Multi-AZ Available for all instance types
 
-
-
-
-
-
+---- Q - 
+How to use the CPU processor state control feature available on the  c4.8xlarge instance?
+The processor state control consists of 2 states:C-states are idle states and P-states are operational states
+-- The C state – Sleep state varying from c0 to c6. C6 being the deepest sleep state for a processor.With the exception of C0, 
+      where the CPU is active and busy doing something, a C-state is an idle state. 
+-- The P state – Performance state p0 being the highest and p15 being the lowest possible frequency.A P-state is an operational state, 
+      meaning that the core / processor can be doing useful work in any P-state. 
+---- Q - 
+What kind of network performance parameters can you expect when you launch instances in cluster placement group?
+The network performance depends on the instance type and network performance specification, if launched in a placement group you can 
+expect up to
+- 10 Gbps in a single-flow,
+- 20 Gbps in multiflow i.e full duplex
+- Network traffic outside the placement group will be limited to 5 Gbps(full duplex).
 
 
 
