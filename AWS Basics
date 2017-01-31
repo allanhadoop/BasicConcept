@@ -77,10 +77,29 @@ expect up to
 - 20 Gbps in multiflow i.e full duplex
 - Network traffic outside the placement group will be limited to 5 Gbps(full duplex).
 
+---- Q - 
+To deploy a 4 node cluster of Hadoop in AWS which instance type can be used?
+Hadoop cluster follows a master slave concept. The master machine processes all the data, slave machines store the data and act as 
+data nodes. Since all the storage happens at the slave, a higher capacity hard disk would be recommended and since master does all 
+the processing, a higher RAM and a much better CPU is required. Therefore, you can select the configuration of your machine depending 
+on your workload. For e.g. – In this case c4.8xlarge will be preferred for master machine whereas for slave machine we can select 
+i2.large instance. If you don’t want to deal with configuring your instance and installing hadoop cluster manually, you can straight 
+away launch an Amazon EMR (Elastic Map Reduce) instance which automatically configures the servers for you. You dump your data to be 
+processed in S3, EMR picks it from there, processes it, and dumps it back into S3.
 
+---- Q - 
+What factor to consider prior to selection availability Zone?
+- performance, cost and latency 
 
-
-
+---- Q - 
+AWS limit 
+- 5 Elastic IP addresses per region
+- 5 VPCs per region
+- 200 Subnets per VPC
+- 50 Active VPC peering connections per VPC
+- 20 VPC endpoints per region
+- 8 for Small instances  
+- 240 for Extra Large instances
 
 
 
