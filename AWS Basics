@@ -259,6 +259,35 @@ user. You are asked to optimize the architecture of the backend system to lower 
 is expensive, using a ElastiCache memoryinsread to cache the results (from DynamoDB) in the memory can reduce the provisioned read 
 throughput and hence reduce cost without affecting the performance.
 
+----Scenario - 
+You are running a website on EC2 instances deployed across multiple Availability Zones with a Multi-AZ RDS MySQL Extra Large DB Instance. 
+The site performs a high number of small reads and writes per second and relies on an eventual consistency model. After comprehensive 
+tests you discover that there is read contention on RDS MySQL. Which are the best approaches to meet these requirements?  
+- Deploy ElastiCache in-memory cache running in each availability zone
+- Increase the RDS MySQL Instance size and Implement provisioned IOPS
+Since it does a lot of read writes, provisioned IO may become expensive. But we need high performance as well, therefore the data can be 
+cached using ElastiCache which can be used for frequently reading the data. As for RDS since read contention is happening, the instance 
+size should be increased and provisioned IO should be introduced to increase the performance.
+
+----Scenario - 
+A startup is running a pilot deployment of around 100 sensors to measure street noise and air quality in urban areas for 3 months. 
+It was noted that every month around 4GB of sensor data is generated. The company uses a load balanced auto scaled layer of EC2 instances 
+and a RDS database with 500 GB standard storage. The pilot was a success and now they want to deploy at least  100K sensors which need 
+to be supported by the backend. You need to store the data for at least 2 years to analyze it. Which setup of the following would you 
+prefer?
+- A Redshift cluster would be preferred because it easy to scale, also the work would be done in parallel through the nodes, therefore is 
+perfect for a bigger workload like our use case. Since each month 4 GB of data is generated, therefore in 2 year, it should be around 
+96 GB. And since the servers will be increased to 100K in number, 96 GB will approximately become 96TB
+
+
+
+
+
+
+
+
+
+
 
 
 
