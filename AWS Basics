@@ -533,7 +533,53 @@ it has a huge user base, Lambda may not be the apt choice
 6 MB - Request body payload(The request body payload is like the data that you send with a “GET” or “PUT” request in HTTP)
 128 KB - Request body(request body would be the type of request , the headers etc)
 -----------------------------------------------------------------------------------------------------------------------
-# RDS - 
+# RDS - is a web service that makes it easier to set up, operate, and scale a relational database in the cloud.RDS is not a database, 
+it’s a service that manages databases.
+
+RDS AWS Components:
+-DB Instances
+-Regions and Availability Zones
+-Security Groups
+-DB Parameter Groups
+-DB Option Groups
+
+
+---- DB instance - 
+-They are the building blocks of RDS. It is an isolated database environment in the cloud, which can contain multiple user-created databases, 
+and can be accessed using the same tools and applications that one uses with a stand-alone database instance.
+-A DB Instance can be created using the AWS Management Console , the Amazon RDS API, or the AWS Command line Interface .
+-The computation and memory capacity of a DB Instance depends on the DB Instance class. For each DB Instance you can select from 5GB to 6TB
+of associated storage capacity.
+The DB Instances are of the following types:
+-Standard Instances (m4,m3)
+-Memory Optimised (r3)
+-Micro Instances (t2)
+You can deploy your DB Instance in multiple AZ.The failover instance is called a standby, and the original instance is called the primary instance.
+
+-- Security group  - Amazon RDS uses 3 types of Security Groups:
+VPC Security Group - It controls the DB Instance that is inside a VPC.
+EC2 Security Group - It controls access to an EC2 Instance and can be used with a DB Instance.
+DB Security Group - It controls the DB Instance that is not in a VPC
+
+--DB Parameter groups
+-It contains the engine configuration values that can be applied to one or more DB Instances of the same instance type.
+-If you don’t apply a DB Parameter group to your instance, you are assigned a default Parameter group which has the default values.
+
+--DB Option groups
+-Some DB engines offer tools that simplify managing your databases.
+-RDS makes these tools available with the use of Option groups
+
+--Backups - 
+-The automated backups where in you set a time for your backup to be done.
+-DB Snapshots, where in you manually take a backup of your DB, you can take snapshots as frequently as you want
+
+--read replicas
+snapshots are created from a source DB and all the read traffic to the source database is distributed among the read replicas, this 
+reduces the overall overhead on the source DB.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+# ELB -
 
 
 
