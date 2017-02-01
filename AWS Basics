@@ -439,21 +439,39 @@ EC2 offers 5 types of instances
             E.g 3D modelling etc.
 
 
+Some features of instances - 
+- T2 instances are burstable instances, meaning the CPU performs at a baseline, say 20% of its capability
+- C4, M4, and D2 instances, are EBS optimized by default, EBS means Elastic Block Storage, which is a storage option provided by AWS 
+in which the IOPS* rate is quite high. Therefore, when an EBS volume is attached to an optimized instance, single digit millisecond 
+latencies can be achieved.
+- X1, M4, C4, C3, I2, G2 and D2 instances support cluster networking. Instances launched into a common placement group are put in a 
+logical group that provides high-bandwidth, low latency between all the instances in the group. A placement group is basically a logical 
+cluster where some select EC2  instances which are a part of that group can utilize up to 10Gbps for single flow and 20Gbps for multi 
+flow traffic in each direction.
 
+Dedicated instances - They are the instances that run on single-tenant hardware dedicated to a single customer.They are perfect for 
+workloads where a corporate policy or industry regulation requires that your instance should be isolated from any other customer’s 
+instance, therefore they go for their own separate machines, and their instances are isolated at the hardware level.
 
+----Scenarios - Analysis of customer’s data -t2 instances
+Customer’s website activity, etc. should all be monitored in real-time. There will be times when the 
+traffic on the website will be minimum, therefore using a very powerful processor should not be considered, since it will become 
+expensive for the company because it will not be used for every hour of the day. Hence, for this task, we might take t2 instances 
+because they give Burstable CPU performance i.e when the traffic will be more the CPU performance will be increased accordingly to 
+meet the requirements.
 
+----Scenarios - Our auto-response emailing system -EBS optimized instances
+It should be quick, therefore we would require systems, where the response time is as short as possible. This could be achieved by 
+using EBS optimized instances, as they offer high IOPS and hence, low latencies.
 
+---Scenarios -The search engine on our website -Cluster Networking Instances.
+It should be able to sort the keywords and return relevant results, therefore we might have 2 servers for this. One is the database and 
+the other server for processing the keywords. Therefore, the communication between these servers should be at the maximum possible rate.
+To achieve this, we can put them in a placement group and for that we have to use Cluster Networking Instances.
 
-
-
-
-
-
-
-
-
-
-
+---Scenarios -Some processes in every organisation are highly confidential - Dedicated Instances
+Because these processes give us an edge over other companies, no matter how secure the servers, maybe, some policies are still made to 
+be sure. Therefore, we might use Dedicated Instances for these kind of processes.
 
 
 
