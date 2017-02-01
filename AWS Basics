@@ -425,7 +425,18 @@ Any of the following tools can be used:
  - Use a managed solution such as Rightscale.
 
 
-
+----EC2 - 
+EC2 offers 5 types of instances  
+      General Instances - For applications that require a balance of performance and cost. (t2/m3/m4)
+            E.g email responding systems, where you need a prompt response as well as the it should be cost effective, since it doesn’t require much processing.
+      Compute Instances - For applications that require a lot of processing from the CPU. (c3/c4)
+            E.g analysis of data from a stream of data, like Twitter stream
+      Memory Instances - For applications that are heavy in nature, therefore, require a lot of RAM. (r3/x1)
+            E.g when your system needs a lot of applications running in the background i.e multitasking.
+      Storage Instances - For applications that are huge in size or have a data set that occupies a lot of space. (i2/d2)
+            E.g When your application is of huge size.
+      GPU Instances - For applications that require some heavy graphics rendering.(g2) 
+            E.g 3D modelling etc.
 
 
 
