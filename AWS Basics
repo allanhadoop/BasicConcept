@@ -474,6 +474,95 @@ Because these processes give us an edge over other companies, no matter how secu
 be sure. Therefore, we might use Dedicated Instances for these kind of processes.
 
 
+---- EBS volume 
+Just like your computer needs a hard drive, you need AWS EC2 Tutorial, AWS EC2 needs a storage volume to store the OS that your 
+instance will be specifying.
+-Provisioned IOPS: This category is for workloads which are mission critical, it provides high IOPS rates.
+-General Purpose: It is for workloads which need a performance and cost balance.
+-Magnetic: It is for data which is accessed less frequently, and also retrieval time is more.
+
+--- Elastic IP address - 
+Elastic IP Addresses are static IP addresses which are associated with your AWS account, they can be used to mask the failure of an 
+instance by automatically remapping your address to another working instance in your account.
+
+----Pricing option for EC2 instance- 
+-Spot Instances - Spot Instances is a pricing option which enables you to bid on unused EC2 instances. The hourly price for a Spot Instance is set by AWS EC2, and it fluctuates according to the availability of the instances in a specific Availability zone
+-On Demand Instances- These are used when you want to pay for the hour, with no long term commitments and upfront payments. They are useful for applications that may have unpredictable workloads or for test applications that are being deployed for the first time.
+-Reserved Instances-provide you with significant discounts as compared to On Demand Instances. With Reserved Instances you reserve instances for a specific period of time 
+
+---------------------------------------------------------------
+# S3 storage - source - https://www.edureka.co/blog/s3-aws-amazon-simple-storage-service/?utm_source=blog&utm_medium=left-menu&utm_term=AWS%20S3%20Tutorial:%20Deep%20Dive%20into%20Amazon%20Simple%20Storage%20Service
+Encryption to the data that you store. It can happen in two ways:
+-Client Side Encryption
+-Server Side Encryption
+-An object is the fundamental entity in S3. It consists of data, key and metadata.
+-A Bucket is a logical unit of storage in S3.A Bucket contains objects which contain the data and metadata
+-Twao ways to trasfer data over internet  - 1. Transfer Acceleration (uses cloudfront) , 2. Snowball(is a way of transferring your data physically)
+-Transfer Acceleration - CloudFront is a caching service by AWS, in which the data from client site gets transferred to the nearest edge location and from 
+there the data is routed to your AWS S3 bucket over an optimised network path. 
+
+----Scenario - A - Industry “Media”
+IMDb Internet Movie Database is a famous online database of information related to films, television programs and video games. How do we use S3 
+- To get the lowest possible latency, all possible results for a search are pre-calculated with a document for every combination of 
+letters in search. Each document is pushed to Amazon Simple Storage Service (S3) and thereby to Amazon CloudFront, putting the documents
+physically close to the users. The theoretical number of possible searches to calculate is mind-boggling—a 20-character search has 
+23 x 1030 combinations . But in practice, using IMDb’s authority on movie and celebrity data can reduce the search space to about 
+150,000 documents, which Amazon S3 and Amazon CloudFront can distribute in just a few hours.
+
+----Scenario - B - Hosting a Static Website on Amazon S3. ( Static means simple, html, css, javascript, not rails or php type server side processing) 
+---------------------------------------------------------------
+# Lambda (‘serverless’ compute service) 
+-Event Source is the entity which triggers a Lambda Function and then the task is executed. 
+Basically we have following options to execute a task:
+-AWS EC2
+-AWS Elastic Beanstalk
+-AWS OpsWorks
+-AWS Lambda
+
+-AWS OpsWorks and AWS ElasticBeanstalk are used to deploy an app, so our use case is not to create an app, but to execute a back-end code. 
+-if your code will be running for hours, and you expect a continuous stream of requests, you should probably go with EC2
+Example - logging the email activity for say a small company, would see more activity during the day than in the night, also there 
+could be days when there are less emails to be processed, and sometimes the whole world could start emailing you! In both the cases, 
+Lambda is best for this. however considering this use case for a big social networking company, where the emails are never ending because 
+it has a huge user base, Lambda may not be the apt choice
+
+--Limitation of Lambda -
+512 MB  - Hardware limitations include the disk size
+128 MB and 1536 MB - Memory 
+5 mins - execution timeout
+6 MB - Request body payload(The request body payload is like the data that you send with a “GET” or “PUT” request in HTTP)
+128 KB - Request body(request body would be the type of request , the headers etc)
+-----------------------------------------------------------------------------------------------------------------------
+# RDS - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
