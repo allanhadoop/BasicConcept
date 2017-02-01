@@ -579,8 +579,16 @@ reduces the overall overhead on the source DB.
 
 
 -----------------------------------------------------------------------------------------------------------------------
-# ELB -
-
+# Source - http://jayendrapatil.com/tag/elb/
+# ELB - 
+- Auto Scaling integrates with Elastic Load Balancing and enables to attach one or more load balancers to an existing Auto Scaling group.
+- ELB registers the EC2 instance using its IP address and routes requests to the primary IP address of the primary interface (eth0) of the instance.
+- After the ELB is attached, it automatically registers the instances in the group and distributes incoming traffic across the instances
+- When ELB is detached, it enters the Removing state while deregistering the instances in the group.
+- If connection draining is enabled, ELB waits for in-flight requests to complete before deregistering the instances.
+- Instances remain running after they are deregistered from the ELB
+- Auto Scaling adds instances to the ELB as they are launched, but this can be suspended. Instances launched during the suspension period 
+  are not added to load balancer, after resumption, and must be registered manually.
 
 
 
