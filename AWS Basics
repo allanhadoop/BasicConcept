@@ -590,12 +590,8 @@ reduces the overall overhead on the source DB.
 - Auto Scaling adds instances to the ELB as they are launched, but this can be suspended. Instances launched during the suspension period 
   are not added to load balancer, after resumption, and must be registered manually.
 
-
-
-
-
-
-
+-----------------------------------------------------------------------------------------------------------------------
+# AWS certification details - Source http://jayendrapatil.com/tag/elb/
 
 
 
