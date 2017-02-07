@@ -592,6 +592,24 @@ DNS hostnames for all other inter-node communication
   are not added to load balancer, after resumption, and must be registered manually.
 
 -----------------------------------------------------------------------------------------------------------------------
+- bucket limit of 100 buckets
+- S3 now supports read-after-write consistency for new objects added to Amazon S3 in US Standard region.Read-after-write consistency 
+  allows you to retrieve objects immediately after creation in Amazon S3
+- Amazon S3 does not currently support object locking. If two PUT requests are simultaneously made to the same key, the request with 
+  the latest time stamp wins. If this is an issue, you will need to build an object-locking mechanism into your application.
+- Amazon S3 offers eventual consistency for overwrite PUTS and DELETES in all regions. Amazon S3 achieves high availability by 
+  replicating data across multiple servers within Amazon's data centers. If a PUT request is successful, your data is safely stored. 
+  However, information about the changes must replicate across Amazon S3, which can take some time , THAT IS WHY IT IS CALLED evantual 
+  consistency. if you make a HEAD or GET request to the key name (to find if the object exists) before creating the object.
+- A process writes a new object to Amazon S3 and immediately lists keys within its bucket. Until the change is fully propagated, 
+  the object might not appear in the list. 
+- Updates are key-based; there is no way to make atomic updates across keys. For example, you cannot make the update of one key 
+  dependent on the update of another key unless you design this functionality into your application.
+
+
+--------------------------------------
+Example of consistent and eventual read is at = http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#Regions
+--------------------------------------
 # AWS certification details - Source http://jayendrapatil.com/tag/elb/
 
 
