@@ -617,6 +617,10 @@ secure integration between your on-premises IT environment and the AWS storage i
 --------------------------------------
 Example of consistent and eventual read is at = http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#Regions
 --------------------------------------
+Amazon CloudFront is a content delivery network (CDN) offered by Amazon Web Services. Content delivery networks provide a 
+globally-distributed network of proxy servers which cache content, such as web videos or other bulky media, more locally to consumers, 
+thus improving access speed for downloading the conten
+
 # AWS certification details - Source http://jayendrapatil.com/tag/elb/
 
 
