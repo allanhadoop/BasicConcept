@@ -605,8 +605,15 @@ DNS hostnames for all other inter-node communication
   the object might not appear in the list. 
 - Updates are key-based; there is no way to make atomic updates across keys. For example, you cannot make the update of one key 
   dependent on the update of another key unless you design this functionality into your application.
+--------------------------------------
+Public Ip: Public Ip address is assigned to the EC2 instance from the pool of public IP addresses. It’s not associated with the AWS 
+account but restricted to the life of the instance(life means till the time instance doesn’t go into stop/start). Upon stop/start 
+your instance change it physical host and starts on a new host which will change the public IP address.
 
+Elastic IP address: EIP is associated with your account rather than instance. Even in the event of stop/start of the instance of the instance failure and you move to new instance you can still have the same public IP address. To do this, you must allocate an Elastic IP address for use with the VPC, and then associate that Elastic IP address with a private IP address specified by the network interface attached to the instance.
 
+AWS Storage Gateway is a service that connects an on-premises software appliance with cloud-based storage to provide seamless and 
+secure integration between your on-premises IT environment and the AWS storage infrastructure in the cloud.
 --------------------------------------
 Example of consistent and eventual read is at = http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#Regions
 --------------------------------------
