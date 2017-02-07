@@ -576,8 +576,9 @@ DB Security Group - It controls the DB Instance that is not in a VPC
 --read replicas
 snapshots are created from a source DB and all the read traffic to the source database is distributed among the read replicas, this 
 reduces the overall overhead on the source DB.
-
-
+-----------------------------------------------------------------------------------------------------------------------
+Elastic IP address primarily for the ability to remap the address to another instance in the case of instance failure, and to use 
+DNS hostnames for all other inter-node communication
 -----------------------------------------------------------------------------------------------------------------------
 # Source - http://jayendrapatil.com/tag/elb/
 # ELB - 
