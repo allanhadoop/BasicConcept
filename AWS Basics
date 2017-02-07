@@ -1,5 +1,9 @@
 # Source https://www.edureka.co/blog/interview-questions/top-aws-architect-interview-questions-2016/
 
+DevOps - continuous integration, continuous delivery, cloud infrastructure, test automation, and configuration management
+More info - http://www.infoworld.com/article/3113680/application-development/5-common-pitfalls-of-cicd-and-how-to-avoid-them.html
+---------------------
+
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
 1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
 available at a discount compared to On-Demand pricing, you can significantly reduce the cost of running your applications
@@ -619,7 +623,7 @@ Example of consistent and eventual read is at = http://docs.aws.amazon.com/Amazo
 --------------------------------------
 Amazon CloudFront is a content delivery network (CDN) offered by Amazon Web Services. Content delivery networks provide a 
 globally-distributed network of proxy servers which cache content, such as web videos or other bulky media, more locally to consumers, 
-thus improving access speed for downloading the conten
+thus improving access speed for downloading the content
 
 # AWS certification details - Source http://jayendrapatil.com/tag/elb/
 
