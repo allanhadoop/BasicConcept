@@ -2,6 +2,7 @@
 -----------------------------------------
 # delete "del" operation is not allowed on string so first transfer string to list then delete . e.g L = list(s) ; del(s[index]) 
 # basically if you wish to go till end of the length of the given string then use 'range' option which will give index (for i in range(len(str) where i is not index number  of str position)
+# any operation on splited string, use join and then operation e.g. sort etc 
 -----------------------------------------
 # to count the number of characters (character frequency) in a string for 'google.com'
 # Expected Result : {'o': 3, 'g': 2, '.': 1, 'e': 1, 'l': 1, 'm': 1, 'c': 1}
