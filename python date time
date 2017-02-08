@@ -208,7 +208,7 @@ today = date.today()
 print(today.isoweekday())
 offset = (today.isoweekday() - 1) % 7   #so each day is slice of 7 meaning mod of 7 and if mod valus is 3 then today is 
                                         #thursday and 3 days left to complete week till Sunday.
-offset += 2                             #here we are adding 3 and 2 (to get to second day which is Tuesday)
+offset += 2                             #here we are adding 2 to the offset valyue 3(to get to second day which is Tuesday)
 next_tuesday = today + timedelta(days=offset)   #to get next Tuesday , now add that mod from current date
 print(next_tuesday) 
 ----------------------------------------------
