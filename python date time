@@ -37,6 +37,10 @@ print(datetime.date.today().strftime("%w"))   #weekday of the year
 print(datetime.date.today().strftime("%j"))   #day of the year
 print(datetime.date.today().strftime("%A"))   #day of the week
 ----------------------------------------------
+t  = 'Jan 1 2014 2:43PM'
+print(datetime.date.today().strftime("%Y:%d:%m"))           #take date from system and convert to format specified by us
+print(datetime.datetime.strptime(t,'%b %d %Y %I:%M%p'))     # identify format of data and let system convert to date
+----------------------------------------------
 # to determine whether a given year is a leap year.
 def leap_year(y):  
     if y % 400 == 0:  
