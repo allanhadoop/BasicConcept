@@ -109,7 +109,7 @@ Output  - 9
 t = ((2, "w"),(3, "r"))
 p = ((1,20),(2, 30))           #check syntax  there is no :
 print(dict((y,x) for x,y in t))     
-print(dict((x,y) for x,y in p))     
+print(dict((x,y) for x,y in p))      ##check double (( to build dictionary object
 Output --
 {'r': 3, 'w': 2}
 {1: 20, 2: 30}
