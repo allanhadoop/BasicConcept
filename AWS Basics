@@ -3,6 +3,9 @@
 DevOps - continuous integration, continuous delivery, cloud infrastructure, test automation, and configuration management
 More info - http://www.infoworld.com/article/3113680/application-development/5-common-pitfalls-of-cicd-and-how-to-avoid-them.html
 ---------------------
+VPC endpoint to access s3 - define endpoint, route table, security group 
+https://www.cloudberrylab.com/blog/how-to-create-and-access-s3-endpoint-in-the-private-vpc-network-2/
+--------------------
 
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
 1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
