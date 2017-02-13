@@ -1,3 +1,20 @@
+# Source - http://cloudacademy.com/blog/vpc-endpoint-for-amazon-s3/
+VPC endpoint using AWS CLI command 
+
+aws ec2 describe-route-tables      # (get our VPC Id and route table for the endpoint)
+
+# AWS supports endpoints within a single region ap-southeast-2.
+aws ec2 create-vpc-endpoint --vpc-id vpc-731e0711 --service-name com.amazonaws.ap-southeast-2.s3 --route-table-ids rtb-0404a561
+aws ec2 describe-vpc-endpoints
+
+# Even once you create a VPC Endpoint, the S3 public endpoints and DNS names will continue to work as they always have.
+# what an endpoint effectively does is enable instances in your VPC to use their private IP addresses to communicate with resources 
+# in other services. Consequently, your instances do not require public IP addresses, and you do not need an Internet Gateway, a NAT 
+# instance, or a virtual private gateway in your VPC. This is because you use endpoint policies to control access to resources in other 
+# services. Traffic between your VPC and the AWS service does not leave the Amazon network.
+
+
+------------------------------------------------
 Difference between SSH and SSL - SSL and SSH both provide the cryptographic elements to build a tunnel for confidential data transport with checked integrity.
 
       SSL              SSH
