@@ -4,7 +4,49 @@
 setup.py is a python file, which usually tells you that the module/package you are about to install have been packaged and 
 distributed with Distutils, which is the standard for distributing Python Modules. This allows you to easily install Python 
 packages, often it's enough to write: python setup
---------
+-----------
+# SOURCE - http://mikegrouchy.com/blog/2012/05/be-pythonic-__init__py.html
+What is __init__.py used for?  --The primary use of __init__.py is to initialize Python packages. So python module may look like below
+package/
+    __init__.py
+    file.py
+    file2.py
+    file3.py
+    subpackage/
+        __init__.py
+        submodule1.py
+        submodule2.py
+
+# Inclusion of the __init__.py file in a directory indicates to the Python interpreter that the directory should be treated like a 
+Python package.__init__.py can be an empty file but it is often used to perform setup needed for the package(import things, load 
+things into path, etc).One common thing to do in your __init__.py is to import selected Classes, functions, etc into the package 
+level so they can be convieniently imported from the package.
+
+In our example above we can say that file.py has the Class "File". So without anything in our __init__.py you would import with 
+this syntax - 
+from package.file import File
+
+However you can import File into your __init__.py to make it available at the package level:
+# in your __init__.py
+from file import File
+
+# now import File from package
+from package import File
+
+
+# Another thing to do is at the package level make subpackages/modules available with the __all__ variable. When the interpeter 
+sees an __all__ variable defined in an __init__.py it imports the modules listed in the __all__ variable when you do
+
+from package import *
+
+# __all__ is a list containing the names of modules that you want to be imported with import * so looking at our above example again 
+if we wanted to import the submodules in subpackage the __all__ variable in subpackage/__init__.py would be:
+
+__all__ = ['submodule1', 'submodule2']
+from subpackage import *
+
+#  __init__.py can be very useful besides its primary function of indicating that a directory is a module
+----------------------------
 IPython is an enhanced interactive Python shell that has lots of interesting features including named inputs and outputs, 
 access to shell commands, improved debugging and many more. When we start it with the command line argument -pylab 
 (--pylab since IPython version 0.12), it allows interactive matplotlib sessions that have Matlab/Mathematica-like functionality.
