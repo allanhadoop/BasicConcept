@@ -13,6 +13,12 @@ groups in order to add an additional layer of security to your VPC.
 S3 Access Control Lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an ACL attached to it 
 as a subresource. It defines which AWS accounts or groups are granted access and the type of access.
 ---------------------------------
+A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
+
+Each subnet in your VPC must be associated with a route table; the table controls the routing for the subnet. A subnet can only be 
+associated with one route table at a time, but you can associate multiple subnets with the same route table.
+
+---------------------------------
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
 1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
 available at a discount compared to On-Demand pricing, you can significantly reduce the cost of running your applications
