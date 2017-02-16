@@ -18,6 +18,10 @@ A route table contains a set of rules, called routes, that are used to determine
 Each subnet in your VPC must be associated with a route table; the table controls the routing for the subnet. A subnet can only be 
 associated with one route table at a time, but you can associate multiple subnets with the same route table.
 
+Note, each newly created route table comes prelisted with a default route, referred to as the local route. This local route has an IP 
+range that covers the entire vpc IP range. This is what makes it possible for each EC2 instance in your VPC to automatically be able 
+to communicate with each other.In order make a subnet into public subnet (i.e. be able to receive outside traffic), it needs to be 
+connected to a route table, which in turn is attached to an “internet gateway”:
 ---------------------------------
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
 1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
