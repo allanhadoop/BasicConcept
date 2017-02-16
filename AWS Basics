@@ -6,7 +6,13 @@ More info - http://www.infoworld.com/article/3113680/application-development/5-c
 VPC endpoint to access s3 - define endpoint, route table, security group 
 https://www.cloudberrylab.com/blog/how-to-create-and-access-s3-endpoint-in-the-private-vpc-network-2/
 --------------------
-
+Network access control list (ACL) - A network access control list (ACL) is an optional layer of security for your VPC that acts as a 
+firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security 
+groups in order to add an additional layer of security to your VPC.
+--------------------
+S3 Access Control Lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an ACL attached to it 
+as a subresource. It defines which AWS accounts or groups are granted access and the type of access.
+---------------------------------
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
 1. Spot Instances - Amazon EC2 Spot instances allow you to bid on spare Amazon EC2 computing capacity. Since Spot instances are often 
 available at a discount compared to On-Demand pricing, you can significantly reduce the cost of running your applications
