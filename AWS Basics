@@ -13,6 +13,7 @@ groups in order to add an additional layer of security to your VPC.
 S3 Access Control Lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an ACL attached to it 
 as a subresource. It defines which AWS accounts or groups are granted access and the type of access.
 ---------------------------------
+# Network configuration source - http://codingbee.net/tutorials/aws/aws-csa-associate/aws-vpcs-subnets-routing-tables-and-internet-gateways
 A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
 
 Each subnet in your VPC must be associated with a route table; the table controls the routing for the subnet. A subnet can only be 
