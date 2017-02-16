@@ -25,6 +25,7 @@ to communicate with each other.In order make a subnet into public subnet (i.e. b
 connected to a route table, which in turn is attached to an “internet gateway”:
 ---------------------------------
 Source to set up VPC - http://www.studytrails.com/amazon-aws/aws-vpc-tutorial-part-ii-subnets/
+Above source explains - creating a web server, an application server and an RDS instance
 AWS gives 251 usable IPs. Amazon reserves 5 addresses.
 ---------------------------------
 ec2-create-group CreateSecurityGroup -- Creates a new security group for use with your account.
