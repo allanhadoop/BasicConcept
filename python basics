@@ -46,7 +46,103 @@ __all__ = ['submodule1', 'submodule2']
 from subpackage import *
 
 #  __init__.py can be very useful besides its primary function of indicating that a directory is a module
-----------------------------
+--------------------------------------------------------------------------------------------
+# Source - http://nvie.com/posts/iterators-vs-generators/
+What is following concepts in python 
+- a container
+- an iterable
+- an iterator
+- a generator
+- a generator expression
+- a {list, set, dict} comprehension
+
+Diagram at 
+Link - http://nvie.com/posts/iterators-vs-generators/ 
+
+# Containers are data structures holding elements, and that support membership tests. They are data structures that live in memory, 
+and typically hold all their values in memory, too. Technically, an object is a container when it can be asked whether it contains 
+a certain element.
+>>> assert 1 in [1, 2, 3]      # lists
+>>> d = {1: 'foo', 2: 'bar', 3: 'qux'}    # Dict membership will check the keys:
+>>> assert 1 in d
+>>> s = 'foobar'
+>>> assert 'b' in s    # a string "contains" all its substrings
+
+# An iterable is any object , that can return an iterator (with the purpose of returning all of its elements)
+>>> x = [1, 2, 3]
+>>> y = iter(x)
+>>> z = iter(x)
+>>> next(y)
+1
+>>> next(y)
+2
+x = [1, 2, 3]
+for elem in x:
+    ...
+
+Here, x is the iterable, while y and z are two individual instances of an iterator, producing values from the iterable x.
+
+
+# Interators ( with S at the end , not interator as given above) - 
+It's a stateful helper object that will produce the next value when you call next() on it. Any object that has a __next__() 
+method is therefore an iterator. 
+>>> from itertools import count
+>>> counter = count(start=13)
+>>> next(counter)
+13
+>>> next(counter)
+14
+
+Some interators produces infinite sequences from finite set of data 
+>>> from itertools import cycle
+>>> colors = cycle(['red', 'white', 'blue'])
+>>> next(colors)
+'red'
+>>> next(colors)
+'white'
+>>> next(colors)
+'blue'
+>>> next(colors)
+'red'
+
+Some produce finite sequences from infinite sequences:
+>>> from itertools import islice
+>>> colors = cycle(['red', 'white', 'blue'])  # infinite
+>>> limited = islice(colors, 0, 4)            # finite
+>>> for x in limited:                         # so safe to use for-loop on
+...     print(x)
+red
+white
+blue
+red
+
+# -----------------Generators
+- Any generator also is an iterator (not vice versa!);
+- Any generator, therefore, is a factory that lazily produces values usng YIELD keyword instead of RETURN 
+Example below - 
+>>> def fib():
+...     prev, curr = 0, 1
+...     while True:
+...         yield curr
+...         prev, curr = curr, prev + curr
+...
+>>> f = fib()
+>>> list(islice(f, 0, 10))
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+# There are two types of generators in Python: 
+1. generator functions (above example using YIELD keyword)  
+2. generator expressions (below example .
+>>> numbers = [1, 2, 3, 4, 5, 6]
+>>> [x * x for x in numbers]       # list comprehension
+[1, 4, 9, 16, 25, 36]
+OR 
+>>> {x * x for x in numbers}       # set comprehension
+OR 
+>>> {x: x * x for x in numbers}    # dict comprehension:
+
+
+--------------------------------------------------------------------------------------------
 IPython is an enhanced interactive Python shell that has lots of interesting features including named inputs and outputs, 
 access to shell commands, improved debugging and many more. When we start it with the command line argument -pylab 
 (--pylab since IPython version 0.12), it allows interactive matplotlib sessions that have Matlab/Mathematica-like functionality.
