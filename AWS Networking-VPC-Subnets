@@ -9,12 +9,12 @@ gateways. The gateways are completely managed by AWS and so they are preferred o
                        |                     |                              
                   route table1           route table2
                        |                     |
-                      igw(attach to vpc)   EIP+NAT gateway
+                      igw(attach to vpc)   Assign EIP to NAT gateway
                        |                     |
-                 add entry to 
-             route table(0.0.0.0./0)     
-                       |
-                  public subnet          private subnet
+                 add IGW entry to          add NAT entry to 
+            new route table(0.0.0.0./0)  new route table(0.0.0.0/0)    
+                       |                     |
+               assign public subnet     assign private subnet
 
 # Main job that Nat gateway - private subnet do not have an IP address, so the NAT gateway translates the private IP to a public IP before 
 routing the traffic out to the internet.NAT stands for Network Address Translation and it does just that – translates private IPs to public IP.
@@ -24,9 +24,15 @@ Check diagram at http://www.studytrails.com/amazon-aws/aws-vpc-tutorial/
 
 At the time of creating VPC, system creates default Route table which allows access to instances within the VPC. It does not allow access 
 to instances outside the VPC. VPC has two layers of security: security groups and network ACLs.Security grp are mainly for instances and ACL
-for subnet.
+for subnet. Real life scenario - RDS instance and the application server in the private subnet and the web server in the public subnet.
 
-Real life scenario - RDS instance and the application server in the private subnet and the web server in the public subnet.
+# The two private networks need to talk to the internet for things like updating the operating system or installing software. Since the 
+instances in the private network do not have a public IP, they need a NAT (Network Address Translation) Gateway that can convert the 
+private IP to public IP for routing traffic to the internet and back. AWS provides two kinds of NAT resources – NAT instances and NAT 
+gateways. The gateways are completely managed by AWS and so they are preferred over NAT instances.
+
+
+
 
 
 
