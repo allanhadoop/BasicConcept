@@ -168,6 +168,8 @@ A customer implemented AWS Storage Gateway with a gateway-cached volume at their
 main and branch office offline. Which methods will enable the branch office to access their data?
 - Launch a new AWS Storage Gateway instance AMI in Amazon EC2, and restore from a gateway snapshot.
 
+AWS Storage Gateway is a service that connects an on-premises software appliance with cloud-based storage to provide seamless and secure 
+integration between your on-premises IT environment and the AWS storage infrastructure in the cloud.
 ---- Q - 
 When you need to move data over long distances using the internet, for instance across countries or continents to your Amazon S3 bucket, 
 which method or service will you use?
