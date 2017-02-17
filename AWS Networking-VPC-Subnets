@@ -9,8 +9,11 @@ gateways. The gateways are completely managed by AWS and so they are preferred o
                        |                     |                              
                   route table1           route table2
                        |                     |
-                      igw                EIP+NAT gateway
+                      igw(attach to vpc)   EIP+NAT gateway
                        |                     |
+                 add entry to 
+             route table(0.0.0.0./0)     
+                       |
                   public subnet          private subnet
 
 # Main job that Nat gateway - private subnet do not have an IP address, so the NAT gateway translates the private IP to a public IP before 
@@ -20,7 +23,10 @@ SO route table contains rules for routing traffic within a subnet and from the s
 Check diagram at http://www.studytrails.com/amazon-aws/aws-vpc-tutorial/
 
 At the time of creating VPC, system creates default Route table which allows access to instances within the VPC. It does not allow access 
-to instances outside the VPC. VPC has two layers of security: security groups and network ACLs.
+to instances outside the VPC. VPC has two layers of security: security groups and network ACLs.Security grp are mainly for instances and ACL
+for subnet.
+
+Real life scenario - RDS instance and the application server in the private subnet and the web server in the public subnet.
 
 
 
