@@ -13,4 +13,19 @@ gateways. The gateways are completely managed by AWS and so they are preferred o
                        |                     |
                   public subnet          private subnet
 
+# Main job that Nat gateway - private subnet do not have an IP address, so the NAT gateway translates the private IP to a public IP before 
+routing the traffic out to the internet.NAT stands for Network Address Translation and it does just that – translates private IPs to public IP.
+SO route table contains rules for routing traffic within a subnet and from the subnet to outside world.
+
+Check diagram at http://www.studytrails.com/amazon-aws/aws-vpc-tutorial/
+
+At the time of creating VPC, system creates default Route table which allows access to instances within the VPC. It does not allow access 
+to instances outside the VPC. VPC has two layers of security: security groups and network ACLs.
+
+
+
+
+
+
+
 
