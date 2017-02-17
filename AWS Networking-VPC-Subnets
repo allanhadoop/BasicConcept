@@ -1,0 +1,16 @@
+# Source http://www.studytrails.com/amazon-aws/aws-vpc-tutorial-part-ii-subnets/
+
+The two private networks need to talk to the internet for things like updating the operating system or installing software. Since the 
+instances in the private network do not have a public IP, they need a NAT (Network Address Translation) Gateway that can convert the 
+private IP to public IP for routing traffic to the internet and back. AWS provides two kinds of NAT resources – NAT instances and NAT 
+gateways. The gateways are completely managed by AWS and so they are preferred over NAT instances.
+
+                      vpc (virtial private cloud)
+                       |                     |                              
+                  route table1           route table2
+                       |                     |
+                      igw                EIP+NAT gateway
+                       |                     |
+                  public subnet          private subnet
+
+
