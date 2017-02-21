@@ -1,4 +1,6 @@
 # Source - http://comtechies.com/how-to-configure-aws-route53.html
+Amazon Route 53 is an authoritative Domain Name System (DNS) service. DNS is the system that translates human-readable domain names 
+(example.com) into IP addresses (192.0.2.0)."
 
 # Route 53 DNS service will automatically finds the visitors geographical area using the visitors ip address and forwards the request to 
 the nearest server where your website is hosted based on the network latency ( latency based routing)
@@ -13,7 +15,7 @@ the nearest server where your website is hosted based on the network latency ( l
                     
 STeps - 
 1. Create hosted zone under Route53 screen 
-- domain name registered with any domain name registrar
+- domain name registered with any domain name registrar. name server (NS) record and a start of authority (SOA) record
 2. Hosted zone will create four DNS endpoints called delegation set. These are AWS name servers e.g. ns-1490-awsdns-58-org
 3. These 4 endpoints should to be updated in your domain names nameserver section- example www.godaddy.com
 4. Create record sets for the hosted zone. These record sets are used map the domain names to respective aws instances where you host 
@@ -27,6 +29,8 @@ Value : ip address of your server which is hosting your application
 Routing Policy : latency
 There are four routing policies, simple , latency, weighted and failover.
 
+# Basically record sets to tell the Domain Name System (DNS) how you want traffic to be routed.
+
 -------------
 Scenario - 
 Not all servers should be publicly accessible. For example, you may have an internal EC2 instance which hosts your database server 
@@ -36,8 +40,44 @@ accessed by other application instances inside EC2. You want to architect your i
 Solution --Assign an Elastic IP to the internal instance and use the external Elastic IP DNS name. To switch servers, simply re-assign the Elastic 
 IP to a new EC2 instance                    
                     
-                    
-                    
-                    
+-------------                    
+# SOurce - http://altitudelabs.com/blog/how-to-set-up-app-subdomain-route-53/
+Scenario 2 - To set up marketing pages on their main domain name - brandname.com and www.brandname.com, and web application 
+on a different subdomain - app.brandname.com.               
+
+1. Create hosted zone with brandname.com.system will add 2 entries (1 for NS & another one for SOA) 
+We will need to create 3 records: brandname.com, www.brandname.com for the marketing site and app.brandname.com, which points to our 
+web app.
+
+- For brandname.com , create record set as follows 
+Name - #
+Type - “Address” (A) record
+TTL - 300 (this means if this DNS record was changed on the authoritative nameserver, DNS servers around the world would still show the 
+old value from their cache for up to 300s after the change)
+Value - IP address of marketing website
+Routing Policy   - simple
+
+
+- For www.brandname.com , create record set as follows 
+Name - www
+Type - CNAME
+TTL - 300 
+Value - Public DNS value of  marketing website
+Routing Policy   - simple
+
+- For app.brandname.com , create record set as follows
+Name - app
+Type - CNAME
+TTL - 300 
+Value - Public DNS value of your web app instead of the marketing website
+Routing Policy   - simple
+
+
                           
-                          
+
+
+
+
+
+
+
