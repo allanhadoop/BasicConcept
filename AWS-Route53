@@ -28,10 +28,13 @@ Routing Policy : latency
 There are four routing policies, simple , latency, weighted and failover.
 
 -------------
+Scenario - 
+Not all servers should be publicly accessible. For example, you may have an internal EC2 instance which hosts your database server 
+accessed by other application instances inside EC2. You want to architect your installation so that you can replace the database server 
+(instance failure, resizing, etc) but you want to make it easy to get all your application servers to start using the new instance.
 
-
-
-                    
+Solution --Assign an Elastic IP to the internal instance and use the external Elastic IP DNS name. To switch servers, simply re-assign the Elastic 
+IP to a new EC2 instance                    
                     
                     
                     
