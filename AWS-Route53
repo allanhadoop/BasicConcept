@@ -1,0 +1,40 @@
+# Source - http://comtechies.com/how-to-configure-aws-route53.html
+
+# Route 53 DNS service will automatically finds the visitors geographical area using the visitors ip address and forwards the request to 
+the nearest server where your website is hosted based on the network latency ( latency based routing)
+
+                    user(India)      user(US) 
+                          |             |           
+                        ((((((Route53)))))
+                          |             |
+                        Request      Request
+                          |             |
+                    EC2(Singapore)  EC2(Oregon)
+                    
+STeps - 
+1. Create hosted zone under Route53 screen 
+- domain name registered with any domain name registrar
+2. Hosted zone will create four DNS endpoints called delegation set. These are AWS name servers e.g. ns-1490-awsdns-58-org
+3. These 4 endpoints should to be updated in your domain names nameserver section- example www.godaddy.com
+4. Create record sets for the hosted zone. These record sets are used map the domain names to respective aws instances where you host 
+your application.
+5. Fill in record set as follow for example 
+name : append www
+Type : A
+TTL :50
+Alias : yes , if you want to point the domain name to any load balcancer, s3 or cloud front enpoints. No, if you want to point the domain name to the servers ip. I my case, am selecting no because am pointing the domian name directly to the servers ip address.
+Value : ip address of your server which is hosting your application
+Routing Policy : latency
+There are four routing policies, simple , latency, weighted and failover.
+
+-------------
+
+
+
+                    
+                    
+                    
+                    
+                    
+                          
+                          
