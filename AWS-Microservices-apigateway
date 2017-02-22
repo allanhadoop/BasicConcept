@@ -172,6 +172,9 @@ needed data
 We need to implement message broker instead of using API to communicate between services (e.g. order and customer service)
 Database updates via event is not ACID transactions. They are eventual consistency. 
 
+# Deployment option ( AWS gives stages - dev. prod etc) ---
+https://www.nginx.com/blog/deploying-microservices/?utm_source=event-driven-data-management-microservices&utm_medium=blog&utm_campaign=Microservices
+
 --------------------------------
 CAP Therom - 
 No distributed system is safe from network failures, thus network partitioning generally has to be tolerated. In the presence of a 
