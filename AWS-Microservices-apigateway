@@ -1,0 +1,137 @@
+# Source - https://www.nginx.com/blog/building-microservices-using-an-api-gateway/
+
+# With a monolithic application there is just one set of (typically replicated, load‑balanced) endpoints. In a microservices architecture, 
+however, each microservice exposes a set of what are typically fine‑grained endpoints. Monolithic is hard to scale, change framework in future, 
+difficult to maintain.
+
+# Scenario - Simple smartphone mobile application, the product details page displays a lot of information, it includes other pages such as 
+. Number of items in the shopping cart
+. Order history
+. Customer reviews
+. Low inventory warning
+--------------------------
+When using a monolithic application architecture, a mobile client would retrieve this data by making a single REST call 
+(GET api.company.com/productdetails/productId) to the application. A load balancer routes the request to one of N identical application 
+instances. The application would then query various database tables and return the response to the client which is mobile app.
+
+In contrast, when using the microservices architecture the data displayed on the product details page is owned by multiple microservices. 
+. Shopping Cart Service – Number of items in the shopping cart
+. Order Service – Order history
+. Catalog Service – Basic product information, such as its name, image, and price
+. Review Service – Customer reviews
+so we may end up with 4 or more REST API endpoints. Define an architecture that structures the application as a set of loosely coupled, 
+collaborating services.The API Gateway is responsible for tasks such as load balancing, caching, access control, API metering, and 
+monitoring, and can be implemented effectively using NGINX.
+See 4th diagram at https://www.nginx.com/blog/introduction-to-microservices/?utm_source=building-microservices-inter-process-communication&utm_medium=blog&utm_campaign=Microservices
+Basically it has Nginx with load balancers and each of the services has its own database. So basically API gateway is AWS managed service
+which runs some webserver(e.g. nginx) and does all authentication etc and we control those using console parameters.
+
+
+--------------------------
+# It is not good design for clients to talk directly to microservices.
+# Problem with the client directly calling the microservices is that some might use protocols that are not web‑friendly. One service 
+might use Thrift binary RPC while another service might use the AMQP messaging protocol. Neither protocol is particularly browser‑ or 
+firewall‑friendly and is best used internally. An application should use protocols such as HTTP and WebSocket outside of the firewall.
+
+* An API Gateway is a server that is the single entry point into the system. See diagram at link below to see how apigatway comes in middle
+source - https://www.nginx.com/blog/building-microservices-using-an-api-gateway/
+
+* The API Gateway encapsulates the internal system architecture and provides an API that is tailored to each client. It might have 
+other responsibilities such as authentication, monitoring, load balancing, caching, request shaping and management, and static response 
+handling.
+
+* The API Gateway is responsible for request routing, composition, and protocol translation. All requests from clients first go through 
+the API Gateway. It then routes requests to the appropriate microservice. The API Gateway will often handle a request by invoking 
+multiple microservices and aggregating the results. It can translate between web protocols such as HTTP and WebSocket and web‑unfriendly 
+protocols that are used internally.
+
+* The API Gateway can also provide each client with a custom API. It typically exposes a coarse‑grained API for mobile clients. 
+Consider, for example, the product details scenario. The API Gateway can provide an endpoint (/productdetails?productid=xxx) that 
+enables a mobile client to retrieve all of the product details with a single request. The API Gateway handles the request by invoking 
+the various services – product info, recommendations, reviews, etc. – and combining the results.
+
+** Netflix example ** 
+The Netflix streaming service is available on hundreds of different 
+kinds of devices including televisions, set‑top boxes, smartphones, gaming systems, tablets, etc. Initially, Netflix attempted to 
+provide a one‑size‑fits‑all API for their streaming service. However, they discovered that it didn’t work well because of the diverse 
+range of devices and their unique needs. Today, they use an API Gateway that provides an API tailored for each device by running 
+device‑specific adapter code. An adapter typically handles each request by invoking on average six to seven backend services. The 
+Netflix API Gateway handles billions of requests per day.
+
+*  A major benefit of using an API Gateway is that it encapsulates the internal structure of the application. Rather than having to 
+invoke specific services, clients simply talk to the gateway. The API Gateway provides each kind of client with a specific API. This 
+reduces the number of round trips between the client and application.
+
+* Microservice Architecture pattern -Source- http://microservices.io/patterns/microservices.html
+You are developing a server-side enterprise application. It must support a variety of different clients including desktop browsers, 
+mobile browsers and native mobile applications. The application might also expose an API for 3rd parties to consume. It might also 
+integrate with other applications via either web services or a message broker. The application handles requests (HTTP requests and 
+messages) by executing business logic; accessing a database; exchanging messages with other systems; and returning a HTML/JSON/XML 
+response. There are logical components corresponding to different functional areas of the application.
+
+> For example, an application might consist of services such as the order management service, the customer management service etc.
+> Services communicate using either synchronous protocols such as HTTP/REST or asynchronous protocols such as AMQP. Inter‑process communication (IPC) mechanism
+> Each service has its own database in order to be decoupled from other services.
+> Data consistency between services is maintained using an event-driven architecture
+
+Nature of the API definition - It depends on which IPC mechanism you are using. If you are using messaging, the API consists of the 
+message channels and the message types. If you are using HTTP, the API consists of the URLs and the request and response formats. 
+Later on we will describe some IDLs in more detail.
+
+
+-----------------------------
+-see diagram at link- Source- http://microservices.io/patterns/microservices.html 
+# Scenario - Let’s imagine that you are building an e-commerce application that takes orders from customers, verifies inventory and 
+available credit, and ships them. The application consists of several components including the StoreFrontUI, which implements the user 
+interface, along with some backend services for checking credit, maintaining inventory and shipping orders. The application consists of 
+a set of services to serve to different clients as follows.
+1. HTML5/JavaScript-based UI for desktop and mobile browsers - HTML is generated by a server-side web application
+2. Native Android and iPhone clients - these clients interact with the server via REST APIs
+and services could be as follow-
+. roduct Info Service - basic information about the product such as title, author
+. Pricing Service - product price
+. Order service - purchase history for product
+. Inventory service - product availability
+. Review service - customer reviews …
+
+#---- what problems Microservice solves -----
+1. Microservices typically provide fine-grained APIs, which means that clients need to interact with multiple services. For example, as 
+described above, a client needing the details for a product needs to fetch data from numerous services.
+2. Different clients need different data. For example, the desktop browser version of a product details page desktop is typically more 
+elaborate then the mobile version.
+3. Network performance is different for different types of clients. For example, a mobile network is typically much slower and has much 
+higher latency than a non-mobile network. And, of course, any WAN is much slower than a LAN. This means that a native mobile client 
+uses a network that has very difference performance characteristics than a LAN used by a server-side web application. The server-side 
+web application can make multiple requests to backend services without impacting the user experience where as a mobile client can only 
+make a few.
+4. The number of service instances and their locations (host+port) changes dynamically
+5. Partitioning into services can change over time and should be hidden from clients
+
+See second diagram at - https://www.nginx.com/blog/introduction-to-microservices/?utm_source=building-microservices-inter-process-communication&utm_medium=blog&utm_campaign=Microservices
+
+
+# Scenario of Uber - 
+The services use a combination of notifications, request/response, and publish/subscribe. For example, the passenger’s smartphone sends a 
+notification to the Trip Management service to request a pickup. The Trip Management service verifies that the passenger’s account is 
+active by using request/response to invoke the Passenger Service. The Trip Management service then creates the trip and uses 
+publish/subscribe to notify other services including the Dispatcher, which locates an available driver.
+
+# A RESTful API adheres ALL the REST constraints set out in its "format" documentation. A HTTP API is ANY API that makes use of HTTP as 
+their transfer protocol. Swaggar is just a Open API template.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
