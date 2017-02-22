@@ -655,7 +655,11 @@ thus improving access speed for downloading the content
 
 # AWS certification details - Source http://jayendrapatil.com/tag/elb/
 
-
+# 
+Atomicity – Changes are made atomically
+Consistency – The state of the database is always consistent
+Isolation – Even though transactions are executed concurrently it appears they are executed serially
+Durability – Once a transaction has committed it is not undone
 
 
 
