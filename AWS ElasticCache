@@ -1,0 +1,29 @@
+# Source - https://aws.amazon.com/elasticache/ 
+Amazon ElastiCache (fuly managed service) is a web service that makes it easy to deploy, operate, and scale an in-memory data store or 
+cache in the cloud. Create EC cluster and connect from your EC2 using telnet <end point of EC cluster> <port number>
+
+
+1. Redis - a fast, open source, in-memory data store and cache. Amazon ElastiCache for Redis is a Redis-compatible in-memory service
+2. Memcached - a widely adopted memory object caching system
+
+# Source - http://harish11g.blogspot.com/2014/01/Creating-Elasticache-redis-replication-cluster-inside-amazon-vpc-guide-tutorial.html
+Scenario - Architect and create a Highly Available + Scalable Redis Cache Cluster for your web application in AWS VPC. Following is the 
+architecture in which the ElastiCache Redis Cluster is assembled:
+
+. Redis Cache Cluster inside Amazon VPC for better control and security
+. Master Redis Node 1 will be created in AZ-1 of US-West
+. Redis Read Replica Node 2 will be created in AZ-2 of US-West
+. Redis Read Replica Node 3 will be created in AZ-3 of US-West
+
+See diagram at link above.
+Step 1: Creating Cache Subnet groups under EC menu:
+Step 2: Creating Redis Cache Cluster: 
+Step 3: Replication Group Creation:
+Step 4: Adding Read Replica Nodes(Redis Read Replica):
+Step 5: Promoting the Read replica:(You can also promote any node as the Primary cluster using the Promote/Demote option. There will be only one Primary Node)
+
+
+
+
+
+
