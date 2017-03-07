@@ -1,6 +1,12 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 # source -http://cs231n.github.io/python-numpy-tutorial/
-----
+----- generator syntax  
+variable = [ outputexpression for-loop condition ]     #this is for list
+variable = { outputexpression for-loop condition }     #for set
+variable = { var : expression for-loop condition }     # dictionary 
+----- Lambda syntax 
+variable = lambda( output : expression , feedvalues )  
+-----
 setup.py is a python file, which usually tells you that the module/package you are about to install have been packaged and 
 distributed with Distutils, which is the standard for distributing Python Modules. This allows you to easily install Python 
 packages, often it's enough to write: python setup
@@ -56,6 +62,12 @@ class Dog:
 d = Dog('Fido')
 print(d.kind)         # canine
 print(d.name)         # wow
+--------------------------------------------------------------------------------------------
+def main():
+   pass 
+# all below says is  that if program run or imported   
+if __name__ == '__main__':
+   main()
 --------------------------------------------------------------------------------------------
 # Source - http://nvie.com/posts/iterators-vs-generators/
 What is following concepts in python 
