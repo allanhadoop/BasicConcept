@@ -4,6 +4,15 @@
 # forms or to allow special characters to be used without invoking their special meaning.
 # More details  - https://docs.python.org/2/library/re.html
 ----------------------------------------------------------
+Difference  between search and match = 
+re.search(pattern, string, flags=0)
+Scan through string looking for the first location where the regular expression pattern produces a match, and return a corresponding 
+MatchObject instance
+
+re.match(pattern, string, flags=0)
+If zero or more characters at the beginning of string match the regular expression pattern, return a corresponding MatchObject 
+instance
+----------------------------------------------------------
 So basically , any long string can be broken into two pieces using any of the following special sequnce letters. 
 e.g. entire string consists of (<string1>89<string2)) then it is possible to split this into 2 pieces using \d sequence.
 similarly, if <string1>a<string2> This can also be broken using \w sequence . 
