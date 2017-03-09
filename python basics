@@ -1,5 +1,25 @@
 ##source http://www.w3resource.com/python-exercises/python-basic-exercises.php#EDITOR
 # source -http://cs231n.github.io/python-numpy-tutorial/
+------
+virtual env is basically very independent isolated environment to develop python application with its own set of library .. which is not
+shared across other environments.
+------
+easy_install was released in 2004, as part of setuptools. It was notable at the time for installing packages from PyPI using requirement 
+specifiers, and automatically installing dependencies.
+------
+pip came later in 2008, as alternative to easy_install, although still largely built on top of setuptools components. It was notable 
+at the time for not installing packages as Eggs or from Eggs (but rather simply as ‘flat’ packages from sdists), and introducing the 
+idea of Requirements Files, which gave users the power to easily replicate environments.
+----
+To download virtualenv --> sudo pip install virtualenv
+
+Wheel and Egg are both packaging formats that aim to support the use case of needing an install artifact that doesn’t require building 
+or compilation, which can be costly in testing and production workflows.
+
+The Egg format was introduced by setuptools in 2004, whereas the Wheel format was introduced by PEP 427 in 2012.
+Wheel is currently considered the standard for built and binary packaging for Python.
+
+
 ----- generator syntax  
 variable = [ outputexpression for-loop condition ]     #this is for list
 variable = { outputexpression for-loop condition }     #for set
