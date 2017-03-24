@@ -1,0 +1,47 @@
+# Source https://auth0.com/blog/what-is-and-how-does-single-sign-on-work/
+
+The concept of a centralized or linked electronic identity is known as federated identity. Federated identity systems handle several 
+concerns:
+1. Authentication
+2. Authorization
+3. User attributes exchange
+4. User management
+
+The authentication aspect deals with validating user credentials and establishing the identity of the user. 
+Authorization is related to access restrictions (e.g., is the user allowed to access X resource?). 
+The attributes exchange aspect deals with data sharing across different user management systems. For instance, fields such as "real name" 
+may be present in multiple systems. 
+User management is related to the administration (creation, deletion, update) of user accounts. 
+
+A federated identity system usually provides the means for administrators (or users) to handle accounts across domains or subsystems.
+SSO is strictly related to the authentication part of a federated identity system. 
+
+SSO Scenario - you have developed an application at domain X and now you want your new deployment at domain Y to use the same login 
+information as the other domain. In fact, you want more: you want users who are already logged-in at domain X to be already logged-in at 
+domain Y. This is what SSO is all about.
+
+-diagram at https://auth0.com/blog/what-is-and-how-does-single-sign-on-work/
+
+What is same origin policy - This policy dictates that cookies (and other locally stored data) can only be accessed by its creator 
+(i.e. the domain that originally requested the data to be stored). In other words, domain X cannot access cookies from domain Y or vice 
+versa. This is what SSO solutions solve in one way or the other: sharing session information across different domains.
+
+3rd and 4th diagram - https://auth0.com/blog/what-is-and-how-does-single-sign-on-work/
+
+How SSO works - Whenever the user goes to a domain that requires authentication, he or she is redirected to the authentication domain. As the user is 
+already logged-in at that domain, he or she can be immeditely redirected to the original domain with the necessary authentication token 
+(JSON Web Token (which may be encrypted using JWE). Here is different domains is different browser clients.
+
+Different protocols - OpenID Connect, Facebook Connect, SAML, Microsoft Account (formerly known as Passport), etc. 
+
+SSO Scenario 2 - Google's implementation of login for their products, such as Gmail, YouTube, Google Analytics, and so on, is an example 
+of SSO. Any user that is logged in to one of Google's products are automatically logged in to their other products as well.
+
+So basically instead of browser storing cookie, Auth0 Authentication domain/server will generate SSO cookie and use that everytime user
+log into different clients or applications.
+
+-------------------
+
+
+
+
